@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A simple auction web application where you are able to see other users listings and bid on them."
+    />
+    <meta
+      name="keywords"
+      content="Auction house, auction, listings, web application, interact with listings"
+    />
+    <meta name="author" content="Martine Reppesgård Karlsen" />
+
+    <title>Auction House | Register</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/src/css/input.css" />
+    <link rel="stylesheet" href="/src/css/navbar.css" />
+  </head>
+
+  <body class="min-h-screen font-sans bg-background">
+    <header>
+      <nav id="navbar-container"></nav>
+    </header>
+
+    <section
+      class="border-box flex min-h-screen w-full flex-col items-center justify-center gap-4"
+    >
+      <form
+        class="text-tiny flex h-fit w-[90%] max-w-[641px] flex-col items-start justify-center gap-6 rounded-md border border-gray-300 bg-white shadow-xl p-8 text-left mt-10 sm:mt-0"
+        id="register-form"
+      >
+        <div
+          class="mb-5 flex w-full max-w-[600px] flex-col items-center justify-center pr-4 pl-4 sm:mx-auto"
+        >
+          <h1
+            class="text-h1 text-center text-2xl leading-9 font-bold tracking-tight text-black"
+          >
+            Register
+          </h1>
+        </div>
+        <div class="grid w-full gap-2">
+          <label for="name">Name <span class="text-danger">*</span></label>
+
+          <input
+            id="name"
+            type="text"
+            class="h-[63px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            name="name"
+            title="Please enter a username using only letters and numbers"
+            placeholder="Name"
+            aria-required="true"
+          />
+          <span id="name-error" class="text-danger text-p italic"></span>
+
+          <span id="info-text" class="text-grey text-underInput"
+            >Cannot be empty</span
+          >
+        </div>
+        <div class="grid w-full gap-2">
+          <label for="email">Email <span class="text-danger">*</span></label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="h-[63px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            placeholder="Email"
+          />
+          <span id="email-error" class="text-danger text-p italic"></span>
+          <span id="info-text" class="text-grey text-underInput"
+            >Must be a valid @stud.noroff.no email</span
+          >
+        </div>
+
+        <div class="grid w-full gap-2">
+          <label for="password"
+            >Password <span class="text-danger">*</span></label
+          >
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="h-[63px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            placeholder="Password"
+          />
+          <span id="password-error" class="text-danger text-p italic"></span>
+          <span id="info-text" class="text-grey text-underInput"
+            >Minimum 8 charachters</span
+          >
+        </div>
+        <div class="items-cente mt-2 flex h-10 w-full">
+          <label class="flex-col" for="show-password">
+            <input
+              title="show password"
+              type="checkbox"
+              class="h-[15px] w-[15px]"
+              aria-label="Checkbox"
+              id="show-password"
+            />
+            Show password
+          </label>
+        </div>
+        <div class="flex h-[50px] w-full items-center justify-center">
+          <button
+            type="submit"
+            class="bg-blue h-full w-full cursor-pointer rounded-[50px] p-2 text-btn text-white outline-1 hover:bg-white hover:text-black font-bold"
+            id="register-btn"
+          >
+            Register
+          </button>
+        </div>
+        <div class="flex h-10 w-full max-w-[600px] items-center justify-center">
+          <div class="text-tiny flex flex-col gap-1 text-center sm:flex-row">
+            <p>Don't have an account?</p>
+            <a href="/auth/login/index.html" class="text-blue">Login</a>
+          </div>
+        </div>
+      </form>
+    </section>
+    <footer id="footer-container"></footer>
+
+    <!-- Script -->
+    <script type="module" src="../../src/ts/auth/register.ts"></script>
+    <script type="module" src="../../src/ts/navbar.ts"></script>
+    <script type="module" src="../../src/ts/footer.ts"></script>
+  </body>
+</html>
