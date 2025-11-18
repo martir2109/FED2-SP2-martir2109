@@ -14,9 +14,6 @@ export const API_ENDPOINTS = {
   },
   AUCTION: {
     PROFILES: "/auction/profiles",
-  },
-  LISTINGS: {
-    /* GET */
     LISTINGS: "/auction/listings",
   },
 };
