@@ -9,7 +9,7 @@
     />
     <meta
       name="keywords"
-      content="Auction house, auction, posts, web application, interact with listings"
+      content="Auction house, auction, listings, web application, interact with listings"
     />
     <meta name="author" content="Martine Reppesgård Karlsen" />
 
@@ -32,7 +32,7 @@
       class="border-box flex min-h-screen w-full flex-col items-center justify-center gap-4"
     >
       <form
-        class="text-tiny flex h-fit w-[90%] max-w-[641px] flex-col items-start justify-center gap-6 rounded-md border border-gray-300 bg-white shadow-xl p-8 text-left mt-10 sm:mt-0"
+        class="flex h-fit w-[90%] max-w-[641px] flex-col items-start justify-center gap-6 rounded-md border border-gray-300 bg-white shadow-xl p-8 text-left mt-10 sm:mt-0"
         id="login-form"
       >
         <div
@@ -54,6 +54,7 @@
             name="email"
             class="h-[63px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             placeholder="Email"
+            autocomplete="email"
           />
           <span id="email-error" class="text-danger text-p italic"></span>
         </div>
@@ -69,6 +70,7 @@
             name="password"
             class="h-[63px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             placeholder="Password"
+            autocomplete="current-password"
           />
           <span id="password-error" class="text-danger text-p italic"></span>
         </div>
@@ -84,7 +86,7 @@
             Show password
           </label>
         </div>
-        <div class="flex h-[50px] w-full items-center justify-center">
+        <div class="flex h-[63px] w-full items-center justify-center">
           <button
             type="submit"
             class="bg-blue h-full w-full cursor-pointer rounded-[50px] p-2 text-white text-btn outline-1 hover:bg-white hover:text-black font-bold"
