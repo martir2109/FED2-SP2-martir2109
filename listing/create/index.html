@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" class="h-full bg-white">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A simple auction web application where you are able to see other users listings and bid on them."
+    />
+    <meta
+      name="keywords"
+      content="Auction house, auction, listings, web application, interact with listings"
+    />
+    <meta name="author" content="Martine Reppesgård Karlsen" />
+
+    <title>Auction House | Create new listing</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/src/css/input.css" />
+    <link rel="stylesheet" href="/src/css/navbar.css" />
+  </head>
+  <body class="min-h-screen font-sans bg-background pt-24">
+    <header>
+      <nav id="navbar-container"></nav>
+    </header>
+    <main class="min-h-screen w-full flex justify-center mb-10">
+      <form
+        id="create-listing-form"
+        class="w-[90%] md:w-full max-w-[641px] h-fit flex flex-col justify-center gap-6 rounded-md border border-gray-300 bg-white shadow-xl p-8 text-left mt-10 sm:mt-0"
+      >
+        <div class="flex justify-center items-center">
+          <h1 class="text-h1">Create new listing</h1>
+        </div>
+
+        <div class="field">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            placeholder="Post title"
+            name="title"
+            id="title"
+            class="h-[63px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            aria-required="true"
+          />
+          <span id="title-error" class="text-danger text-p italic"></span>
+        </div>
+
+        <div class="field">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            placeholder="Listing description"
+            name="content"
+            id="description"
+            class="h-[163px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            aria-required="true"
+          ></textarea>
+          <span id="description-error" class="text-danger text-p italic"></span>
+        </div>
+
+        <div class="field">
+          <label for="tags" class="form-label"
+            >Tags (Seperate the tags with comma)</label
+          >
+          <input
+            type="text"
+            placeholder="e.g books, electronics..."
+            name="tags"
+            id="tags"
+            class="h-[63px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            aria-required="true"
+          />
+          <span id="tags-error" class="text-danger text-p italic"></span>
+        </div>
+
+        <div class="field">
+          <label for="media" class="form-label"
+            >Image url (Preferred image proportions: square format)</label
+          >
+          <input
+            type="url"
+            placeholder="Image url"
+            name="imageUrl"
+            id="media"
+            class="h-[63px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            aria-required="true"
+          />
+          <span id="media-error" class="text-danger text-p italic"></span>
+        </div>
+
+        <div class="field">
+          <label for="alt" class="form-label">Image ALT text</label>
+          <input
+            type="text"
+            placeholder="Image ALT text"
+            name="imageAlt"
+            id="alt"
+            class="h-[63px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            aria-required="true"
+          />
+          <span id="alt-error" class="text-danger text-p italic"></span>
+        </div>
+
+        <div class="field">
+          <label for="endDate" class="form-label">End date</label>
+          <input
+            type="datetime-local"
+            placeholder="End date"
+            name="endsAt"
+            id="endsAt"
+            class="h-[63px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            aria-required="true"
+          />
+          <span id="endsAt-error" class="text-danger text-p italic"></span>
+        </div>
+
+        <div
+          class="flex sm:flex-row flex-col w-full h-fit gap-3 sm:gap-2 sm:justify-between"
+        >
+          <a
+            href="/index.html"
+            type="button"
+            class="cancel-btn cursor-pointer w-full sm:max-w-[190px] h-[63px] bg-grey rounded-[50px] hover:bg-white hover:text-black border-grey outline-1 hover:border-black text-white font-bold justify-center items-center flex"
+            >Cancel</a
+          >
+          <button
+            type="submit"
+            id="edit-profile-btn"
+            class="edit-profile-btn bg-blue h-[63px] w-full cursor-pointer rounded-[50px] p-2 text-white text-btn outline-1 hover:bg-white hover:text-black font-bold"
+          >
+            Create listing
+          </button>
+        </div>
+      </form>
+    </main>
+    <footer id="footer-container"></footer>
+
+    <!-- Script -->
+    <script type="module" src="../../src/ts/listing/create.ts"></script>
+    <script type="module" src="../../src/ts/navbar.ts"></script>
+    <script type="module" src="../../src/ts/footer.ts"></script>
+  </body>
+</html>
