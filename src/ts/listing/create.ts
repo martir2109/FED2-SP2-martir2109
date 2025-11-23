@@ -1,3 +1,4 @@
+/** Utility functions for error handling and authentication */
 import {
   showError,
   clearError,
@@ -5,16 +6,28 @@ import {
   getAuthenticationCredentials,
 } from "../utils.ts";
 
+/** API configuration (base URL, endpoints, and header builders) */
 import {
   API_BASE_URL,
   API_ENDPOINTS,
   API_Headers_accesstoken_content_apikey,
 } from "../apiConfig.js";
 
+/**
+ * @type {HTMLFormElement} The form used to create a new listing
+ */
 const createListingForm = document.getElementById(
   "create-listing-form",
 ) as HTMLFormElement;
 
+/**
+ * Handles submission of the "create-listing-form".
+ * - Validates all input fields
+ * - Sends a POST request to create the listing
+ * - Redirects on success
+ *
+ * @param {SubmitEvent} event - The submit event
+ */
 createListingForm.addEventListener("submit", async function (event) {
   event.preventDefault();
 
@@ -39,6 +52,7 @@ createListingForm.addEventListener("submit", async function (event) {
     .value;
   const endsAt = new Date(endAtInput);
 
+  /** Validate form fields and show errors */
   let hasError = false;
 
   if (!title.trim()) {
@@ -134,6 +148,7 @@ createListingForm.addEventListener("submit", async function (event) {
   }
 });
 
+/** Adds realtime input validation listeners to input fields */
 attachInputListeners([
   "#title",
   "#description",
