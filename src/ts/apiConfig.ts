@@ -25,8 +25,8 @@ export const API_ENDPOINTS = {
  * @returns {object} Headers object.
  */
 export const API_Headers_accesstoken_content_apikey = (
-  accessToken,
-  apiKey,
+  accessToken: any,
+  apiKey: any,
 ) => ({
   Authorization: `Bearer ${accessToken}`,
   "Content-Type": "application/json",
@@ -39,7 +39,10 @@ export const API_Headers_accesstoken_content_apikey = (
  * @param {string} apiKey - API key.
  * @returns {object} Headers object.
  */
-export const API_Headers_accesstoken_apikey = (accessToken, apiKey) => ({
+export const API_Headers_accesstoken_apikey = (
+  accessToken: any,
+  apiKey: any,
+) => ({
   Authorization: `Bearer ${accessToken}`,
   "X-Noroff-API-Key": apiKey,
 });
