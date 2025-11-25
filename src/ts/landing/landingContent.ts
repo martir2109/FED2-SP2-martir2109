@@ -38,7 +38,7 @@ export function createLoggedOutContent(): string {
       <div class="w-[90%] sm:w-[80%] bg-white h-fit rounded-[20px]">
         <div class="listings-container w-full h-fit">
           <div
-            id="listing-posts"
+            id="listing-container"
             class="w-full h-min-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center gap-5 p-5"
           ></div>
         </div>
@@ -102,7 +102,7 @@ export function createLoggedInContent(): string {
       <div class="w-[90%] sm:w-[80%] bg-white h-fit rounded-[20px]">
         <div class="listings-container w-full h-fit">
           <div
-            id="listing-posts"
+            id="listing-container"
             class="w-full h-min-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center gap-5 p-5"
           ></div>
         </div>
