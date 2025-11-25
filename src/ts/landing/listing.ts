@@ -1,4 +1,4 @@
-// listingRenderer.ts
+/** Formats listing date and time. */
 import { formatDateTime } from "../utils.ts";
 
 export function displayRecentListings(data: any[]) {
