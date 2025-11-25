@@ -1,3 +1,8 @@
+import {
+  getUserProfileElements,
+  loadUserProfileData,
+} from "../ts/profile/profileUtils";
+
 /**
  * Show error message below an input field.
  * @param {string} inputId - The ID of the input field.
@@ -101,4 +106,36 @@ export function getUserName() {
 export function getUser() {
   const userDataString = localStorage.getItem("user");
   return { userDataString };
+}
+
+export function formatDateTime(dateString?: string) {
+  return dateString
+    ? new Date(dateString).toLocaleString([], {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+    : "Unknown";
+}
+
+export async function retriveUserCredits() {
+  const { credits } = getUserProfileElements();
+  const { accessToken, apiKey } = getAuthenticationCredentials();
+  const { userName } = getUserName();
+
+  try {
+    const userProfile = await loadUserProfileData(
+      accessToken,
+      apiKey,
+      userName,
+    );
+
+    if (credits) {
+      credits.textContent = userProfile.credits || "0";
+    }
+  } catch (error) {
+    console.error("Error loading user credits:", error);
+  }
 }
