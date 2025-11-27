@@ -2,7 +2,7 @@
 import {
   getAuthenticationCredentials,
   formatDateTime,
-  retriveUserCredits,
+  retrieveUserCredits,
 } from "../utils.ts";
 
 /** API configuration (base URL, endpoints, and header builders) */
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     ? createLoggedInContent()
     : createLoggedOutContent();
 
-  retriveUserCredits();
+  retrieveUserCredits();
   await loadRecentListings();
 
   const searchInput = document.getElementById(
