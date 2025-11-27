@@ -120,7 +120,7 @@ export function formatDateTime(dateString?: string) {
     : "Unknown";
 }
 
-export async function retriveUserCredits() {
+export async function retrieveUserCredits() {
   const { credits } = getUserProfileElements();
   const { accessToken, apiKey } = getAuthenticationCredentials();
   const { userName } = getUserName();
