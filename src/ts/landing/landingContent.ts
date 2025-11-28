@@ -32,9 +32,34 @@ export function createLoggedOutContent(): string {
           >
         </div>
       </div>
-      <div class="w-[90%] sm:w-[80%] h-fit">
-        <h2 class="text-h2 font-bold text-left">Recents listings</h2>
+        <div class="w-[90%] sm:w-[80%] h-fit mt-2">
+        <h2 class="text-h2 font-bold text-left">Browse listings</h2>
       </div>
+    <div
+        class="w-[90%] sm:w-[80%] flex justify-between gap-2 md:flex-row flex-col mt-6 mb-6"
+      >
+     
+        <div class="flex flex-col gap-2 md:w-full md:max-w-[48%] h-[100px]">
+          <label class="text-label">Search by title</label>
+          <input
+            id="search-title"
+            placeholder="Search by title"
+            aria-label="Search"
+            class="h-[63px] bg-white w-full p-2 border border-grey rounded-md"
+          />
+        </div>
+
+        <div class="flex flex-col gap-2 md:w-full md:max-w-[48%] h-[100px]">
+          <label class="text-label">Filter by tags</label>
+          <input
+            id="filter-tags"
+            placeholder="Enter tags (comma seperated)"
+            aria-label="Search"
+            class="h-[63px] bg-white w-full p-2 border border-grey rounded-md"
+          />
+        </div>
+      </div>
+
       <div class="w-[90%] sm:w-[80%] bg-white h-fit rounded-[20px]">
         <div class="listings-container w-full h-fit">
           <div
