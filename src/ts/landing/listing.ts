@@ -1,7 +1,22 @@
 /** Formats listing date and time. */
 import { formatDateTime } from "../utils.ts";
 
-export function displayRecentListings(data: any[]) {
+/**
+ * Represents a listing object
+ */
+interface Listing {
+  id: string;
+  title?: string;
+  description?: string;
+  endsAt: string;
+  created: string;
+  media?: { url: string }[];
+  seller?: { name?: string };
+  bids?: { amount: number | string }[];
+  _count?: { bids: number };
+}
+
+export function displayRecentListings(data: Listing[]) {
   const listingsContainer = document.getElementById("listing-container");
   if (!listingsContainer) return;
 
@@ -71,7 +86,7 @@ export function displayRecentListings(data: any[]) {
       <p><strong>Bids:</strong> ${listing._count?.bids ?? 0}</p>
       <p>
         <strong>Highest bid:</strong> ${
-          listing.bids.length > 0
+          listing.bids && listing.bids.length > 0
             ? Math.max(...listing.bids.map((bid: any) => Number(bid.amount)))
             : 0
         }
