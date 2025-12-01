@@ -1,0 +1,28 @@
+.tab-button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  border-radius: 10px 10px 0 0;
+}
+
+.tab-button:hover:not(.tab-button.active) {
+  background-color: #101920;
+  color: white;
+}
+
+.tab-button.active {
+  font-weight: bold;
+  background-color: white;
+  text-transform: uppercase;
+}
+
+.tab-content {
+  display: none;
+  border-top: none;
+}
+
+.tab-content.active {
+  display: block;
+}
