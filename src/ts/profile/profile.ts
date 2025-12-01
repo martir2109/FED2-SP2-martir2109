@@ -27,16 +27,7 @@ import {
 
 import { editProfileToggle } from "./editProfileToggle.ts";
 
-/**
- *
- */
 document.addEventListener("DOMContentLoaded", async function () {
-  const editProfileBtn = document.getElementById("edit-profile-btn");
-
-  if (editProfileBtn) {
-    editProfileBtn.addEventListener("click", updateUserProfileHandler);
-  }
-
   const { accessToken, apiKey } = getAuthenticationCredentials();
   const { userName } = getUserName();
 
@@ -68,7 +59,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   /**
    * Loads and displays the user profile data.
    *
-   * Fetches user profile information from the API and updates the DOM elements (Banner img, avatar img, bio and email).
+   * Fetches user profile information from the API and updates the DOM elements:
+   * - Banner img
+   * - Avatar img
+   * - Bio text
+   * - Email
    *
    * @async
    * @returns {Promise<void>} Resolves when the profile is loaded and displayed.
@@ -359,6 +354,12 @@ document.addEventListener("DOMContentLoaded", async function () {
   await loadProfile();
   retrieveUserCredits();
   editProfileToggle();
+  const editProfileBtn = document.getElementById("edit-profile-btn");
+
+  if (editProfileBtn) {
+    editProfileBtn.addEventListener("click", updateUserProfileHandler);
+  }
+
   await loadListings();
   await loadBidOnListings();
   await loadWins();
