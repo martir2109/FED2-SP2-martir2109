@@ -1,9 +1,11 @@
 import { formatDateTime } from "../../utils.ts";
+import { isUserLoggedIn } from "./view.ts";
 
 const currentUserRaw = JSON.parse(localStorage.getItem("user") ?? "{}");
 const currentUser = currentUserRaw.data || currentUserRaw;
 const currentUserName =
   currentUser.name || currentUser.username || currentUser.email || "user";
+const isLoggedIn = isUserLoggedIn();
 
 /**
  * Renders the main listing content.
@@ -40,7 +42,9 @@ export function displayListing(data: any[]): void {
         <h3 class="text-h2 font-bold">${listing.title || "No title"}</h3>
         <p class="text-p break-all"><strong>Seller: </strong>  ${
           listing.seller
-            ? `<a href="../../profile/index.html?id=${listing.seller.name}" class="text-blue-500 hover:underline">${listing.seller.name}</a>`
+            ? isLoggedIn
+              ? `<a href="../../profile/index.html?id=${listing.seller.name}" class="text-blue-500 hover:underline">${listing.seller.name}</a>`
+              : `${listing.seller.name}`
             : "Unknown seller"
         }</p>
         <div class="flex flex-col gap-2">
