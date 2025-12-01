@@ -1,7 +1,7 @@
 import {
   getUserProfileElements,
   loadUserProfileData,
-} from "../ts/profile/profileUtils";
+} from "./profile/profileUtils";
 
 /**
  * Show error message below an input field.
