@@ -22,6 +22,8 @@ export function createLoggedOutContent(): string {
 export function createLoggedInContent(): string {
   return `
     <div id="listing-container" class="max-w-[1144px] w-full h-fit flex flex-col gap-8 items-center">
+             <div id="no-id-message-container" class="w-full h-fit"></div>
+
      <div class="w-[90%] md:w-full h-fit flex justify-end">
             <div
               class="bg-black py-2 px-4 flex gap-2 justify-center items-center rounded-[50px] text-white h-fit"
@@ -40,11 +42,14 @@ export function createLoggedInContent(): string {
           <section class="w-full h-fit flex flex-col items-center">
              <div id="bid-on-listing" class="rounded-md gap-4 flex flex-col bg-white p-8 w-full max-w-[434px] h-fit">
             <h3 class="font-bold text-h3">Place a bid</h3>
+
             <label>Bid amount</label>
             <div class="flex w-full h-fit justify-between items-center gap-2">
             <input id="place-bid-input" placeholder="0" class="h-[63px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
             <p class="font-bold text-p">Credits</p>
             </div>
+             <div id="message-container" class="w-full h-fit"></div>
+
             <button id="place-bid-btn" 
             class="mt-4 h-[63px] w-full py-5.5 bg-blue text-white font-bold text-center text-btn rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer">
             Place bid

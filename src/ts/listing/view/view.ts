@@ -46,9 +46,21 @@ async function loadListing(): Promise<void> {
 
   try {
     const listingId = new URLSearchParams(window.location.search).get("id");
+    const noIDMessageContainer = document.getElementById(
+      "no-id-message-container",
+    ) as HTMLDivElement;
+
     if (!listingId) {
-      alert("No listing ID found in the URL.");
-      return;
+      noIDMessageContainer.innerHTML = `
+        <div class="flex gap-2 bg-red-300 text-red-950 w-full p-2 rounded items-center mt-2">
+          <i class="bi bi-check-circle-fill text-red-950"></i>
+          <p class="m-0 text-sm">No listing ID found in the URL."</p>
+        </div>
+      `;
+
+      setTimeout(() => {
+        noIDMessageContainer.innerHTML = "";
+      }, 5000);
     }
 
     const response = await fetch(
@@ -81,7 +93,7 @@ async function loadListing(): Promise<void> {
 /**
  * Sets up the "Place Bid" button.
  * Checks if the bid is valid, sends it to the API, and updates the listing and user credits.
- * Shows alerts if there are errors or the bid is too low.
+ * Shows message if there are errors or the bid is too low.
  *
  * @async
  * @returns {Promise<void>} Resolves after the event listiner is attached.
@@ -98,20 +110,51 @@ async function bidOnListing(): Promise<void> {
 
   bidButton.addEventListener("click", async () => {
     const listingId = new URLSearchParams(window.location.search).get("id");
+    const messageContainer = document.getElementById(
+      "message-container",
+    ) as HTMLDivElement;
+
     if (!listingId) {
-      alert("No listing ID found.");
+      messageContainer.innerHTML = `
+        <div class="flex gap-2 bg-red-300 text-red-950 w-full p-2 rounded items-center mt-2">
+          <i class="bi bi-check-circle-fill text-red-950"></i>
+          <p class="m-0 text-sm">No listing ID found."</p>
+        </div>
+      `;
+
+      setTimeout(() => {
+        messageContainer.innerHTML = "";
+      }, 5000);
       return;
     }
 
     const amount = Number(bidInput.value);
     if (isNaN(amount) || amount <= 0) {
-      alert("Please enter a valid bid amount.");
+      messageContainer.innerHTML = `
+        <div class="flex gap-2 bg-red-300 text-red-950 w-full p-2 rounded items-center mt-2">
+          <i class="bi bi-check-circle-fill text-red-950"></i>
+          <p class="m-0 text-sm">Please enter a valid bid amount.</p>
+        </div>
+      `;
+
+      setTimeout(() => {
+        messageContainer.innerHTML = "";
+      }, 5000);
       return;
     }
 
     const { accessToken, apiKey } = getAuthenticationCredentials();
     if (!accessToken) {
-      alert("You must be logged in to place a bid.");
+      messageContainer.innerHTML = `
+        <div class="flex gap-2 bg-red-300 text-red-950 w-full p-2 rounded items-center mt-2">
+          <i class="bi bi-check-circle-fill text-red-950"></i>
+          <p class="m-0 text-sm">You must be logged in to place a bid.</p>
+        </div>
+      `;
+
+      setTimeout(() => {
+        messageContainer.innerHTML = "";
+      }, 5000);
       return;
     }
 
@@ -132,9 +175,16 @@ async function bidOnListing(): Promise<void> {
           : 0;
 
       if (amount <= currentHighestBid) {
-        alert(
-          `Your bid must be higher than the current highest bid of ${currentHighestBid} credits.`,
-        );
+        messageContainer.innerHTML = `
+          <div class="flex gap-2 bg-red-300 text-red-950 w-full p-2 rounded items-center mt-2">
+            <i class="bi bi-check-circle-fill text-red-950"></i>
+            <p class="m-0 text-sm">Your bid must be higher than the current highest bid of ${currentHighestBid} credits.</p>
+          </div>
+        `;
+
+        setTimeout(() => {
+          messageContainer.innerHTML = "";
+        }, 5000);
         return;
       }
 
@@ -155,14 +205,37 @@ async function bidOnListing(): Promise<void> {
         throw new Error(errorMessage);
       }
 
-      alert(`Bid of ${amount} credits successfully placed!`);
-      bidInput.value = "";
+      if (messageContainer) {
+        bidInput.value = "";
+        messageContainer.innerHTML = `
+          <div class="flex gap-2 bg-green-300 text-green-950 w-full p-2 rounded items-center mt-2">
+            <i class="bi bi-check-circle-fill text-green-950"></i>
+            <p class="m-0 text-sm">Bid of ${amount} credits successfully placed!</p>
+          </div>
+        `;
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+        return;
+      }
 
       await loadListing();
       retrieveUserCredits();
     } catch (error) {
-      console.error("Error placing bid:", error);
-      alert("Failed to place bid. Please try again.");
+      if (messageContainer) {
+        messageContainer.innerHTML = `
+          <div class="flex gap-2 bg-red-300 text-red-950 w-full p-2 rounded items-center mt-2">
+            <i class="bi bi-check-circle-fill text-red-950"></i>
+            <p class="m-0 text-sm">Failed to place bid. Please try again."</p>
+          </div>
+        `;
+
+        setTimeout(() => {
+          messageContainer.innerHTML = "";
+        }, 5000);
+        return;
+      }
     }
   });
 }
@@ -179,11 +252,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     ? createLoggedInContent()
     : createLoggedOutContent();
 
+  await loadListing();
+  retrieveUserCredits();
+
   if (isUserLoggedIn()) {
     bidOnListing();
   }
-
-  await loadListing();
-  retrieveUserCredits();
 });
 formatDateTime();
