@@ -25,7 +25,7 @@ function createNavbarLoggedIn(): string {
               <span class="nav-text">Home</span>
               </a>
             
-              <a href="../../profile/index.html"><i class="bi bi-person" title="Profile"></i>
+              <a href="/profile/index.html"><i class="bi bi-person" title="Profile"></i>
               <span class="nav-text">Profile</span>
               </a>
            
@@ -63,7 +63,7 @@ function createNavBarLoggedOut(): string {
               <a href="/index.html"><i class="bi bi-house-door" title="Home"></i>
               <span class="nav-text">Home</span>
               </a>
-              <a href="../../auth/login/index.html"><i class="bi bi-person" title="Profile"></i> 
+              <a href="/auth/login/index.html"><i class="bi bi-person" title="Profile"></i> 
               <span class="nav-text">Log in or Register</span>
               </a>
             </div>
