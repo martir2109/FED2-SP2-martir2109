@@ -1,14 +1,10 @@
 /**
- * Create the navbar HTML depending on login state.
- * Check if the user has an access token in localStorage.
- * @returns {string} The HTML string for navbar.
+ * Generates the HTML for the navbar for logged in users.
+ *
+ * @returns {string} HTML content as a string.
  */
-function createNavbar() {
-  const isLoggedIn = localStorage.getItem("accessToken") !== null;
-
-  if (isLoggedIn) {
-    // Navbar for logged-in users
-    return `
+function createNavbarLoggedIn(): string {
+  return `
           <nav class="topnav overflow-hidden bg-white fixed top-0 w-full z-1000 p-0 border-b border-light-grey items-center flex h-16">
           <a href="/index.html">
             <div class="shrink-0 absolute ml-2.5 left-0 py-2.5 px-0.5 top-0">
@@ -39,9 +35,15 @@ function createNavbar() {
             </div>
           </nav>
         `;
-  } else {
-    // Navbar for logged-out users
-    return `
+}
+
+/**
+ * Generates the HTML for the navbar for logged out users.
+ *
+ * @returns {string} HTML content as a string.
+ */
+function createNavBarLoggedOut(): string {
+  return `
           <nav class="topnav overflow-hidden bg-white fixed top-0 w-full z-1000 p-0 border-b border-light-grey items-center flex h-16">
           <a href="/index.html">
             <div class="shrink-0 absolute ml-2.5 left-0 py-2.5 px-0.5 top-0">
@@ -67,7 +69,6 @@ function createNavbar() {
             </div>
           </nav>
         `;
-  }
 }
 
 /**
@@ -80,10 +81,20 @@ function logout() {
   window.location.href = "/index.html";
 }
 
+/**
+ * Initializes the navbar once the DOm is fully loaded.
+ * Checks if the user is logged in or not by looking for accessToken in localStorage.
+ * Puts the correct HTML into the navbar-container element.
+ */
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("navbar-container");
+
   if (container) {
-    container.innerHTML = createNavbar();
+    const isLoggedIn = localStorage.getItem("accessToken") !== null;
+
+    container.innerHTML = isLoggedIn
+      ? createNavbarLoggedIn()
+      : createNavBarLoggedOut();
   }
 });
 
