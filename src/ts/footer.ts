@@ -2,7 +2,7 @@
  * Create the footer HTML.
  * @returns {string} The HTML for footer.
  */
-function createFooter() {
+function createFooter(): string {
   return `<div class="w-full h-fit bg-primary text-white overflow-hidden flex flex-col justify-center mt-10">
         <div class="w-full h-fit flex flex-col sm:place-items-start items-center sm:flex-row justify-center gap-10 sm:gap-[10%] leading-[50px]">
           <div class="mt-[50px] w-70 bg-primary h-[200px] sm:h-[300px]">
