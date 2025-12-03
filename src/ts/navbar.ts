@@ -85,6 +85,7 @@ function logout() {
  * Initializes the navbar once the DOm is fully loaded.
  * Checks if the user is logged in or not by looking for accessToken in localStorage.
  * Puts the correct HTML into the navbar-container element.
+ * Sets active class on the link that matches the current page URL to indicate the active page.
  */
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("navbar-container");
@@ -95,6 +96,14 @@ document.addEventListener("DOMContentLoaded", () => {
     container.innerHTML = isLoggedIn
       ? createNavbarLoggedIn()
       : createNavBarLoggedOut();
+
+    const links: NodeListOf<HTMLAnchorElement> =
+      container.querySelectorAll(".nav-links a");
+    links.forEach((link) => {
+      if (link.href === window.location.href) {
+        link.classList.add("active");
+      }
+    });
   }
 });
 

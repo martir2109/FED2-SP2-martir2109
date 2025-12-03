@@ -58,6 +58,15 @@
   display: none;
 }
 
+.nav-links a.active i {
+  border-bottom: 2px solid black;
+  color: black;
+}
+
+.topnav.responsive .nav-links a.active i {
+  border-bottom: 2px solid black;
+}
+
 @media screen and (max-width: 750px) {
   .nav-links {
     display: none;
