@@ -8,7 +8,7 @@ function createNavbarLoggedIn(): string {
           <nav class="topnav overflow-hidden bg-white fixed top-0 w-full z-1000 p-0 border-b border-light-grey items-center flex h-16">
           <a href="/index.html">
             <div class="shrink-0 absolute ml-2.5 left-0 py-2.5 px-0.5 top-0">
-              <img src="/assets/logo/logo-with-text-without-background.png" alt="Auction House" class="h-10">
+              <img src="./assets/logo/logo-with-text-without-background.png" alt="Auction House" class="h-10">
             </div>
             </a>
             
@@ -21,11 +21,11 @@ function createNavbarLoggedIn(): string {
             </button>
             
             <div class="nav-links flex cursor-pointer ml-auto">  
-              <a href="/index.html"><i class="bi bi-house-door" title="Home"></i>
+              <a href="./index.html"><i class="bi bi-house-door" title="Home"></i>
               <span class="nav-text">Home</span>
               </a>
             
-              <a href="/profile/index.html"><i class="bi bi-person" title="Profile"></i>
+              <a href="./profile/index.html"><i class="bi bi-person" title="Profile"></i>
               <span class="nav-text">Profile</span>
               </a>
            
@@ -47,7 +47,7 @@ function createNavBarLoggedOut(): string {
           <nav class="topnav overflow-hidden bg-white fixed top-0 w-full z-1000 p-0 border-b border-light-grey items-center flex h-16">
           <a href="/index.html">
             <div class="shrink-0 absolute ml-2.5 left-0 py-2.5 px-0.5 top-0">
-              <img src="/assets/logo/logo-with-text-without-background.png" alt="Auction House" class="h-10">
+              <img src="./assets/logo/logo-with-text-without-background.png" alt="Auction House" class="h-10">
             </div>
             </a>
             
@@ -60,10 +60,10 @@ function createNavBarLoggedOut(): string {
             </button>
             
             <div class="nav-links flex cursor-pointer ml-auto">  
-              <a href="/index.html"><i class="bi bi-house-door" title="Home"></i>
+              <a href="./index.html"><i class="bi bi-house-door" title="Home"></i>
               <span class="nav-text">Home</span>
               </a>
-              <a href="/auth/login/index.html"><i class="bi bi-person" title="Profile"></i> 
+              <a href="./auth/login/index.html"><i class="bi bi-person" title="Profile"></i> 
               <span class="nav-text">Log in or Register</span>
               </a>
             </div>
