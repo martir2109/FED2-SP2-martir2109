@@ -37,7 +37,7 @@ export function displayListings(
         .map(
           (listing) => `
     <a
-      href="../../listing/view/index.html?id=${listing.id}"
+      href="/listing/view/index.html?id=${listing.id}"
       class="bg-white w-max-[200px] w-full min-h-[500px] h-fit rounded-xl border border-gray-300 p-4 flex flex-col gap-4 hover:shadow-xl/30 hover:-translate-y-2 transition transform duration-300 ease"
     >
       <h3 class="text-h2 font-bold">
@@ -52,7 +52,7 @@ export function displayListings(
         loading="lazy"
       />`
           : `<img
-        src="../../assets/images/default-image.jpg"
+        src="/assets/images/default-image.jpg"
         class="w-full h-full aspect-square object-cover border border-grey rounded-[10px]"
         loading="lazy"
       />`
