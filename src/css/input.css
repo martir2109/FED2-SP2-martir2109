@@ -24,3 +24,18 @@
   --breakpoint-lg: 1550px;
   --font-sans: Arial, Helvetica, sans-serif;
 }
+
+.hidden {
+  display: none;
+}
+
+/* Loader */
+.loader-container {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.loaderHidden {
+  opacity: 0;
+  pointer-events: none;
+}
