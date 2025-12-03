@@ -86,7 +86,6 @@ async function loadListing(): Promise<void> {
     if (viewListing)
       viewListing.innerHTML =
         '<p class="landingpage-listing-error">Unable to load listing</p>';
-    console.error("Error loading listing:", error);
   }
 }
 
@@ -117,7 +116,7 @@ async function bidOnListing(): Promise<void> {
     if (!listingId) {
       messageContainer.innerHTML = `
         <div class="flex gap-2 bg-red-300 text-red-950 w-full p-2 rounded items-center mt-2">
-          <i class="bi bi-check-circle-fill text-red-950"></i>
+          <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
           <p class="m-0 text-sm">No listing ID found."</p>
         </div>
       `;
@@ -132,7 +131,7 @@ async function bidOnListing(): Promise<void> {
     if (isNaN(amount) || amount <= 0) {
       messageContainer.innerHTML = `
         <div class="flex gap-2 bg-red-300 text-red-950 w-full p-2 rounded items-center mt-2">
-          <i class="bi bi-check-circle-fill text-red-950"></i>
+          <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
           <p class="m-0 text-sm">Please enter a valid bid amount.</p>
         </div>
       `;
@@ -147,7 +146,7 @@ async function bidOnListing(): Promise<void> {
     if (!accessToken) {
       messageContainer.innerHTML = `
         <div class="flex gap-2 bg-red-300 text-red-950 w-full p-2 rounded items-center mt-2">
-          <i class="bi bi-check-circle-fill text-red-950"></i>
+          <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
           <p class="m-0 text-sm">You must be logged in to place a bid.</p>
         </div>
       `;
@@ -177,7 +176,7 @@ async function bidOnListing(): Promise<void> {
       if (amount <= currentHighestBid) {
         messageContainer.innerHTML = `
           <div class="flex gap-2 bg-red-300 text-red-950 w-full p-2 rounded items-center mt-2">
-            <i class="bi bi-check-circle-fill text-red-950"></i>
+            <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
             <p class="m-0 text-sm">Your bid must be higher than the current highest bid of ${currentHighestBid} credits.</p>
           </div>
         `;
@@ -226,7 +225,7 @@ async function bidOnListing(): Promise<void> {
       if (messageContainer) {
         messageContainer.innerHTML = `
           <div class="flex gap-2 bg-red-300 text-red-950 w-full p-2 rounded items-center mt-2">
-            <i class="bi bi-check-circle-fill text-red-950"></i>
+            <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
             <p class="m-0 text-sm">Failed to place bid. Please try again."</p>
           </div>
         `;
