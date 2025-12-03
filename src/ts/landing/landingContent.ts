@@ -21,12 +21,12 @@ export function createLoggedOutContent(): string {
           class="flex flex-col sm:flex-row w-full px-10 gap-5 justify-center"
         >
           <a
-            href="../../auth/login/index.html"
+            href="../auth/login/index.html"
             class="text-center bg-primary text-white px-20 py-2 rounded-[10px] text-h2 hover:bg-white hover:text-primary border border-bg-primary"
             >Login</a
           >
           <a
-            href="../../auth/register/index.html"
+            href="../auth/register/index.html"
             class="text-center bg-primary text-white px-20 py-2 rounded-[10px] text-h2 hover:bg-white hover:text-primary border border-bg-primary"
             >Register</a
           >
