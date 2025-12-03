@@ -67,7 +67,7 @@ export function displayRecentListings(data: Listing[]) {
         loading="lazy"
       />`
           : `<img
-        src="../../assets/images/default-image.jpg"
+        src="/assets/images/default-image.jpg"
         class="w-full h-full aspect-square object-cover border border-grey rounded-[10px]"
         loading="lazy"
       />`
