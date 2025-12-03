@@ -24,16 +24,12 @@ import { displayListing } from "./listingDisplay.ts";
  *
  * @returns {boolean} True if the user is logged in, otherwise false.
  */
-function isUserLoggedIn(): boolean {
+export function isUserLoggedIn(): boolean {
   const { accessToken } = getAuthenticationCredentials();
   return accessToken !== null;
 }
 
 const { accessToken, apiKey } = getAuthenticationCredentials();
-const currentUserRaw = JSON.parse(localStorage.getItem("user") ?? "{}");
-const currentUser = currentUserRaw.data || currentUserRaw;
-const currentUserName =
-  currentUser.name || currentUser.username || currentUser.email || "user";
 
 /**
  * Loads a single listing based on the id in the URL.
