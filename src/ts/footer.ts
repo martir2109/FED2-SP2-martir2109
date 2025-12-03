@@ -31,7 +31,7 @@ function createFooter() {
         <div class="w-full flex flex-col gap-[50px] justify-center items-center p-5">
           <div class="w-full flex justify-center mt-5 sm:mt-2.5">
             <img
-              src="../../assets/logo/logo-with-text-without-background.png"
+              src="/assets/logo/logo-with-text-without-background.png"
               alt="Auction House logo"
               class="w-[150px] xs:w-[200px] h-auto"
             />

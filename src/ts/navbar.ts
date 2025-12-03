@@ -8,7 +8,7 @@ function createNavbarLoggedIn(): string {
           <nav class="topnav overflow-hidden bg-white fixed top-0 w-full z-1000 p-0 border-b border-light-grey items-center flex h-16">
           <a href="/index.html">
             <div class="shrink-0 absolute ml-2.5 left-0 py-2.5 px-0.5 top-0">
-              <img src="../../assets/logo/logo-with-text-without-background.png" alt="Auction House" class="h-10">
+              <img src="/assets/logo/logo-with-text-without-background.png" alt="Auction House" class="h-10">
             </div>
             </a>
             
@@ -47,7 +47,7 @@ function createNavBarLoggedOut(): string {
           <nav class="topnav overflow-hidden bg-white fixed top-0 w-full z-1000 p-0 border-b border-light-grey items-center flex h-16">
           <a href="/index.html">
             <div class="shrink-0 absolute ml-2.5 left-0 py-2.5 px-0.5 top-0">
-              <img src="../../assets/logo/logo-with-text-without-background.png" alt="Auction House" class="h-10">
+              <img src="/assets/logo/logo-with-text-without-background.png" alt="Auction House" class="h-10">
             </div>
             </a>
             
