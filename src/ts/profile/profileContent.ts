@@ -22,12 +22,12 @@ export function createProfileLoggedIn(): string {
           >
             <img
               id="banner"
-              class="banner w-full h-[200px] md:h-[300px] object-cover rounded-sm"
+              class="banner w-full h-[150px] sm:h-[200px] md:h-[300px] object-cover rounded-sm"
               alt="Banner"
             />
           </div>
           <div
-            class="avatar-container absolute w-[200px] md:w-[300px] h-auto -bottom-10 flex justify-center"
+            class="avatar-container absolute w-[90%] max-w-[150px] sm:max-w-[200px] md:max-w-[300px] h-auto -bottom-10 flex justify-center"
             id="avatar-container"
           >
             <img
@@ -45,14 +45,14 @@ export function createProfileLoggedIn(): string {
 
         <div
           id="bio-container"
-          class="bio-container w-full max-w-[386px] h-[63px] bg-gray-300 text-black text-p rounded-sm flex justify-center items-center p-10"
+          class="bio-container w-[90%]  max-w-[386px] h-[63px] bg-gray-300 text-black text-p rounded-sm flex justify-center items-center p-10"
         >
           <p id="bio" class="bio"></p>
         </div>
 
         <button
           id="edit-profile-toggle-btn"
-          class="h-[63px] sm:w-[302px] w-[90%] py-5.5 bg-blue text-white font-bold text-center text-btn rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer"
+          class="h-[63px] max-w-[302px] sm:w-[302px] w-[90%] py-5.5 bg-blue text-white font-bold text-center text-btn rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer"
           type="button"
         >
           Edit profile
@@ -135,8 +135,8 @@ export function createProfileLoggedIn(): string {
           </form>
         </div>
       </section>
-      <div class="w-[90%] md:w-full min-h-screen max-w-[1144px]">
-        <div class="w-full h-fit flex flex-col sm:flex-row justify-start gap-2">
+      <div class="w-[90%] md:w-full min-h-screen max-w-[1144px] ">
+        <div class="w-full h-fit flex flex-col xs:flex-row justify-start gap-2 bg-gray-300 xs:bg-background rounded-t-2xl">
           <button
             class="tab-button active cursor-pointer text-btn"
             onclick="openTab(event, 'my-listings')"
@@ -159,7 +159,7 @@ export function createProfileLoggedIn(): string {
 
         <div id="my-listings" class="tab-content active">
           <section
-            class="my-listings w-full h-fit bg-white p-2 sm:p-4 rounded-b-[20px] rounded-tr-[20px] min-h-screen"
+            class="my-listings w-full h-fit bg-white p-2 sm:p-4 rounded-b-[20px] xs:rounded-tr-[20px] min-h-screen"
           >
             <div
               class="listings-container w-full h-min-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-5 p-2"
