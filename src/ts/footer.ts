@@ -8,13 +8,13 @@ function createFooter(): string {
           <div class="mt-[50px] w-70 bg-primary h-[200px] sm:h-[300px]">
             <h2 class="font-bold text-h3">Customer service</h2>
             <div class="break-normal no-underline">
-              <a href="../../footer-links/about/index.html">
+              <a href="/footer-links/about/index.html">
                 <p class="text-p">About</p>
               </a>
               <a href="../../footer-links/privacy-policy/index.html">
                 <p class="text-p">Privacy Policy</p>
               </a>
-               <a href="../../footer-links/contact/index.html">
+               <a href="/footer-links/contact/index.html">
                 <p class="text-p">Terms of service</p>
               </a>
             </div>
