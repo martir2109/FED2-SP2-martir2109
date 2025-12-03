@@ -24,6 +24,8 @@
   </head>
 
   <body class="min-h-screen font-sans bg-background">
+    <div id="loader-container"></div>
+
     <header>
       <nav id="navbar-container"></nav>
     </header>
@@ -44,6 +46,7 @@
             Log in
           </h1>
         </div>
+
         <div class="grid w-full gap-2">
           <label for="email" class="text-label"
             >Email <span class="text-danger">*</span></label
@@ -107,6 +110,7 @@
 
     <!-- Script -->
     <script type="module" src="../../src/ts/auth/login.ts"></script>
+    <script type="module" src="../../src/ts/loader.ts"></script>
     <script type="module" src="../../src/ts/navbar.ts"></script>
     <script type="module" src="../../src/ts/footer.ts"></script>
   </body>
