@@ -168,6 +168,24 @@ async function bidOnListing(): Promise<void> {
 
       const listingData = await listingResponse.json();
       const listing = listingData.data ?? listingData;
+
+      const listingEndTime = new Date(listing.endsAt);
+      const currentTime = new Date();
+
+      if (currentTime >= listingEndTime) {
+        messageContainer.innerHTML = `
+        <div class="flex gap-2 bg-red-300 text-red-950 w-full p-2 rounded items-center mt-2">
+          <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
+          <p class="m-0 text-sm">This listing has ended. Bidding is no longer available.</p>
+        </div>
+      `;
+
+        setTimeout(() => {
+          messageContainer.innerHTML = "";
+        }, 5000);
+        return;
+      }
+
       const currentHighestBid =
         listing.bids && listing.bids.length > 0
           ? Math.max(...listing.bids.map((bid: any) => Number(bid.amount)))
