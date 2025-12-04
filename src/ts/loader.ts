@@ -34,7 +34,7 @@ function createLoader(): string {
 
 const loaderContainer = document.getElementById(
   "loader-container",
-) as HTMLElement;
+) as HTMLDivElement;
 
 if (loaderContainer) {
   loaderContainer.innerHTML = createLoader();
