@@ -16,10 +16,10 @@ import {
 import {
   createLoggedOutContent,
   createLoggedInContent,
-} from "../landing/landingContent.ts";
+} from "./landingContent.ts";
 
 /** Renders recent listings on the landing page. */
-import { displayRecentListings } from "../landing/listing.ts";
+import { displayRecentListings } from "./listing.ts";
 
 /**
  * Checks if the user is logged in by verifying the presence of an accessToken
@@ -125,9 +125,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           </div>`;
       }
     } catch (error) {
-      listingsContainer.innerHTML =
-        '<p class="landingpage-listing-error">Unable to load listings</p>';
-      console.error("Error loading listings:", error);
+      listingsContainer.innerHTML = `<p class="landingpage-listing-error">Unable to load listings. ${error}</p>`;
     }
   }
 
