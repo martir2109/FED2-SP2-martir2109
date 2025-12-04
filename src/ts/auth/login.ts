@@ -13,7 +13,17 @@ import {
  * @throws {Error} If login fails.
  */
 
-async function login({ email, password }: { email: string; password: string }) {
+async function login({
+  email,
+  password,
+}: {
+  email: string;
+  password: string;
+}): Promise<{
+  token: any;
+  user: any;
+  userName: any;
+}> {
   try {
     const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.AUTH.LOGIN}`, {
       method: "POST",
@@ -87,8 +97,6 @@ if (loginForm) {
 
     try {
       const { token } = await login({ email, password });
-      alert("Login successful!");
-
       const apiKeyResponse = await fetch(
         `${API_BASE_URL}${API_ENDPOINTS.AUTH.CREATE_API_KEY}`,
         {
@@ -104,14 +112,53 @@ if (loginForm) {
         localStorage.setItem("apiKey", apiKeyData.data.key);
       } else {
         const errorData = await apiKeyResponse.json();
-        console.error("Failed to create API key:", errorData);
+        const messageContainer = document.getElementById(
+          "message-container",
+        ) as HTMLDivElement;
+        messageContainer.innerHTML = `
+          <div class="flex gap-2 bg-green-300 text-green-950 w-full p-2 rounded items-center mt-2">
+            <i class="bi bi-check-circle-fill text-green-950"></i>
+            <p class="m-0 text-sm">Failed to create API key: ${errorData}</p>
+          </div>
+        `;
+        setTimeout(() => {
+          messageContainer.innerHTML = "";
+        }, 5000);
+        return;
       }
 
-      setTimeout(() => {
-        window.location.href = "/index.html";
-      }, 1000);
+      const messageContainer = document.getElementById(
+        "message-container",
+      ) as HTMLDivElement;
+      if (messageContainer) {
+        messageContainer.innerHTML = `
+          <div class="flex gap-2 bg-green-300 text-green-950 w-full p-2 rounded items-center mt-2">
+            <i class="bi bi-check-circle-fill text-green-950"></i>
+            <p class="m-0 text-sm">Log in successfull!</p>
+          </div>
+        `;
+
+        setTimeout(() => {
+          messageContainer.innerHTML = "";
+          window.location.href = "/index.html";
+        }, 1000);
+        return;
+      }
     } catch (error: any) {
-      alert("Login failed: " + error.message);
+      const messageContainer = document.getElementById("message-container");
+
+      if (messageContainer) {
+        messageContainer.innerHTML = `
+          <div class="flex gap-2 bg-red-200 text-red-950 w-full p-2 rounded items-center mt-2">
+            <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
+            <p class="m-0 text-sm">Log in failed: ${error.message}</p>
+          </div>
+        `;
+        setTimeout(() => {
+          messageContainer.innerHTML = "";
+        }, 5000);
+        return;
+      }
     }
   });
 } else {
