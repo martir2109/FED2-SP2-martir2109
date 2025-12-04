@@ -81,7 +81,7 @@ export function createLoggedOutContent(): string {
 export function createLoggedInContent(): string {
   return `
           <section
-      class="mt-20 w-full h-fit flex flex-col items-center justify-center mb-20 bg-background gap-10"
+      class="mt-24 w-full h-fit flex flex-col items-center justify-center mb-20 bg-background gap-10"
     >
       <div class="w-[90%] sm:w-[80%] h-fit flex justify-end">
         <div

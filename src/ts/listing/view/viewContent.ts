@@ -33,7 +33,7 @@ export function createLoggedInContent(): string {
             </div>
           </div>
            <a href="#" id="edit-listing">
-           <p class="h-[63px] sm:w-[302px] w-[90%] py-5.5 bg-blue text-white font-bold text-center text-btn rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer"
+           <p class="h-[63px] sm:w-[302px] w-[90%] py-3.5 bg-blue text-white font-bold text-center text-h3 rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer"
   >Edit listing</p>
             </a>
             <div id="view-listing" class="w-[90%] md:w-full h-fit flex flex-col md:flex-row p-8 justify-between bg-white rounded-md"></div>
