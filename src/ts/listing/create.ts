@@ -34,8 +34,19 @@ createListingForm.addEventListener("submit", async function (event) {
   const { accessToken, apiKey } = getAuthenticationCredentials();
 
   if (!accessToken) {
-    alert("You must be logged in to create a listing.");
-    window.location.href = "../../auth/login/index.html";
+    const messageDiv = document.createElement("div") as HTMLDivElement;
+    messageDiv.className =
+      "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
+    messageDiv.innerHTML = `
+      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
+      <p class="m-0">You must be logged in to create a listing.</p>
+    `;
+
+    document.body.appendChild(messageDiv);
+
+    setTimeout(() => {
+      window.location.href = "/auth/login/index.html";
+    }, 2000);
     return;
   }
 
@@ -63,7 +74,7 @@ createListingForm.addEventListener("submit", async function (event) {
   }
 
   if (!description.trim()) {
-    showError("description", "Title cannot be empty.");
+    showError("description", "Description cannot be empty.");
     hasError = true;
   } else {
     clearError("description");
@@ -139,12 +150,37 @@ createListingForm.addEventListener("submit", async function (event) {
       throw new Error(errorMessage);
     }
 
-    alert("Listing successfully created!");
-    createListingForm.reset();
-    window.location.href = "/index.html";
+    const messageDiv = document.createElement("div") as HTMLDivElement;
+    messageDiv.className =
+      "fixed top-4 left-1/2 z-[9999] bg-green-200 text-green-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
+    messageDiv.innerHTML = `
+      <i class="bi bi-check-circle-fill text-green-950"></i>
+      <p class="m-0">Listing successfully created!</p>
+      `;
+
+    document.body.appendChild(messageDiv);
+
+    setTimeout(() => {
+      window.location.href = "/index.html";
+    }, 2000);
+    return;
   } catch (error) {
     const errorMessage = error.message || "An undexpected error occured.";
-    alert("Something went wrong while creating the post: " + errorMessage);
+
+    const messageDiv = document.createElement("div") as HTMLDivElement;
+    messageDiv.className =
+      "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
+    messageDiv.innerHTML = `
+      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
+      <p class="m-0">Something went wrong while creating the post: ${errorMessage}</p>
+      `;
+
+    document.body.appendChild(messageDiv);
+
+    setTimeout(() => {
+      window.location.href = "/index.html";
+    }, 2000);
+    return;
   }
 });
 
