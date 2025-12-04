@@ -36,7 +36,19 @@ document.addEventListener("DOMContentLoaded", async function () {
   const profileUserName = urlParams.get("id") || loggedInUserName;
 
   if (!profileUserName) {
-    alert("No profile specified to load.");
+    const messageDiv = document.createElement("div") as HTMLDivElement;
+    messageDiv.className =
+      "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
+    messageDiv.innerHTML = `
+      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
+      <p class="m-0">No profile specified to load.</p>
+    `;
+
+    document.body.appendChild(messageDiv);
+
+    setTimeout(() => {
+      window.location.href = "/index.html";
+    }, 3000);
     return;
   }
 
@@ -67,7 +79,7 @@ document.addEventListener("DOMContentLoaded", async function () {
    *
    * @async
    * @returns {Promise<void>} Resolves when the profile is loaded and displayed.
-   * @throws {Error} Alert user with error if loading the profile fails.
+   * @throws {Error} Show error message if loading the profile fails.
    */
   async function loadProfile(): Promise<void> {
     try {
@@ -114,7 +126,15 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
       }
     } catch (error) {
-      alert("Error loading profile: " + error);
+      const messageDiv = document.createElement("div") as HTMLDivElement;
+      messageDiv.className =
+        "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
+      messageDiv.innerHTML = `
+      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
+      <p class="m-0">Error loading profile: ${error}.</p>
+    `;
+
+      document.body.appendChild(messageDiv);
     }
   }
 
@@ -201,11 +221,35 @@ document.addEventListener("DOMContentLoaded", async function () {
       localStorage.setItem("user", JSON.stringify({ data: updatedProfile }));
       if (updatedProfile) loadProfile();
 
-      alert("Profile updated successfully!");
-      window.location.href = "./index.html";
+      const messageDiv = document.createElement("div") as HTMLDivElement;
+      messageDiv.className =
+        "fixed top-4 left-1/2 z-[9999] bg-green-200 text-green-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
+      messageDiv.innerHTML = `
+      <i class="bi bi-check-circle-fill text-green-950"></i>
+      <p class="m-0">Profile updated successfully!</p>
+      `;
+
+      document.body.appendChild(messageDiv);
+
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
+      return;
     } catch (error) {
-      console.error("Error updating profile:", error);
-      alert("Failed to update profile.");
+      const messageDiv = document.createElement("div") as HTMLDivElement;
+      messageDiv.className =
+        "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
+      messageDiv.innerHTML = `
+      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
+      <p class="m-0">Failed to update profile: ${error}</p>
+      `;
+
+      document.body.appendChild(messageDiv);
+
+      setTimeout(() => {
+        window.location.href = "/index.html";
+      }, 2000);
+      return;
     }
   }
 
@@ -244,7 +288,19 @@ document.addEventListener("DOMContentLoaded", async function () {
    */
   async function loadListings(): Promise<void> {
     if (!listingsContainer) {
-      console.error("Listing container not found on this page.");
+      const messageDiv = document.createElement("div") as HTMLDivElement;
+      messageDiv.className =
+        "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
+      messageDiv.innerHTML = `
+        <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
+        <p class="m-0">Listing container not found on this page</p>
+        `;
+
+      document.body.appendChild(messageDiv);
+
+      setTimeout(() => {
+        window.location.href = "/index.html";
+      }, 2000);
       return;
     }
 
@@ -258,7 +314,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       displayedListings = [...allListings];
       displayListings(listingsContainer, displayedListings);
     } catch (error) {
-      console.error("Error loading Listings:", error);
       listingsContainer.innerHTML =
         "<p class='text-gray-700'>Error loading listings. Please try again later.</p>";
     }
@@ -305,7 +360,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       displayListings(bidOnContainer, userBidListings);
     } catch (error) {
-      console.error("Error loading bid-on listings:", error);
       bidOnContainer.innerHTML =
         "<p class='text-gray-700 w-full h-fit flex justify-center items-center p-10'>Could not load bid-on listings.</p>";
     }
@@ -345,7 +399,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       const userWins = await response.json();
       displayListings(winsContainer, userWins.data);
     } catch (error) {
-      console.error("Error loading wins listings:", error);
       winsContainer.innerHTML =
         "<p class='text-gray-700 w-full h-fit flex justify-center items-center p-10'>Could not load won listings.</p>";
     }
