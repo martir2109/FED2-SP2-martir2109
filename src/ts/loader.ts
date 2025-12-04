@@ -6,7 +6,7 @@
  */
 function createLoader(): string {
   return `
-  <div class="fixed inset-0 flex items-center justify-center bg-white z-9999 opacity-100 transition-opacity duration-500">
+  <div class="fixed inset-0 flex items-center justify-center bg-white z-[9999] opacity-100 transition-opacity duration-500">
      <button
       type="button"
       class="inline-flex items-center text-btn bg-gray-300 border border-gray-500 shadow-sm font-bold leading-5 rounded-md px-6 py-3"
