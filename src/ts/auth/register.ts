@@ -20,7 +20,7 @@ async function register({
   name: string;
   email: string;
   password: string;
-}) {
+}): Promise<any> {
   const response = await fetch(
     `${API_BASE_URL}${API_ENDPOINTS.AUTH.REGISTER}`,
     {
@@ -102,16 +102,55 @@ if (registerForm) {
 
     try {
       await register({ name, email, password });
-      alert("User registered successfully!");
-      setTimeout(() => {
-        window.location.href = "/auth/login/index.html";
-      }, 1000);
+
+      const messageContainer = document.getElementById("message-container");
+      if (messageContainer) {
+        messageContainer.innerHTML = `
+          <div class="flex gap-2 bg-green-300 text-green-950 w-full p-2 rounded items-center mt-2">
+            <i class="bi bi-check-circle-fill text-green-950"></i>
+            <p class="m-0 text-sm">User registered successfully!</p>
+          </div>
+        `;
+
+        setTimeout(() => {
+          messageContainer.innerHTML = "";
+          window.location.href = "/auth/login/index.html";
+        }, 3000);
+        return;
+      }
     } catch (error: any) {
-      alert("Registration failed: " + error.message);
+      const messageContainer = document.getElementById("message-container");
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
+
+      if (messageContainer) {
+        messageContainer.innerHTML = `
+          <div class="flex gap-2 bg-red-200 text-red-950 w-full p-2 rounded items-center mt-2">
+            <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
+            <p class="m-0 text-sm">${errorMessage}</p>
+          </div>
+        `;
+        setTimeout(() => {
+          messageContainer.innerHTML = "";
+        }, 3000);
+        return;
+      }
     }
   });
 } else {
-  alert("Error: Register form not found on this page.");
+  const messageDiv = document.createElement("div");
+  messageDiv.className =
+    "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
+  messageDiv.innerHTML = `
+  <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
+  <p class="m-0">Error: Register form not found on this page.</p>
+  `;
+
+  document.body.appendChild(messageDiv);
+
+  setTimeout(() => {
+    messageDiv.remove();
+  }, 5000);
 }
 
 /**
