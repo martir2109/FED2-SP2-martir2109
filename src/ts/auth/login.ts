@@ -162,7 +162,19 @@ if (loginForm) {
     }
   });
 } else {
-  alert("Error: Login form not found on this page.");
+  const messageDiv = document.createElement("div");
+  messageDiv.className =
+    "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
+  messageDiv.innerHTML = `
+  <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
+  <p class="m-0">Error: Log in form not found on this page.</p>
+  `;
+
+  document.body.appendChild(messageDiv);
+
+  setTimeout(() => {
+    messageDiv.remove();
+  }, 5000);
 }
 /**
  * Toggles password visibility when checkbox is changed.
