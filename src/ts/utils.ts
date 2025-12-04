@@ -125,6 +125,8 @@ export async function retrieveUserCredits() {
   const { accessToken, apiKey } = getAuthenticationCredentials();
   const { userName } = getUserName();
 
+  if (!accessToken || !userName) return;
+
   try {
     const userProfile = await loadUserProfileData(
       accessToken,
@@ -136,6 +138,19 @@ export async function retrieveUserCredits() {
       credits.textContent = userProfile.credits || "0";
     }
   } catch (error) {
-    console.error("Error loading user credits:", error);
+    const messageDiv = document.createElement("div") as HTMLDivElement;
+    messageDiv.className =
+      "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
+    messageDiv.innerHTML = `
+      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
+      <p class="m-0">Error loading user credits: ${error}</p>
+      `;
+
+    document.body.appendChild(messageDiv);
+
+    setTimeout(() => {
+      messageDiv.remove();
+    }, 2000);
+    return;
   }
 }
