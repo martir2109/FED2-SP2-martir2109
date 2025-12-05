@@ -24,7 +24,7 @@ Before I started creating the actual web application, I designed a high-fidelity
 
 ## 📸 Website Preview
 
-![Preview of Auction House website]()
+![Preview of Auction House website](/public/assets/images/auction-house-preview.png)
 
 ## 🛠️ Technologies used
 
