@@ -34,8 +34,19 @@ export function displayListing(data: any[]): void {
     <div class="w-full h-fit flex justify-center">
       ${
         listing.media && listing.media.length > 0
-          ? `<img src="${listing.media[0].url}" alt="Listing media" class="w-full max-w-[550px] h-auto aspect-square object-cover rounded-[10px]" loading="lazy">`
-          : `<img src="/assets/images/default-image.jpg" class="w-full max-w-[550px] h-full aspect-square object-cover border border-grey rounded-[10px]" loading="lazy">`
+          ? `<div class="w-full aspect-square bg-gray-300 rounded-[10px] flex items-center justify-center animate-pulse">
+          <img 
+            src="${listing.media[0].url}" 
+            alt="Listing media" 
+            class="w-full max-w-[550px] h-auto aspect-square object-cover rounded-[10px]" 
+            onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-300')">
+             </div>`
+          : `<div class="w-full aspect-square bg-gray-400 rounded-[10px] flex items-center justify-center animate-pulse">
+          <img 
+            src="/assets/images/default-image.jpg" 
+            class="w-full max-w-[550px] h-full aspect-square object-cover border border-grey rounded-[10px]" 
+            onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-300')">
+    </div>`
       }
       </div>
       <div class="w-full max-w-[550px] p-2 md:p-10 flex flex-col gap-10 md:gap-2  justify-between mt-6">

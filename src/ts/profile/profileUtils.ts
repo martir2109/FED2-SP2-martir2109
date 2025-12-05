@@ -45,17 +45,22 @@ export function displayListings(
       </h3>
       ${
         listing.media && listing.media.length > 0
-          ? `<img
-        src="${listing.media[0].url}"
-        alt="Listing media"
-        class="w-full h-full aspect-square object-cover rounded-[10px]"
-        loading="lazy"
-      />`
-          : `<img
-        src="/assets/images/default-image.jpg"
-        class="w-full h-full aspect-square object-cover border border-grey rounded-[10px]"
-        loading="lazy"
-      />`
+          ? `<div class="w-full aspect-square bg-gray-400 rounded-[10px] flex items-center justify-center animate-pulse">
+        <img
+          src="${listing.media[0].url}"
+          alt="Listing media"
+          class="w-full h-full aspect-square object-cover rounded-[10px]"
+          loading="lazy"
+          onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200')"/>
+      </div>`
+          : `<div class="w-full aspect-square bg-gray-400 rounded-[10px] flex items-center justify-center animate-pulse">
+        <img
+          src="/assets/images/default-image.jpg"
+          class="w-full h-full aspect-square object-cover border border-grey rounded-[10px]"
+          loading="lazy"
+          onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200')"/>
+      />
+      </div>`
       }
       <p class="text-p break-all">
         <strong>Seller: </strong> ${listing.seller?.name || "Unknown seller"}

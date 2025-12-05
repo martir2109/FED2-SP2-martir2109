@@ -17,24 +17,28 @@ export function createProfileLoggedIn(): string {
         </div>
         <div class="profile-header relative w-full h-fit flex justify-center">
           <div
-            class="banner-container w-[90%] md:w-full h-auto"
+            class="banner-container w-[90%] md:w-full h-auto bg-gray-300 animate-pulse overflow-hidden"
             id="banner-container"
           >
             <img
               id="banner"
               class="banner w-full h-[150px] sm:h-[200px] md:h-[300px] object-cover rounded-sm"
               alt="Banner"
-            />
+              onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-300')"
+
+              />
           </div>
+          
           <div
-            class="avatar-container absolute w-[90%] max-w-[150px] sm:max-w-[200px] md:max-w-[300px] h-auto -bottom-10 flex justify-center"
-            id="avatar-container"
-          >
+            class="avatar-container absolute w-[90%] max-w-[150px] sm:max-w-[200px] md:max-w-[300px] h-auto -bottom-10 flex justify-center bg-gray-300 animate-pulse"
+            id="avatar-container">
+            
             <img
               id="avatar"
               class="avatar aspect-square rounded-full border-8 border-background"
               alt="Avatar"
-            />
+              onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-300')"
+              />
           </div>
         </div>
         <div
@@ -200,23 +204,27 @@ export function createProfileLoggedOut(): string {
       
         <div class="profile-header relative w-full h-fit flex justify-center">
           <div
-            class="banner-container w-[90%] md:w-full h-auto"
+            class="banner-container w-[90%] md:w-full h-auto bg-gray-300 animate-pulse"
             id="banner-container"
           >
             <img
               id="banner"
               class="banner w-full h-[200px] md:h-[300px] object-cover rounded-sm"
               alt="Banner"
+              onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200')"
+
             />
           </div>
           <div
-            class="avatar-container absolute w-[200px] md:w-[300px] h-auto -bottom-10 flex justify-center"
+            class="avatar-container absolute w-[200px] md:w-[300px] h-auto -bottom-10 flex justify-center bg-gray-300 animate-pulse"
             id="avatar-container"
-          >
+
             <img
               id="avatar"
               class="avatar aspect-square rounded-full border-8 border-background"
               alt="Avatar"
+              onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200')"
+
             />
           </div>
         </div>
