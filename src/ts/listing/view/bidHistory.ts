@@ -24,10 +24,10 @@ export function displayListingBidHistory(data: any[]): void {
               ? bids
                   .map(
                     (bid: any) => `
-              <div class="w-full h-fit p-2 rounded-[50px] bg-background flex justify-between">
-                <p class="w-full max-w-[200px]">${bid.bidder?.name || "Unknown"}</p>
-                <p class="w-full max-w-[200px] flex justify-center">${formatDateTime(bid.created)}</p>
-                <p class="w-full max-w-[200px]  justify-end flex">${bid.amount} credits</p>
+              <div class="w-full h-fit p-4 xs:p-2 rounded-[50px] bg-background flex flex-col sm:flex-row items-center justify-between">
+                <p class="w-full max-w-[200px] h-fit break-all text-center sm:text-left justify-center sm:justify-start">${bid.bidder?.name || "Unknown"}</p>
+                <p class="w-full max-w-[200px] h-fit flex justify-center">${formatDateTime(bid.created)}</p>
+                <p class="w-full max-w-[200px] h-fit flex font-bold justify-center sm:justify-end">${bid.amount} credits</p>
               </div>
             `,
                   )

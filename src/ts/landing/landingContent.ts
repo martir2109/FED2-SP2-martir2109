@@ -6,7 +6,7 @@
 export function createLoggedOutContent(): string {
   return `
        <section
-      class="mt-10 w-full min-h-screen flex flex-col items-center justify-center"
+      class="mt-4 w-full min-h-screen flex flex-col items-center justify-center"
     >
       <div class="min-h-screen flex flex-col justify-center">
         <h1 class="text-landing font-bold text-center">
@@ -81,7 +81,7 @@ export function createLoggedOutContent(): string {
 export function createLoggedInContent(): string {
   return `
           <section
-      class="mt-24 w-full h-fit flex flex-col items-center justify-center mb-20 bg-background gap-10"
+      class="mt-24 w-full h-fit flex flex-col items-center justify-center mb-20 bg-background gap-8"
     >
       <div class="w-[90%] sm:w-[80%] h-fit flex justify-end">
         <div
@@ -98,7 +98,7 @@ export function createLoggedInContent(): string {
         <h1>+ Create listing</h1>
       </a>
       <div
-        class="w-[90%] sm:w-[80%] flex justify-between gap-2 md:flex-row flex-col mt-10"
+        class="w-[90%] sm:w-[80%] flex justify-between gap-2 md:flex-row flex-col mt-4"
       >
         <div class="flex flex-col gap-2 md:w-full md:max-w-[48%] h-[100px]">
           <label class="text-label">Search by title</label>
@@ -106,7 +106,7 @@ export function createLoggedInContent(): string {
             id="search-title"
             placeholder="Search by title"
             aria-label="Search"
-            class="h-[63px] bg-white w-full p-2 border border-grey rounded-md"
+            class="sm:h-[63px] h-[50px] bg-white w-full p-2 border border-grey rounded-md"
           />
         </div>
 
@@ -116,7 +116,7 @@ export function createLoggedInContent(): string {
             id="filter-tags"
             placeholder="Enter tags (comma seperated)"
             aria-label="Search"
-            class="h-[63px] bg-white w-full p-2 border border-grey rounded-md"
+            class="sm:h-[63px] h-[50px] bg-white w-full p-2 border border-grey rounded-md"
           />
         </div>
       </div>

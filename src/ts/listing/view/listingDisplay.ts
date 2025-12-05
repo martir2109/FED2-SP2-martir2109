@@ -49,8 +49,9 @@ export function displayListing(data: any[]): void {
     </div>`
       }
       </div>
-      <div class="w-full max-w-[550px] p-2 md:p-10 flex flex-col gap-10 md:gap-2  justify-between mt-6">
-        <h3 class="text-h2 font-bold">${listing.title || "No title"}</h3>
+      <div class="w-full max-w-[550px] p-2 flex flex-col gap-10 md:gap-2  justify-between mt-6">
+      <div class="w-full h-fit flex flex-col gap-4">  
+      <h3 class="text-h2 font-bold">${listing.title || "No title"}</h3>
         <p class="text-p break-all"><strong>Seller: </strong>  ${
           listing.seller
             ? isLoggedIn
@@ -58,6 +59,7 @@ export function displayListing(data: any[]): void {
               : `${listing.seller.name}`
             : "Unknown seller"
         }</p>
+        </div>
         <div class="flex flex-col gap-2">
           <p class="wrap-break-word w-full h-fit text-p font-bold">Description: </p>
           <p class="bg-background p-2 rounded-md h-fit w-full">${listing.description || "No description."}</p>
