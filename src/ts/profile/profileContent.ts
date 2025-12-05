@@ -62,7 +62,7 @@ export function createProfileLoggedIn(): string {
           Edit profile
         </button>
         <div
-          class="bg-white w-[90%] w-sm:full max-w-[641px] min-h-[353px] p-5 sm:p-10 rounded-[10px] hidden"
+          class="bg-white w-[90%] w-sm:full max-w-[641px] min-h-[353px] py-8 px-4 xs:px-8 rounded-[10px] hidden"
           id="edit-profile-card"
         >
           <form class="profile-details-container flex flex-col gap-[15px]">
