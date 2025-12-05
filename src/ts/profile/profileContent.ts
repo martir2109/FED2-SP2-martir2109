@@ -70,7 +70,7 @@ export function createProfileLoggedIn(): string {
               <label for="bio" class="form-label">Banner URL </label>
               <input
                 id="banner-input"
-                class="inputfield h-[63px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                class="inputfield sm:h-[63px] h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Banner"
               />
               <span
@@ -89,7 +89,7 @@ export function createProfileLoggedIn(): string {
               <label for="avatar" class="form-label">Avatar URL </label>
               <input
                 id="avatar-input"
-                class="inputfield h-[63px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                class="inputfield sm:h-[63px] h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Avatar URL"
               />
               <span id="info-text" class="text-grey text-underInput"
@@ -105,7 +105,7 @@ export function createProfileLoggedIn(): string {
               <label for="bio" class="form-label">Bio </label>
               <input
                 id="bio-input"
-                class="inputfield h-[63px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                class="inputfield sm:h-[63px] h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Bio"
                 maxlength="100"
               />

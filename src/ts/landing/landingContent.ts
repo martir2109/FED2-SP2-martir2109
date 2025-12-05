@@ -45,7 +45,7 @@ export function createLoggedOutContent(): string {
             id="search-title"
             placeholder="Search by title"
             aria-label="Search"
-            class="h-[63px] bg-white w-full p-2 border border-grey rounded-md"
+            class="sm:h-[63px] h-[50px] bg-white w-full p-2 border border-grey rounded-md"
           />
         </div>
 
@@ -55,7 +55,7 @@ export function createLoggedOutContent(): string {
             id="filter-tags"
             placeholder="Enter tags (comma seperated)"
             aria-label="Search"
-            class="h-[63px] bg-white w-full p-2 border border-grey rounded-md"
+            class="sm:h-[63px] h-[50px] bg-white w-full p-2 border border-grey rounded-md"
           />
         </div>
       </div>
