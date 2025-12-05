@@ -20,6 +20,7 @@
   --text-underInput: clamp(0.875rem, 5vw, 1rem);
   --breakpoint-xs: 480px;
   --breakpoint-sm: 750px;
+  --breakpoint-vl: 960px;
   --breakpoint-md: 1300px;
   --breakpoint-lg: 1550px;
   --font-sans: Arial, Helvetica, sans-serif;
