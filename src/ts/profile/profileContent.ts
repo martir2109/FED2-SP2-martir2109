@@ -7,6 +7,11 @@ export function createProfileLoggedIn(): string {
   return `<section
         class="w-full max-w-[1144px] h-fit bg-background flex flex-col items-center pt-4 pb-8 gap-8"
       >
+         <div 
+      class="name-container w-full text-center h-fit" 
+      id="name-container">
+      <p id="name" alt="Name" class="break-all font-bold text-h1">Name</p>
+      </div>
         <div class="w-[90%] md:w-full h-fit flex justify-end">
           <div
             class="bg-black py-2 px-4 flex gap-2 justify-center items-center rounded-[50px] text-white h-fit"
@@ -42,9 +47,9 @@ export function createProfileLoggedIn(): string {
           </div>
         </div>
         <div
-          class="email-container font-bold text-p mt-5 h-20 w-full flex justify-center items-center"
+          class="email-container font-bold w-[90%] max-w-[386px] text-p mt-5 h-20 flex justify-center items-center"
         >
-          <p>Email@example.com</p>
+          <p class="break-all">Email@example.com</p>
         </div>
 
         <div
@@ -201,7 +206,11 @@ export function createProfileLoggedOut(): string {
   return `<section
         class="w-full max-w-[1144px] h-fit bg-background flex flex-col items-center pt-4 pb-8 gap-8"
       >
-      
+       <div 
+      class="name-container w-full text-center h-fit" 
+      id="name-container">
+      <p id="name" alt="Name" class="break-all font-bold text-h1">Name</p>
+      </div>
         <div class="profile-header relative w-full h-fit flex justify-center">
           <div
             class="banner-container w-[90%] md:w-full h-auto bg-gray-300 animate-pulse"
@@ -211,36 +220,34 @@ export function createProfileLoggedOut(): string {
               id="banner"
               class="banner w-full h-[200px] md:h-[300px] object-cover rounded-sm"
               alt="Banner"
-              onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200')"
+              onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-300')"
 
             />
           </div>
-          <div
-            class="avatar-container absolute w-[200px] md:w-[300px] h-auto -bottom-10 flex justify-center bg-gray-300 animate-pulse"
-            id="avatar-container"
-
+        <div
+            class="avatar-container absolute w-[90%] max-w-[150px] sm:max-w-[200px] md:max-w-[300px] h-auto -bottom-10 flex justify-center bg-gray-300 animate-pulse"
+            id="avatar-container">
+            
             <img
               id="avatar"
               class="avatar aspect-square rounded-full border-8 border-background"
               alt="Avatar"
-              onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200')"
-
-            />
+              onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-300')"
+              />
           </div>
         </div>
         <div
-          class="email-container font-bold text-p mt-5 h-20 w-full flex justify-center items-center"
+          class="email-container w-[90%] max-w-[386px] font-bold text-p mt-5 h-20 flex justify-center items-center"
         >
-          <p>Email@example.com</p>
+          <p class="break-all">Email@example.com</p>
         </div>
 
         <div
           id="bio-container"
-          class="bio-container w-full max-w-[386px] h-[63px] bg-gray-300 text-black text-p rounded-sm flex justify-center items-center p-10"
+          class="bio-container w-[90%]  max-w-[386px] h-[63px] bg-gray-300 text-black text-p rounded-sm flex justify-center items-center p-10"
         >
           <p id="bio" class="bio"></p>
         </div>
-
        
         <div
           class="bg-white w-[90%] w-sm:full max-w-[641px] min-h-[353px] p-5 sm:p-10 rounded-[10px] hidden"

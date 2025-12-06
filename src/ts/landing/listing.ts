@@ -55,7 +55,7 @@ export function displayRecentListings(data: Listing[]) {
       href="/listing/view/index.html?id=${listing.id}"
       class="bg-white w-max-[200px] w-full min-h-[500px] h-fit rounded-xl border border-gray-300 p-4 flex flex-col gap-4 hover:shadow-xl/30 hover:-translate-y-2 transition transform duration-300 ease"
     >
-      <h3 class="text-h2 font-bold">
+      <h3 class="text-h2 font-bold break-all">
         ${listing.title ? listing.title.substring(0, 15) + "..." : "No title"}
       </h3>
       ${

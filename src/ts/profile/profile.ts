@@ -62,8 +62,14 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (!profileContainer) return;
   profileContainer.innerHTML = profileHTML;
 
-  const { listingsContainer, emailContainer, avatar, bioContainer, banner } =
-    getUserProfileElements();
+  const {
+    listingsContainer,
+    emailContainer,
+    nameContainer,
+    avatar,
+    bioContainer,
+    banner,
+  } = getUserProfileElements();
 
   let allListings = [];
   let displayedListings = [];
@@ -88,6 +94,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         apiKey,
         profileUserName,
       );
+
+      if (nameContainer) nameContainer.textContent = userProfile.name || "";
 
       if (banner && userProfile.banner) {
         banner.src = userProfile.banner.url;
