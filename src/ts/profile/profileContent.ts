@@ -124,11 +124,11 @@ export function createProfileLoggedIn(): string {
             </div>
 
             <div
-              class="flex sm:flex-row flex-col w-full h-fit gap-3 sm:gap-2 sm:justify-between"
+              class="flex sm:flex-row flex-col-reverse w-full h-fit gap-3 sm:gap-2 items-center sm:justify-between"
             >
               <button
                 type="button"
-                class="cancel-btn cursor-pointer w-full sm:max-w-[190px] h-[63px] bg-grey rounded-[50px] hover:bg-white hover:text-black border-grey outline-1 hover:border-black text-white font-bold"
+                class="cancel-btn cursor-pointer  w-[90%] max-w-[190px] sm:h-[63px] h-[50px] bg-grey rounded-[50px] hover:bg-white hover:text-black border-grey outline-1 hover:border-black text-white font-bold"
                 id="cancel-btn"
               >
                 Cancel
@@ -136,7 +136,7 @@ export function createProfileLoggedIn(): string {
               <button
                 type="button"
                 id="edit-profile-btn"
-                class="edit-profile-btn bg-blue h-[63px] w-full cursor-pointer rounded-[50px] p-2 text-white text-btn outline-1 hover:bg-white hover:text-black font-bold"
+                class="edit-profile-btn bg-blue sm:h-[63px] h-[50px] max-w-[370px] w-[90%] mt-2 sm:mt-0 cursor-pointer rounded-[50px] p-2 text-white text-btn outline-1 hover:bg-white hover:text-black font-bold"
               >
                 Save changes
               </button>
