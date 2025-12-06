@@ -139,7 +139,7 @@ if (loginForm) {
 
       setTimeout(() => {
         window.location.href = "/index.html";
-      }, 1500);
+      }, 1000);
     } catch (error: any) {
       const messageDiv = document.createElement("div") as HTMLDivElement;
       messageDiv.className =
