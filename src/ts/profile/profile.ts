@@ -1,10 +1,10 @@
 import {
-  displayListings,
-  displayBidOnListings,
   loadUserProfileData,
   loadUserListingsData,
   getUserProfileElements,
 } from "./profileUtils.ts";
+
+import { displayBidOnListings } from "./displayBidHistory.ts";
 
 import {
   getAuthenticationCredentials,
@@ -13,6 +13,7 @@ import {
   clearError,
   attachInputListeners,
   retrieveUserCredits,
+  displayListings,
 } from "../utils.ts";
 
 import {
