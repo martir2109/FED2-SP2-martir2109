@@ -3,11 +3,12 @@
  * @returns {string} The HTML for footer.
  */
 function createFooter(): string {
-  return `<div class="w-full h-fit bg-primary text-white overflow-hidden flex flex-col justify-center mt-10">
-        <div class="w-full h-fit flex flex-col sm:place-items-start items-center sm:flex-row justify-center gap-10 sm:gap-[10%] leading-[50px]">
-          <div class="mt-[50px] w-70 bg-primary h-[200px] sm:h-[300px]">
+  return `<div class="w-full h-fit bg-primary text-white overflow-hidden flex flex-col justify-center items-center mt-10">
+        <div class="w-[90%] h-fit flex flex-col break-all sm:place-items-start items-center sm:flex-row justify-center gap-10 sm:gap-[10%] leading-[50px]">
+          <div class="mt-[50px] w-full sm:w-70 bg-primary h-[200px] sm:h-[300px] flex justify-center">
+          <div class="max-w-[250px] w-[90%] flex flex-col justify-start">
             <h2 class="font-bold text-h3">Customer service</h2>
-            <div class="break-normal no-underline">
+            <div class="no-underline">
               <a href="/footer-links/about/index.html">
                 <p class="text-p">About</p>
               </a>
@@ -18,18 +19,21 @@ function createFooter(): string {
                 <p class="text-p">Terms of service</p>
               </a>
             </div>
+            </div>
           </div>
-          <div class="mt-2.5 sm:mt-[50px] w-70 bg-primary h-[200px] sm:h-[300px]">
+          <div class="mt-2.5 sm:mt-[50px] break-all w-full sm:w-70 bg-primary h-[200px] sm:h-[300px] flex justify-center">
+          <div class="max-w-[250px] w-[90%] flex flex-col justify-start">
             <h2 class="font-bold text-h3">Contact</h2>
-            <div class="break-normal no-underline">
+            <div class="no-underline">
               <p class="text-p">Email: auctionhouse@gmail.com</p>
               <p class="text-p">phone: +47 12 34 56 78</p>
+            </div>
             </div>
           </div>
         </div>
   
         <div class="w-full flex flex-col gap-[50px] justify-center items-center p-5">
-          <div class="w-full flex justify-center mt-5 sm:mt-2.5">
+          <div class="w-full flex justify-center mt-6 sm:mt-2.5">
             <img
               src="/assets/logo/logo-with-text-without-background.png"
               alt="Auction House logo"
