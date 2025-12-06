@@ -51,10 +51,10 @@ export function displayListings(
           onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200')"
         />
       </div>`
-          : `<div class="w-full aspect-square bg-gray-300 rounded-[10px] flex items-center justify-center animate-pulse">
+          : `<div class="w-full aspect-square bg-gray-300 rounded-t-[10px] flex items-center justify-center animate-pulse">
         <img
           src="/assets/images/default-image.jpg"
-          class="w-full h-full aspect-square object-cover border border-grey rounded-[10px]"
+          class="w-full h-full aspect-square object-cover border border-grey rounded-t-[10px]"
           onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200')"/>
       </div>`
       }
