@@ -14,7 +14,7 @@ function createFooter(): string {
               <a href="/footer-links/privacy-policy/index.html">
                 <p class="text-p">Privacy Policy</p>
               </a>
-               <a href="/footer-links/contact/index.html">
+               <a href="/footer-links/terms-of-service/index.html">
                 <p class="text-p">Terms of service</p>
               </a>
             </div>
