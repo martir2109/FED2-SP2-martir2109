@@ -1,5 +1,6 @@
 import {
   displayListings,
+  displayBidOnListings,
   loadUserProfileData,
   loadUserListingsData,
   getUserProfileElements,
@@ -349,7 +350,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     try {
       const response = await fetch(
-        `${API_BASE_URL}${API_ENDPOINTS.AUCTION.PROFILES}/${profileUserName}/bids?_listings=true&_seller=true`,
+        `${API_BASE_URL}${API_ENDPOINTS.AUCTION.PROFILES}/${profileUserName}/bids?_listings=true&_seller=true&_bids=true`,
+
         {
           method: "GET",
           headers: API_Headers_accesstoken_content_apikey(accessToken, apiKey),
@@ -360,13 +362,20 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       const result = await response.json();
       const userBidListings = result.data
-        .map((bid: any) => bid.listing)
+        .map((bid: any) => {
+          if (!bid.listing) return null;
+          return {
+            ...bid.listing,
+            userBidAmount: bid.amount,
+          };
+        })
         .filter(
           (listing: any, index: number, self: any[]) =>
-            listing && self.findIndex((l) => l.id === listing.id) === index,
+            listing &&
+            self.findIndex((item) => item.id === listing.id) === index,
         );
 
-      displayListings(bidOnContainer, userBidListings);
+      displayBidOnListings(bidOnContainer, userBidListings);
     } catch (error) {
       bidOnContainer.innerHTML =
         "<p class='text-gray-700 w-full h-fit flex justify-center items-center p-10'>Could not load bid-on listings.</p>";

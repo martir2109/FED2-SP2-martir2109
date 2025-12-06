@@ -95,9 +95,11 @@ export function displayRecentListings(data: Listing[]) {
         }
         credits
       </p>
-      <p class="bg-gray-200 py-2 rounded-full text-center"><strong>Ends at:</strong> ${formatDateTime(listing.endsAt)}</p>
-      <div
-        class="bg-primary text-white px-6 py-2 rounded-full text-h2 hover:bg-white hover:text-primary border border-bg-primary inline-block text-center cursor-pointer"
+<div class="flex flex-col xs:flex-row justify-center items-center gap-2 bg-gray-200 py-2 rounded-full">
+        <p class="font-bold">Ends at: </p>
+        <p>${formatDateTime(listing.endsAt)}</p>
+      </div>      <div
+        class="bg-primary text-white px-6 py-2 rounded-full text-h3 xs:text-h2 hover:bg-white hover:text-primary border border-bg-primary inline-block text-center cursor-pointer"
       >
         View listing
       </div>
