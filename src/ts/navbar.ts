@@ -29,8 +29,9 @@ function createNavbarLoggedIn(): string {
               <span class="nav-text">Profile</span>
               </a>
            
-              <a href="javascript:void(0);" onclick="logout()"><i class="bi bi-box-arrow-right" title="Log out"></i>
-              <span class="nav-text">Log out</span>
+              <a href="javascript:void(0);" id="logout-link" onclick="logout()">
+              <i class="bi bi-box-arrow-right" title="Log out"></i>
+              <span id="logout-text" class="nav-text">Log out</span>
               </a>
             </div>
           </nav>
