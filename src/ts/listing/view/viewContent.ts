@@ -24,7 +24,7 @@ export function createLoggedInContent(): string {
     <div id="listing-container" class="max-w-[1144px] w-full h-fit flex flex-col gap-8 items-center">
              <div id="no-id-message-container" class="w-full h-fit"></div>
 
-     <div class="w-[90%] md:w-full h-fit flex justify-end">
+     <div class="w-[90%] vl:max-w-[1144px] h-fit flex justify-end">
             <div
               class="bg-black py-2 px-4 flex gap-2 justify-center items-center rounded-[50px] text-white h-fit"
             >
@@ -36,7 +36,7 @@ export function createLoggedInContent(): string {
            <p class=" w-[90%] xs:w-[302px] py-3.5 bg-blue text-white font-bold text-center text-h3 rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer"
   >Edit listing</p>
             </a>
-            <div id="view-listing" class="max-w-[600px] w-[90%]  vl:max-w-[1144px] h-fit flex flex-col vl:flex-row p-4 justify-between gap-2 vl:gap-4 bg-white rounded-md"></div>
+            <div id="view-listing" class="max-w-[600px] w-[90%] vl:max-w-[1144px] h-fit flex flex-col vl:flex-row p-4 justify-between gap-2 vl:gap-4 bg-white rounded-md"></div>
              <div id="listing-bid-history" class="bg-white rounded-md p-4 flex max-w-[600px] w-[90%] vl:max-w-[1144px] h-fit"></div>
             
           <section class="w-[90%] h-fit flex flex-col items-center">
