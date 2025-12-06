@@ -83,11 +83,7 @@ export function displayListings(
         credits
       </p>
 
-      <p><strong>Ends at:</strong> ${formatDateTime(listing.endsAt)}</p>
-
-      <p class="text-gray-500">
-        <strong>Created:</strong> ${formatDateTime(listing.created)}
-      </p>
+      <p class="bg-gray-200 py-2 rounded-full text-center"><strong>Ends at:</strong> ${formatDateTime(listing.endsAt)}</p>
       <div
         class="bg-primary text-white px-6 py-2 rounded-[10px] text-h2 hover:bg-white hover:text-primary border border-bg-primary inline-block text-center cursor-pointer"
       >
