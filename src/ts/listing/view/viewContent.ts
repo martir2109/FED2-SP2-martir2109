@@ -7,7 +7,7 @@ export function createLoggedOutContent(): string {
   return `    
               <div id="listing-container" class="max-w-[1144px] w-full h-fit flex flex-col gap-8 items-center">
          
-            <div id="view-listing" class="w-full h-fit flex p-8 justify-between bg-white rounded-md "></div>
+            <div id="view-listing" class="max-w-[600px] w-[90%]  vl:max-w-[1144px] h-fit flex flex-col vl:flex-row p-4 justify-between gap-2 vl:gap-4 bg-white rounded-md"></div>
              <div id="listing-bid-history" class="bg-white rounded-md p-8 flex w-[90%]  sm:w-full h-fit"></div>
             </div>
           `;
