@@ -164,6 +164,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!description.trim()) {
       showError("description", "Description cannot be empty.");
       hasError = true;
+    } else if (description.length > 300) {
+      showError("description", "Description cannot exceed 300 characters.");
+      hasError = true;
     } else {
       clearError("description");
     }
