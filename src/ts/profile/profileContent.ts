@@ -8,9 +8,9 @@ export function createProfileLoggedIn(): string {
         class="w-full max-w-[1144px] h-fit bg-background flex flex-col items-center pt-4 pb-8 gap-8"
       >
          <div 
-      class="name-container w-full text-center h-fit" 
+      class="name-container w-full text-center h-fit px-2" 
       id="name-container">
-      <p id="name" alt="Name" class="break-all font-bold text-h1">Name</p>
+      <p id="name" alt="Name" class="break-all font-bold text-h3 sm:text-h1">Name</p>
       </div>
         <div class="w-[90%] md:w-full h-fit flex justify-end">
           <div
@@ -54,14 +54,14 @@ export function createProfileLoggedIn(): string {
 
         <div
           id="bio-container"
-          class="bio-container w-[90%]  max-w-[386px] h-[63px] bg-gray-300 text-black text-p rounded-sm flex justify-center items-center p-10"
+          class="bio-container w-[90%] max-w-[386px] h-[63px] bg-gray-300 text-black text-p rounded-sm flex justify-center items-center p-4"
         >
           <p id="bio" class="bio"></p>
         </div>
 
         <button
           id="edit-profile-toggle-btn"
-          class="h-[63px] max-w-[302px] sm:w-[302px] w-[90%] py-5.5 bg-blue text-white font-bold text-center text-btn rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer"
+          class="sm:h-[63px] h-[50px] flex justify-center items-center max-w-[302px] sm:w-[302px] w-[90%] bg-blue text-white font-bold text-center text-btn rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer"
           type="button"
         >
           Edit profile
@@ -207,9 +207,9 @@ export function createProfileLoggedOut(): string {
         class="w-full max-w-[1144px] h-fit bg-background flex flex-col items-center pt-4 pb-8 gap-8"
       >
        <div 
-      class="name-container w-full text-center h-fit" 
+      class="name-container w-full text-center h-fit px-2" 
       id="name-container">
-      <p id="name" alt="Name" class="break-all font-bold text-h1">Name</p>
+      <p id="name" alt="Name" class="break-all font-bold text-h3 sm:text-h1">Name</p>
       </div>
         <div class="profile-header relative w-full h-fit flex justify-center">
           <div
@@ -244,7 +244,7 @@ export function createProfileLoggedOut(): string {
 
         <div
           id="bio-container"
-          class="bio-container w-[90%]  max-w-[386px] h-[63px] bg-gray-300 text-black text-p rounded-sm flex justify-center items-center p-10"
+          class="bio-container w-[90%]  max-w-[386px] h-[63px] bg-gray-300 text-black text-p rounded-sm flex justify-center items-center p-4"
         >
           <p id="bio" class="bio"></p>
         </div>

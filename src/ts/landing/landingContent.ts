@@ -22,12 +22,12 @@ export function createLoggedOutContent(): string {
         >
           <a
             href="/auth/login/index.html"
-            class="text-center bg-primary text-white px-20 py-2 rounded-[10px] text-h2 hover:bg-white hover:text-primary border border-bg-primary"
+            class="text-center bg-primary text-white px-20 py-2 rounded-full text-h2 hover:bg-white hover:text-primary border border-bg-primary"
             >Login</a
           >
           <a
             href="/auth/register/index.html"
-            class="text-center bg-primary text-white px-20 py-2 rounded-[10px] text-h2 hover:bg-white hover:text-primary border border-bg-primary"
+            class="text-center bg-primary text-white px-20 py-2 rounded-full text-h2 hover:bg-white hover:text-primary border border-bg-primary"
             >Register</a
           >
         </div>
@@ -93,7 +93,7 @@ export function createLoggedInContent(): string {
       </div>
       <a
         href="/listing/create/index.html"
-        class="h-[63px] w-[90%] xs:w-[302px] py-3.5 bg-green text-white border-bg-green border hover:border-bg-green hover:bg-white hover:text-black font-bold text-center text-h3 rounded-[50px] mt-4"
+        class="sm:h-[63px] h-[50px] w-[90%] xs:w-[302px] justify-center items-center flexbg-green text-white border-bg-green border hover:border-bg-green hover:bg-white hover:text-black font-bold text-center text-h3 rounded-full mt-4"
       >
         <h1>+ Create listing</h1>
       </a>
