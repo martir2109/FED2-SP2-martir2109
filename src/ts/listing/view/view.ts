@@ -71,13 +71,18 @@ async function loadListing(): Promise<void> {
       },
     );
 
-    const listing = await response.json();
+    const data = await response.json();
+    const listing = data.data ?? data;
 
     if (!response.ok) {
       const errorMessage =
         listing.errors?.[0]?.message || `HTTP ${response.status}`;
       throw new Error(errorMessage);
     }
+
+    document.title = listing.title
+      ? `${listing.title} | Auction House`
+      : "Listing | Auction House";
 
     displayListing([listing.data ?? listing]);
     displayListingBidHistory([listing.data ?? listing]);
