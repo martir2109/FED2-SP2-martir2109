@@ -165,7 +165,7 @@ createListingForm.addEventListener("submit", async function (event) {
 
     setTimeout(() => {
       window.location.href = "/index.html";
-    }, 2000);
+    }, 1000);
     return;
   } catch (error) {
     const errorMessage = error.message || "An undexpected error occured.";

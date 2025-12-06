@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       setTimeout(() => {
         window.location.href = "/index.html";
-      }, 2000);
+      }, 1000);
       return;
     } catch (error) {
       const messageDiv = document.createElement("div");
@@ -294,7 +294,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       setTimeout(() => {
         window.location.href = "/index.html";
-      }, 2000);
+      }, 1000);
       return;
     } catch (error) {
       const messageDiv = document.createElement("div") as HTMLDivElement;
