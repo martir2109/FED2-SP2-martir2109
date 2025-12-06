@@ -32,7 +32,7 @@ export function displayListingBidHistory(data: any[]): void {
             `,
                   )
                   .join("")
-              : "<p>No bids yet</p>"
+              : "<p>No bids yet.</p>"
           }
 
           <div>

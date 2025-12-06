@@ -168,29 +168,29 @@ export function createProfileLoggedIn(): string {
 
         <div id="my-listings" class="tab-content active">
           <section
-            class="my-listings w-full h-fit bg-white p-2 sm:p-4 rounded-b-[20px] xs:rounded-tr-[20px] min-h-screen"
+            class="my-listings w-full h-fit bg-white p-3 sm:p-5 rounded-b-[20px] xs:rounded-tr-[20px] min-h-screen"
           >
             <div
-              class="listings-container w-full h-min-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-5 p-2"
+              class="listings-container w-full h-min-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-5"
             ></div>
           </section>
         </div>
 
         <div id="bid-on" class="tab-content">
           <section
-            class="w-full h-fit bg-white min-h-screen p-2 sm:p-4 rounded-b-[20px] rounded-tr-[20px]"
+            class="w-full h-fit bg-white min-h-screen p-3 sm:p-5 rounded-b-[20px] rounded-tr-[20px]"
           >
             <div
-              class="bid-on-container w-full h-min-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-5 p-2"
+              class="bid-on-container w-full h-min-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-5"
             ></div>
           </section>
         </div>
         <div id="wins" class="tab-content">
           <section
-            class="w-full h-fit bg-white min-h-screen p-2 sm:p-4 rounded-b-[20px] rounded-tr-[20px]"
+            class="w-full h-fit bg-white min-h-screen p-3 sm:p-5 rounded-b-[20px] rounded-tr-[20px]"
           >
             <div
-              class="wins-container w-full h-min-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-5 p-2"
+              class="wins-container w-full h-min-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-5"
             ></div>
           </section>
         </div>
@@ -269,10 +269,10 @@ export function createProfileLoggedOut(): string {
 
         <div id="my-listings" class="tab-content active">
           <section
-            class="my-listings w-full h-fit bg-white p-2 sm:p-4 rounded-b-[20px] rounded-tr-none sm:rounded-tr-[20px] min-h-screen"
+            class="my-listings w-full h-fit bg-white p-3 sm:p-5 rounded-b-[20px] rounded-tr-none sm:rounded-tr-[20px] min-h-screen"
           >
             <div
-              class="listings-container w-full h-min-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-5 p-2"
+              class="listings-container w-full h-min-screen grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-5 "
             ></div>
           </section>
         </div>
