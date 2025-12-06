@@ -227,7 +227,7 @@ export function createListingCard(listing: Listing): string {
 /**
  * Display listings inside the listings container
  * @param {HTMLElement} listingsContainer - The HTML element where listings will be displayed
- * @param {Array} listings - Array of post objects
+ * @param {Array} listings - Array of listing objects
  */
 export function displayListings(
   listingsContainer: HTMLElement | null,
