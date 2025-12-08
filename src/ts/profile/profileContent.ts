@@ -35,7 +35,7 @@ export function createProfileLoggedIn(): string {
           </div>
           
           <div
-            class="avatar-container absolute w-[90%] max-w-[150px] sm:max-w-[200px] md:max-w-[300px] h-auto -bottom-10 flex justify-center bg-gray-300 animate-pulse"
+            class="avatar-container absolute w-[90%] max-w-[150px] sm:max-w-[200px] md:max-w-[250px] h-auto -bottom-10 flex justify-center bg-gray-300 animate-pulse"
             id="avatar-container">
             
             <img
