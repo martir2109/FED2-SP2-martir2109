@@ -11,14 +11,17 @@ import {
 export function showError(inputId: string, message: string) {
   const input = document.getElementById(inputId)!;
   const errorSpan = document.getElementById(`${inputId}-error`)!;
-  const infoText = document.getElementById("info-text")!;
+  const infoText = document.getElementById(`${inputId}-info`)!;
 
   if (input && errorSpan) {
     input.classList.add("input-error");
     errorSpan.textContent = message;
     input.classList.add("border-danger");
     input.classList.remove("border-gray-300");
-    if (infoText) infoText.remove();
+
+    if (infoText) {
+      infoText.style.display = "none";
+    }
   }
 }
 
