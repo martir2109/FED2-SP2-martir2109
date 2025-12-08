@@ -119,8 +119,14 @@ document.addEventListener("DOMContentLoaded", async function () {
         const bannerInput = document.getElementById(
           "banner-input",
         ) as HTMLInputElement;
+        const bannerAltInput = document.getElementById(
+          "banner-alt-input",
+        ) as HTMLInputElement;
         const avatarInput = document.getElementById(
           "avatar-input",
+        ) as HTMLInputElement;
+        const avatarAltInput = document.getElementById(
+          "avatar-alt-input",
         ) as HTMLInputElement;
         const bioInput = document.getElementById(
           "bio-input",
@@ -128,8 +134,16 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         if (bannerInput && userProfile.banner)
           bannerInput.value = userProfile.banner.url || "";
+
+        if (bannerAltInput && userProfile.banner.alt)
+          bannerAltInput.value = userProfile.banner.alt || "";
+
         if (avatarInput && userProfile.avatar)
           avatarInput.value = userProfile.avatar.url || "";
+
+        if (avatarAltInput && userProfile.avatar.alt)
+          avatarAltInput.value = userProfile.avatar.alt || "";
+
         if (bioInput) {
           bioInput.value = userProfile.bio || "";
           if (!userProfile.bio) bioInput.placeholder = "No bio yet";
@@ -164,13 +178,21 @@ document.addEventListener("DOMContentLoaded", async function () {
     const bannerInput = document.getElementById(
       "banner-input",
     ) as HTMLInputElement;
+    const bannerAltInput = document.getElementById(
+      "banner-alt-input",
+    ) as HTMLInputElement;
     const avatarInput = document.getElementById(
       "avatar-input",
+    ) as HTMLInputElement;
+    const avatarAltInput = document.getElementById(
+      "avatar-alt-input",
     ) as HTMLInputElement;
     const bioInput = document.getElementById("bio-input") as HTMLInputElement;
 
     const banner = bannerInput.value.trim();
+    const bannerAlt = bannerAltInput.value.trim();
     const avatar = avatarInput.value.trim();
+    const avatarAlt = avatarAltInput.value.trim();
     const bio = bioInput.value.trim();
 
     let hasError = false;
@@ -185,6 +207,13 @@ document.addEventListener("DOMContentLoaded", async function () {
       clearError("banner-input");
     }
 
+    if (!bannerAlt.trim()) {
+      showError("banner-alt-input", "Banner alt cannot be empty.");
+      hasError = true;
+    } else {
+      clearError("banner-alt-input");
+    }
+
     if (!avatar.trim() || !avatar.startsWith("http")) {
       showError(
         "avatar-input",
@@ -193,6 +222,13 @@ document.addEventListener("DOMContentLoaded", async function () {
       hasError = true;
     } else {
       clearError("avatar-input");
+    }
+
+    if (!avatarAlt.trim()) {
+      showError("avatar-alt-input", "Avatar alt cannot be empty.");
+      hasError = true;
+    } else {
+      clearError("avatar-alt-input");
     }
 
     if (bio.length > 100) {
@@ -205,8 +241,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (hasError) return;
 
     const updateData: any = {};
-    if (banner) updateData.banner = { url: banner };
-    if (avatar) updateData.avatar = { url: avatar };
+    if (banner)
+      updateData.banner = { url: banner, alt: bannerAlt || "User banner" };
+    if (avatar)
+      updateData.avatar = { url: avatar, alt: avatarAlt || "User avatar" };
     updateData.bio = bio;
 
     try {

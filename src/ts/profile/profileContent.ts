@@ -8,7 +8,7 @@ export function createProfileLoggedIn(): string {
         class="w-full max-w-[1144px] h-fit bg-background flex flex-col items-center pt-4 pb-8 gap-8"
       >
          <div 
-      class="name-container w-full text-center h-fit px-2" 
+      class="name-container w-[90%] text-center h-fit" 
       id="name-container">
       <p id="name" alt="Name" class="break-all font-bold text-h3 sm:text-h1">Name</p>
       </div>
@@ -47,7 +47,7 @@ export function createProfileLoggedIn(): string {
           </div>
         </div>
         <div
-          class="email-container font-bold w-[90%] max-w-[386px] text-p mt-5 h-20 flex justify-center items-center"
+          class="email-container font-bold w-[90%] max-w-[386px] text-p mt-8 h-fit flex justify-center items-center"
         >
           <p class="break-all">Email@example.com</p>
         </div>
@@ -59,6 +59,7 @@ export function createProfileLoggedIn(): string {
           <p id="bio" class="bio"></p>
         </div>
 
+        <div class="flex flex-col sm:flex-row w-[90%] h-fit justify-center items-center gap-4 mt-2">
         <button
           id="edit-profile-toggle-btn"
           class="sm:h-[63px] h-[50px] w-[80%] xs:w-[302px] flex justify-center items-center bg-blue text-white font-bold text-center text-btn rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer"
@@ -66,27 +67,44 @@ export function createProfileLoggedIn(): string {
         >
           Edit profile
         </button>
+         <a
+        href="/listing/create/index.html"
+        class="sm:h-[63px] h-[50px] w-[80%] xs:w-[302px] justify-center items-center flex bg-green text-white border-bg-green border hover:border-bg-green hover:bg-white hover:text-black font-bold text-center text-btn rounded-full"
+      >
+        <h1>+ Create listing</h1>
+      </a>
+      </div>
         <div
           class="bg-white w-[90%] w-sm:full max-w-[641px] min-h-[353px] py-8 px-4 xs:px-8 rounded-[10px] hidden"
           id="edit-profile-card"
         >
           <form class="profile-details-container flex flex-col gap-[15px]">
             <div class="inputfield-container">
-              <label for="bio" class="form-label">Banner URL </label>
+              <label for="banner" class="form-label">Banner URL </label>
               <input
                 id="banner-input"
                 class="inputfield sm:h-[63px] h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                placeholder="Banner"
+                placeholder="Banner URL"
               />
-              <span
-                id="bannerInput-error"
-                class="text-danger text-p italic"
-              ></span>
-              <span id="info-text" class="text-grey text-underInput"
+              <span id="banner-input-info" class="text-grey text-underInput"
                 >(Rectangle images preferred.)</span
               >
               <span
                 id="banner-input-error"
+                class="text-danger text-p italic"
+              ></span>
+            </div>
+            <div class="inputfield-container">
+              <label for="banner" class="form-label">Banner ALT text</label>
+              <input
+                id="banner-alt-input"
+                class="inputfield sm:h-[63px] h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                placeholder="Banner ALT"
+              />
+               <span id="banner-alt-input-info" class="text-grey text-underInput"
+                >(Describe your banner image, e.g. "Purple flower bouquet")</span>
+              <span
+                id="banner-alt-input-error"
                 class="text-danger text-p italic"
               ></span>
             </div>
@@ -97,11 +115,26 @@ export function createProfileLoggedIn(): string {
                 class="inputfield sm:h-[63px] h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Avatar URL"
               />
-              <span id="info-text" class="text-grey text-underInput"
+              <span id="avatar-input-info" class="text-grey text-underInput"
                 >(Square images preferred.)</span
               >
               <span
                 id="avatar-input-error"
+                class="text-danger text-p italic"
+              ></span>
+            </div>
+            <div class="inputfield-container">
+              <label for="avatar" class="form-label">Avatar ALT text </label>
+              <input
+                id="avatar-alt-input"
+                class="inputfield sm:h-[63px] h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                placeholder="Avatar ALT"
+              />
+               <span id="avatar-alt-input-info" class="text-grey text-underInput"
+                >(Describe your avatar image, e.g. "White fox in the snow")</span
+              >
+              <span
+                id="avatar-alt-input-error"
                 class="text-danger text-p italic"
               ></span>
             </div>
@@ -114,7 +147,7 @@ export function createProfileLoggedIn(): string {
                 placeholder="Bio"
                 maxlength="100"
               />
-              <span id="info-text" class="text-grey text-underInput"
+              <span id="bio-input-info" class="text-grey text-underInput"
                 >(Bio can max be 100 characters.)</span
               >
               <span
