@@ -61,7 +61,7 @@ export function createProfileLoggedIn(): string {
 
         <button
           id="edit-profile-toggle-btn"
-          class="sm:h-[63px] h-[50px] flex justify-center items-center max-w-[302px] sm:w-[302px] w-[90%] bg-blue text-white font-bold text-center text-btn rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer"
+          class="sm:h-[63px] h-[50px] w-[80%] xs:w-[302px] flex justify-center items-center bg-blue text-white font-bold text-center text-btn rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer"
           type="button"
         >
           Edit profile

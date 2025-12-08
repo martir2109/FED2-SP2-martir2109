@@ -32,14 +32,16 @@ export function createLoggedOutContent(): string {
           >
         </div>
       </div>
-        <div class="w-[90%] sm:w-[80%] h-fit mt-2">
-        <h2 class="text-h2 font-bold text-left">Browse listings</h2>
+            
+      <div class="w-[90%] sm:w-[80%] flex flex-col justify-center items-center gap-6">
+        <div class="w-full h-fit">
+        <h2 class="text-h2 font-bold text-left">Browse active listings</h2>
       </div>
-    <div
-        class="w-[90%] sm:w-[80%] flex justify-between gap-2 md:flex-row flex-col mt-6 mb-6"
+   <div
+        class="w-full flex justify-between sm:flex-row flex-col gap-4"
       >
      
-        <div class="flex flex-col gap-2 md:w-full md:max-w-[48%] h-[100px]">
+        <div class="flex flex-col gap-2 w-full h-fit">
           <label class="text-label">Search by title</label>
           <input
             id="search-title"
@@ -49,7 +51,7 @@ export function createLoggedOutContent(): string {
           />
         </div>
 
-        <div class="flex flex-col gap-2 md:w-full md:max-w-[48%] h-[100px]">
+        <div class="flex flex-col gap-2 w-full h-fit">
           <label class="text-label">Filter by tags</label>
           <input
             id="filter-tags"
@@ -60,7 +62,7 @@ export function createLoggedOutContent(): string {
         </div>
       </div>
 
-      <div class="w-[90%] sm:w-[80%] bg-white h-fit rounded-[20px]">
+      <div class="w-full bg-white h-fit rounded-[20px] mt-2">
         <div class="listings-container w-full h-fit">
           <div
             id="listing-container"
@@ -68,6 +70,7 @@ export function createLoggedOutContent(): string {
           ></div>
         </div>
         <div id="pagination" class="flex justify-center gap-4 my-6"></div>
+      </div>
       </div>
     </section>
       `;
@@ -93,14 +96,14 @@ export function createLoggedInContent(): string {
       </div>
       <a
         href="/listing/create/index.html"
-        class="sm:h-[63px] h-[50px] w-[90%] xs:w-[302px] justify-center items-center flex bg-green text-white border-bg-green border hover:border-bg-green hover:bg-white hover:text-black font-bold text-center text-h3 rounded-full mt-4"
+        class="sm:h-[63px] h-[50px] w-[80%] xs:w-[302px] justify-center items-center flex bg-green text-white border-bg-green border hover:border-bg-green hover:bg-white hover:text-black font-bold text-center text-h3 rounded-full"
       >
         <h1>+ Create listing</h1>
       </a>
       <div
-        class="w-[90%] sm:w-[80%] flex justify-between gap-2 md:flex-row flex-col mt-4"
+        class="w-[90%] sm:w-[80%] flex justify-between sm:flex-row flex-col gap-4"
       >
-        <div class="flex flex-col gap-2 md:w-full md:max-w-[48%] h-[100px]">
+        <div class="flex flex-col gap-2 w-full h-fit">
           <label class="text-label">Search by title</label>
           <input
             id="search-title"
@@ -110,7 +113,7 @@ export function createLoggedInContent(): string {
           />
         </div>
 
-        <div class="flex flex-col gap-2 md:w-full md:max-w-[48%] h-[100px]">
+        <div class="flex flex-col gap-2 w-full h-fit">
           <label class="text-label">Filter by tags</label>
           <input
             id="filter-tags"
@@ -121,10 +124,11 @@ export function createLoggedInContent(): string {
         </div>
       </div>
 
-      <div class="w-[90%] sm:w-[80%] h-fit">
+      <div class="w-[90%] sm:w-[80%] h-fit flex flex-col justify-center items-center gap-2 -mt-2">
+      <div class="w-full h-fit">
         <h2 class="text-h2 font-bold text-left">Active listings</h2>
       </div>
-      <div class="w-[90%] sm:w-[80%] bg-white h-fit rounded-[20px]">
+      <div class="w-full bg-white h-fit rounded-[20px]">
         <div class="listings-container w-full h-fit">
           <div
             id="listing-container"
@@ -132,6 +136,7 @@ export function createLoggedInContent(): string {
           ></div>
         </div>
         <div id="pagination" class="flex justify-center gap-4 my-6"></div>
+      </div>
       </div>
     </section>
       `;
