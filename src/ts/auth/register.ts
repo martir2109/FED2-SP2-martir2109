@@ -6,6 +6,8 @@ import {
   API_Headers_content,
 } from "../apiConfig.ts";
 
+import { showSuccessMessage, showErrorMessage } from "../message.ts";
+
 /**
  * Registers a new user with name, email, and password.
  * @param {{name: string, email: string, password: string}} credentials - The user's registration info.
@@ -102,52 +104,18 @@ if (registerForm) {
 
     try {
       await register({ name, email, password });
-      const messageDiv = document.createElement("div") as HTMLDivElement;
-      messageDiv.className =
-        "fixed top-4 left-1/2 z-[9999] bg-green-200 text-green-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-      messageDiv.innerHTML = `
-      <i class="bi bi-check-circle-fill text-green-950"></i>
-      <p class="m-0">User registered successfully!</p>
-      `;
-
-      document.body.appendChild(messageDiv);
-
+      showSuccessMessage(`User registered successfully!`, 1000);
       setTimeout(() => {
         window.location.href = "/auth/login/index.html";
       }, 1000);
     } catch (error: any) {
       const errorMessage =
         error instanceof Error ? error.message : String(error);
-
-      const messageDiv = document.createElement("div") as HTMLDivElement;
-      messageDiv.className =
-        "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-      messageDiv.innerHTML = `
-        <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-        <p class="m-0">Registration failed: ${errorMessage}</p>
-        `;
-
-      document.body.appendChild(messageDiv);
-
-      setTimeout(() => {
-        messageDiv.innerHTML = "";
-      }, 3000);
+      showErrorMessage(`Registration failed: ${errorMessage}`, 3000);
     }
   });
 } else {
-  const messageDiv = document.createElement("div");
-  messageDiv.className =
-    "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-  messageDiv.innerHTML = `
-  <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-  <p class="m-0">Error: Register form not found on this page.</p>
-  `;
-
-  document.body.appendChild(messageDiv);
-
-  setTimeout(() => {
-    messageDiv.remove();
-  }, 5000);
+  showErrorMessage(`Error: Register form not found on this page.`, 5000);
 }
 
 /**
