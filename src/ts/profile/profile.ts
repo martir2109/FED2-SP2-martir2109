@@ -29,6 +29,8 @@ import {
 
 import { editProfileToggle } from "./editProfileToggle.ts";
 
+import { showErrorMessage, showSuccessMessage } from "../message.ts";
+
 document.addEventListener("DOMContentLoaded", async function () {
   const { accessToken, apiKey } = getAuthenticationCredentials();
   const { userName } = getUserName();
@@ -38,15 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const profileUserName = urlParams.get("id") || loggedInUserName;
 
   if (!profileUserName) {
-    const messageDiv = document.createElement("div") as HTMLDivElement;
-    messageDiv.className =
-      "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-    messageDiv.innerHTML = `
-      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-      <p class="m-0">No profile specified to load.</p>
-    `;
-
-    document.body.appendChild(messageDiv);
+    showErrorMessage(`No profile specified to load.`, 3000);
 
     setTimeout(() => {
       window.location.href = "/index.html";
@@ -150,15 +144,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
       }
     } catch (error) {
-      const messageDiv = document.createElement("div") as HTMLDivElement;
-      messageDiv.className =
-        "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-      messageDiv.innerHTML = `
-      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-      <p class="m-0">Error loading profile: ${error}.</p>
-    `;
-
-      document.body.appendChild(messageDiv);
+      showErrorMessage(`Error loading profile: ${error}`, 3000);
+      setTimeout(() => {
+        window.location.href = "/index.html";
+      }, 3000);
+      return;
     }
   }
 
@@ -268,32 +258,13 @@ document.addEventListener("DOMContentLoaded", async function () {
       const updatedProfile = await refreshUserdata();
       localStorage.setItem("user", JSON.stringify({ data: updatedProfile }));
       if (updatedProfile) loadProfile();
-
-      const messageDiv = document.createElement("div") as HTMLDivElement;
-      messageDiv.className =
-        "fixed top-4 left-1/2 z-[9999] bg-green-200 text-green-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-      messageDiv.innerHTML = `
-      <i class="bi bi-check-circle-fill text-green-950"></i>
-      <p class="m-0">Profile updated successfully!</p>
-      `;
-
-      document.body.appendChild(messageDiv);
-
+      showSuccessMessage(`Profile updated successfully!`, 2000);
       setTimeout(() => {
         location.reload();
       }, 2000);
       return;
     } catch (error) {
-      const messageDiv = document.createElement("div") as HTMLDivElement;
-      messageDiv.className =
-        "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-      messageDiv.innerHTML = `
-      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-      <p class="m-0">Failed to update profile: ${error}</p>
-      `;
-
-      document.body.appendChild(messageDiv);
-
+      showErrorMessage(`Failed to update profile: ${error}`, 2000);
       setTimeout(() => {
         window.location.href = "/index.html";
       }, 2000);
@@ -336,16 +307,7 @@ document.addEventListener("DOMContentLoaded", async function () {
    */
   async function loadListings(): Promise<void> {
     if (!listingsContainer) {
-      const messageDiv = document.createElement("div") as HTMLDivElement;
-      messageDiv.className =
-        "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-      messageDiv.innerHTML = `
-        <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-        <p class="m-0">Listing container not found on this page</p>
-        `;
-
-      document.body.appendChild(messageDiv);
-
+      showErrorMessage(`Listing container not found on this page.`, 2000);
       setTimeout(() => {
         window.location.href = "/index.html";
       }, 2000);

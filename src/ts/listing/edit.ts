@@ -14,6 +14,7 @@ import {
   API_Headers_accesstoken_apikey,
   API_Headers_accesstoken_content_apikey,
 } from "../apiConfig.ts";
+import { showErrorMessage, showSuccessMessage } from "../message.ts";
 
 /**
  * Sets up the Edit listing page once the DOM is fully loaded.
@@ -25,16 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const listingId = new URLSearchParams(window.location.search).get("id");
 
   if (!listingId) {
-    const messageDiv = document.createElement("div") as HTMLDivElement;
-    messageDiv.className =
-      "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-    messageDiv.innerHTML = `
-      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-      <p class="m-0">No listing ID found in the URL.</p>
-    `;
-
-    document.body.appendChild(messageDiv);
-
+    showErrorMessage(`No listing ID found in the URL.`, 2000);
     setTimeout(() => {
       window.location.href = "/index.html";
     }, 2000);
@@ -45,18 +37,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const { accessToken, apiKey } = getAuthenticationCredentials();
 
   if (!accessToken || !userName) {
-    const messageDiv = document.createElement("div") as HTMLDivElement;
-    messageDiv.className =
-      "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-    messageDiv.innerHTML = `
-      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-      <p class="m-0">You must be logged in!</p>
-      `;
-
-    document.body.appendChild(messageDiv);
-
+    showErrorMessage(`You must be logged in!`, 2000);
     setTimeout(() => {
-      messageDiv.innerHTML = "";
       window.location.href = "/auth/login/index.html";
     }, 2000);
     return;
@@ -101,16 +83,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     (document.getElementById("alt") as HTMLInputElement).value =
       listing.media[0].alt || "";
   } catch (error) {
-    const messageDiv = document.createElement("div") as HTMLDivElement;
-    messageDiv.className =
-      "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-    messageDiv.innerHTML = `
-      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-      <p class="m-0">Failed to load the listing for editing: ${error}</p>
-      `;
-
-    document.body.appendChild(messageDiv);
-
+    showErrorMessage(`Failed to load the listing for editing: ${error}`, 2000);
     setTimeout(() => {
       window.location.href = "/index.html";
     }, 2000);
@@ -213,32 +186,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           data.errors?.[0]?.message || `HTTP ${response.status}`;
         throw new Error(errorMessage);
       }
-
-      const messageDiv = document.createElement("div") as HTMLDivElement;
-      messageDiv.className =
-        "fixed top-4 left-1/2 z-[9999] bg-green-200 text-green-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-      messageDiv.innerHTML = `
-      <i class="bi bi-check-circle-fill text-green-950"></i>
-      <p class="m-0">Listing successfully updated!</p>
-      `;
-
-      document.body.appendChild(messageDiv);
-
+      showSuccessMessage(`Listing successfully updated!`, 1000);
       setTimeout(() => {
         window.location.href = "/index.html";
       }, 1000);
       return;
     } catch (error) {
-      const messageDiv = document.createElement("div");
-      messageDiv.className =
-        "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-      messageDiv.innerHTML = `
-      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-      <p class="m-0">Failed to update the listing: ${error}</p>
-      `;
-
-      document.body.appendChild(messageDiv);
-
+      showErrorMessage(`Failed to update the listing: ${error}`, 2000);
       setTimeout(() => {
         window.location.href = "/index.html";
       }, 2000);
@@ -250,20 +204,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const confirmed = confirm("Are you sure you want to delete this listing?");
 
     if (!confirmed) {
-      const messageDiv = document.createElement("div") as HTMLDivElement;
-      messageDiv.className =
-        "fixed top-4 left-1/2 z-[9999] bg-green-200 text-green-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-      messageDiv.innerHTML = `
-      <i class="bi bi-check-circle-fill text-green-950"></i>
-      <p class="m-0">Listing not deleted!</p>
-      `;
-
-      document.body.appendChild(messageDiv);
-
-      setTimeout(() => {
-        messageDiv.innerHTML = "";
-      }, 2000);
-      return;
+      showSuccessMessage(`Listing not deleted!`, 2000);
     }
 
     try {
@@ -282,31 +223,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
 
       (document.getElementById("edit-listing-form") as HTMLFormElement).reset();
-      const messageDiv = document.createElement("div") as HTMLDivElement;
-      messageDiv.className =
-        "fixed top-4 left-1/2 z-[9999] bg-green-200 text-green-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-      messageDiv.innerHTML = `
-        <i class="bi bi-check-circle-fill text-green-950"></i>
-        <p class="m-0">Listing successfully deleted!</p>
-        `;
 
-      document.body.appendChild(messageDiv);
-
+      showSuccessMessage(`Listing successfully deleted!`, 1000);
       setTimeout(() => {
         window.location.href = "/index.html";
       }, 1000);
       return;
     } catch (error) {
-      const messageDiv = document.createElement("div") as HTMLDivElement;
-      messageDiv.className =
-        "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-      messageDiv.innerHTML = `
-        <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-        <p class="m-0">Failed to delete the listing: ${error}</p>
-        `;
-
-      document.body.appendChild(messageDiv);
-
+      showErrorMessage(`Failed to delete the listing: ${error}`, 2000);
       setTimeout(() => {
         window.location.href = "/index.html";
       }, 2000);

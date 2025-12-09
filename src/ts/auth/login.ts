@@ -6,6 +6,8 @@ import {
   API_Headers_content,
 } from "../apiConfig.ts";
 
+import { showSuccessMessage, showErrorMessage } from "../message.ts";
+
 /**
  * Log in a user with their email and password.
  * @param {{email: string, password: string}} credentials - The user's login info.
@@ -112,64 +114,19 @@ if (loginForm) {
         localStorage.setItem("apiKey", apiKeyData.data.key);
       } else {
         const errorData = await apiKeyResponse.json();
-        const messageDiv = document.createElement("div") as HTMLDivElement;
-        messageDiv.className =
-          "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-        messageDiv.innerHTML = `
-        <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-        <p class="m-0">Failed to create API key: ${errorData}</p>
-        `;
-
-        document.body.appendChild(messageDiv);
-
-        setTimeout(() => {
-          messageDiv.innerHTML = "";
-        }, 5000);
+        showErrorMessage(`Failed to create API key: ${errorData}`, 5000);
       }
 
-      const messageDiv = document.createElement("div") as HTMLDivElement;
-      messageDiv.className =
-        "fixed top-4 left-1/2 z-[9999] bg-green-200 text-green-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-      messageDiv.innerHTML = `
-      <i class="bi bi-check-circle-fill text-green-950"></i>
-      <p class="m-0">Log in successfull!</p>
-      `;
-
-      document.body.appendChild(messageDiv);
-
+      showSuccessMessage("Log in successful!", 1000);
       setTimeout(() => {
         window.location.href = "/index.html";
       }, 1000);
     } catch (error: any) {
-      const messageDiv = document.createElement("div") as HTMLDivElement;
-      messageDiv.className =
-        "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-      messageDiv.innerHTML = `
-        <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-        <p class="m-0">Log in failed: ${error.message}</p>
-        `;
-
-      document.body.appendChild(messageDiv);
-
-      setTimeout(() => {
-        messageDiv.innerHTML = "";
-      }, 5000);
+      showErrorMessage(`Log in failed: ${error.message}`, 5000);
     }
   });
 } else {
-  const messageDiv = document.createElement("div");
-  messageDiv.className =
-    "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-  messageDiv.innerHTML = `
-  <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-  <p class="m-0">Error: Log in form not found on this page.</p>
-  `;
-
-  document.body.appendChild(messageDiv);
-
-  setTimeout(() => {
-    messageDiv.remove();
-  }, 5000);
+  showErrorMessage(`Error: Log in form not found on this page.`, 5000);
 }
 /**
  * Toggles password visibility when checkbox is changed.

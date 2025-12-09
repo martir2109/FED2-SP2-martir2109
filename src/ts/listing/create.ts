@@ -1,4 +1,3 @@
-/** Utility functions for error handling and authentication */
 import {
   showError,
   clearError,
@@ -6,12 +5,13 @@ import {
   getAuthenticationCredentials,
 } from "../utils.ts";
 
-/** API configuration (base URL, endpoints, and header builders) */
 import {
   API_BASE_URL,
   API_ENDPOINTS,
   API_Headers_accesstoken_content_apikey,
 } from "../apiConfig.js";
+
+import { showSuccessMessage, showErrorMessage } from "../message.ts";
 
 /**
  * @type {HTMLFormElement} The form used to create a new listing
@@ -34,16 +34,7 @@ createListingForm.addEventListener("submit", async function (event) {
   const { accessToken, apiKey } = getAuthenticationCredentials();
 
   if (!accessToken) {
-    const messageDiv = document.createElement("div") as HTMLDivElement;
-    messageDiv.className =
-      "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-    messageDiv.innerHTML = `
-      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-      <p class="m-0">You must be logged in to create a listing.</p>
-    `;
-
-    document.body.appendChild(messageDiv);
-
+    showSuccessMessage(`You must be logged in to create a listing.`, 2000);
     setTimeout(() => {
       window.location.href = "/auth/login/index.html";
     }, 2000);
@@ -152,38 +143,17 @@ createListingForm.addEventListener("submit", async function (event) {
         data.errors?.[0]?.message || `HTTP ${response.status}`;
       throw new Error(errorMessage);
     }
-
-    const messageDiv = document.createElement("div") as HTMLDivElement;
-    messageDiv.className =
-      "fixed top-4 left-1/2 z-[9999] bg-green-200 text-green-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-    messageDiv.innerHTML = `
-      <i class="bi bi-check-circle-fill text-green-950"></i>
-      <p class="m-0">Listing successfully created!</p>
-      `;
-
-    document.body.appendChild(messageDiv);
-
+    showSuccessMessage(`Listing successfully created!`, 1000);
     setTimeout(() => {
       window.location.href = "/index.html";
     }, 1000);
     return;
   } catch (error) {
     const errorMessage = error.message || "An undexpected error occured.";
-
-    const messageDiv = document.createElement("div") as HTMLDivElement;
-    messageDiv.className =
-      "fixed top-4 left-1/2 z-[9999] bg-red-200 text-red-950 px-6 py-4 rounded shadow-lg flex gap-2 items-center -translate-x-1/2 sm:w-full w-[90%] max-w-[400px] mt-20";
-    messageDiv.innerHTML = `
-      <i class="bi bi-exclamation-triangle-fill text-red-950"></i>
-      <p class="m-0">Something went wrong while creating the post: ${errorMessage}</p>
-      `;
-
-    document.body.appendChild(messageDiv);
-
-    setTimeout(() => {
-      window.location.href = "/index.html";
-    }, 2000);
-    return;
+    showErrorMessage(
+      `Something went wrong while creating the post: ${errorMessage}`,
+      2000,
+    );
   }
 });
 
