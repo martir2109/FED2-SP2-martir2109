@@ -164,6 +164,9 @@ export interface Listing {
 }
 
 export function createListingCard(listing: Listing): string {
+  const listingEndTime = new Date(listing.endsAt);
+  const currentTime = new Date();
+
   return `
     
       <a href="/listing/view/index.html?id=${listing.id}"
@@ -205,12 +208,17 @@ export function createListingCard(listing: Listing): string {
           }
           credits
         </p>
-        <div class="flex flex-col xs:flex-row justify-center items-center gap-2 bg-gray-200 py-2 rounded-full">
-          <p class="font-bold">Ends at: </p>
-          <p>${formatDateTime(listing.endsAt)}</p>
-        </div>
+      <div class="flex flex-col xs:flex-row justify-center items-center gap-2">
+  ${
+    currentTime >= listingEndTime
+      ? `<p class="bg-red-200 text-red-950 py-2 rounded-full text-center w-full">Listing has ended!</p>`
+      : `<p class="bg-gray-200 py-2 rounded-full text-center w-full"><strong>Ends at:</strong> ${formatDateTime(listing.endsAt)}</p>`
+  }
+</div>
+
+
         <div
-          class="bg-primary text-white px-6 py-2 rounded-full text-h3 xs:text-h2 hover:bg-white hover:text-primary border border-bg-primary inline-block text-center cursor-pointer"
+          class="bg-primary text-white flex justify-center h-[53px] items-center rounded-full text-h3 xs:text-h2 hover:bg-white hover:text-primary border border-bg-primary text-center cursor-pointer"
         >
           View listing
         </div>
