@@ -86,7 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
  * @returns {{accessToken: string|null, apiKey: string|null}}
  * An object containing the user's access token and API key, or null values if not found.
  */
-export function getAuthenticationCredentials() {
+export function getAuthenticationCredentials(): {
+  accessToken: string | null;
+  apiKey: string | null;
+} {
   const accessToken = localStorage.getItem("accessToken");
   const apiKey = localStorage.getItem("apiKey");
   return { accessToken, apiKey };
