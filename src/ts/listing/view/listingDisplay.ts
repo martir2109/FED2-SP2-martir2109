@@ -59,6 +59,17 @@ export function displayListing(data: any[]): void {
               : `${listing.seller.name}`
             : "Unknown seller"
         }</p>
+        <div class="flex flex-col xs:flex-row gap-2 justify-start">
+     ${listing.tags
+       .map(
+         (tag) => `
+        <p class="wrap-break-word text-p bg-gray-200 px-2 rounded-full w-fit h-fit border border-gray-500">
+      ${tag}
+       </p>
+      `,
+       )
+       .join("")}
+    </div>
         </div>
         <div class="flex flex-col gap-2">
           <p class="wrap-break-word w-full h-fit text-p font-bold">Description: </p>
