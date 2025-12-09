@@ -1,4 +1,3 @@
-/** Formats listing date and time. */
 import { createListingCard, Listing } from "../utils.ts";
 
 export function displayRecentListings(data: Listing[]) {
