@@ -211,7 +211,7 @@ export function createListingCard(listing: Listing): string {
       <div class="flex flex-col xs:flex-row justify-center items-center gap-2">
   ${
     currentTime >= listingEndTime
-      ? `<p class="bg-red-200 text-red-950 py-2 rounded-full text-center w-full">Listing has ended!</p>`
+      ? `<p class="bg-red-200 text-red-950 py-2 rounded-full text-center font-bold w-full">Listing has ended!</p>`
       : `<p class="bg-gray-200 py-2 rounded-full text-center w-full"><strong>Ends at:</strong> ${formatDateTime(listing.endsAt)}</p>`
   }
 </div>
