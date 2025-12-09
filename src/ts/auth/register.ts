@@ -104,7 +104,7 @@ if (registerForm) {
 
     try {
       await register({ name, email, password });
-      showSuccessMessage(`User registered successfully!`, 1000);
+      showSuccessMessage(`User successfully registered!`, 1000);
       setTimeout(() => {
         window.location.href = "/auth/login/index.html";
       }, 1000);

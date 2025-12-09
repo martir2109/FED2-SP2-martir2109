@@ -258,7 +258,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       const updatedProfile = await refreshUserdata();
       localStorage.setItem("user", JSON.stringify({ data: updatedProfile }));
       if (updatedProfile) loadProfile();
-      showSuccessMessage(`Profile updated successfully!`, 2000);
+      showSuccessMessage(`Profile successfully updated!`, 2000);
       setTimeout(() => {
         location.reload();
       }, 2000);
