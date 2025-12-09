@@ -191,7 +191,7 @@ export function createListingCard(listing: Listing): string {
       }
       <div class="p-4 flex flex-col gap-4">
         <h3 class="text-h3 font-bold break-all">
-          ${listing.title ? listing.title.substring(0, 20) + "..." : "No title"}
+          ${listing.title ? listing.title.substring(0, 15) + "..." : "No title"}
         </h3>
         <p class="text-p break-all">
           <strong>Seller: </strong> ${listing.seller?.name || "Unknown seller"}
