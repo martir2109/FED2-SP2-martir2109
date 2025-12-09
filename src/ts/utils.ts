@@ -161,6 +161,7 @@ export interface Listing {
   bids?: { amount: number | string }[];
   _count?: { bids: number };
   userBidAmount?: number;
+  tags?: Array<string>;
 }
 
 export function createListingCard(listing: Listing): string {
@@ -174,29 +175,56 @@ export function createListingCard(listing: Listing): string {
     >
       ${
         listing.media && listing.media.length > 0
-          ? `<div class="w-full aspect-square rounded-t-[10px] bg-background flex items-center justify-center animate-pulse">
+          ? `<div class="w-full relative aspect-square rounded-t-[10px] bg-background flex items-center justify-center animate-pulse">
               <img
                 src="${listing.media[0].url}"
                 alt="Listing media"
                 class="w-full h-full aspect-square object-cover rounded-t-[10px]"
                 onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200')"
               />
+               <div class="absolute bottom-2 right-2 flex flex-col xs:flex-row gap-2 justify-end">
+     ${listing.tags
+       ?.slice(0, 2)
+       .map(
+         (tag) => `
+        <p class="wrap-break-word text-p bg-gray-200 px-2 rounded-full w-fit h-fit border border-gray-500">
+      ${tag}
+       </p>
+      `,
+       )
+       .join("")}
+    </div>
             </div>`
-          : `<div class="w-full aspect-square bg-gray-300 rounded-t-[10px] flex items-center justify-center animate-pulse">
+          : `<div class="w-full relative aspect-square bg-gray-300 rounded-t-[10px] flex items-center justify-center animate-pulse">
               <img
                 src="/assets/images/default-image.jpg"
                 class="w-full h-full aspect-square object-cover border border-grey rounded-t-[10px]"
                 onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200')"/>
-            </div>`
+              <div class="absolute bottom-2 right-2 flex flex-col xs:flex-row gap-2 justify-end">
+     ${listing.tags
+       ?.slice(0, 2)
+       .map(
+         (tag) => `
+        <p class="wrap-break-word text-p bg-gray-200 px-2 rounded-full w-fit h-fit border border-gray-500">
+      ${tag}
+       </p>
+      `,
+       )
+       .join("")}
+    </div>
+          </div>`
       }
-      <div class="p-4 flex flex-col gap-4">
+      <div class="p-2 xs:p-4 flex flex-col gap-4">
         <h3 class="text-h3 font-bold break-all">
           ${listing.title ? listing.title.substring(0, 15) + "..." : "No title"}
         </h3>
         <p class="text-p break-all">
           <strong>Seller: </strong> ${listing.seller?.name || "Unknown seller"}
         </p>
-        <p class="wrap-break-word w-full h-[50px] text-p">
+         <p class="text-gray-500 text-p">
+        <strong>Created:</strong> ${formatDateTime(listing.created)}
+      </p>
+        <p class="wrap-break-word w-full h-fit sm:h-[60px] text-p bg-gray-200 p-2 rounded-md">
           ${listing.description ? listing.description.substring(0, 50) + "..." : ""}
         </p>
         <p><strong>Bids:</strong> ${listing._count?.bids ?? 0}</p>
