@@ -41,7 +41,7 @@ export function createFilteringContent(): string {
             <label
               class="relative inline-flex items-center cursor-pointer gap-2"
             >
-              <input type="checkbox" class="sr-only peer" id="active-toggle" />
+              <input type="checkbox" class="sr-only peer" id="active-toggle" checked/>
               <div
                 class="group peer ring-0 bg-gray-400 rounded-full outline-none duration-300 after:duration-300
                  w-22 h-10 shadow-md peer-checked:bg-emerald-500 peer-focus:outline-none after:content-['✖️'] 
