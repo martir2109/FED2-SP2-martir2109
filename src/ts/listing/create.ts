@@ -152,7 +152,7 @@ createListingForm.addEventListener("submit", async function (event) {
     const errorMessage = error.message || "An undexpected error occured.";
     showErrorMessage(
       `Something went wrong while creating the post: ${errorMessage}`,
-      2000,
+      5000,
     );
   }
 });

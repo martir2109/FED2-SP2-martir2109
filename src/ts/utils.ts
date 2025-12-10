@@ -146,7 +146,7 @@ export async function retrieveUserCredits() {
       credits.textContent = userProfile.credits || "0";
     }
   } catch (error) {
-    showErrorMessage(`Error loading user credits: ${error}`, 2000);
+    showErrorMessage(`Error loading user credits: ${error}`, 3000);
   }
 }
 
