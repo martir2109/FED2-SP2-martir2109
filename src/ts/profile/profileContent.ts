@@ -62,14 +62,14 @@ export function createProfileLoggedIn(): string {
         <div class="flex flex-col sm:flex-row w-[90%] h-fit justify-center items-center gap-4 mt-2">
         <button
           id="edit-profile-toggle-btn"
-          class="sm:h-[63px] h-[50px] w-[80%] xs:w-[302px] flex justify-center items-center bg-blue text-white font-bold text-center text-btn rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer"
+          class="h-[50px] w-[80%] xs:w-[302px] flex justify-center items-center bg-blue text-white font-bold text-center text-btn rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer"
           type="button"
         >
           Edit profile
         </button>
          <a
         href="/listing/create/index.html"
-        class="sm:h-[63px] h-[50px] w-[80%] xs:w-[302px] justify-center items-center flex bg-green text-white border-bg-green border hover:border-bg-green hover:bg-white hover:text-black font-bold text-center text-btn rounded-full"
+        class="h-[50px] w-[80%] xs:w-[302px] justify-center items-center flex bg-green text-white border-bg-green border hover:border-bg-green hover:bg-white hover:text-black font-bold text-center text-btn rounded-full"
       >
         <h1>+ Create listing</h1>
       </a>
@@ -83,7 +83,7 @@ export function createProfileLoggedIn(): string {
               <label for="banner" class="form-label">Banner URL </label>
               <input
                 id="banner-input"
-                class="inputfield sm:h-[63px] h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                class="inputfield h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Banner URL"
               />
               <span id="banner-input-info" class="text-grey text-underInput"
@@ -98,7 +98,7 @@ export function createProfileLoggedIn(): string {
               <label for="banner" class="form-label">Banner ALT text</label>
               <input
                 id="banner-alt-input"
-                class="inputfield sm:h-[63px] h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                class="inputfield h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Banner ALT"
               />
                <span id="banner-alt-input-info" class="text-grey text-underInput"
@@ -112,7 +112,7 @@ export function createProfileLoggedIn(): string {
               <label for="avatar" class="form-label">Avatar URL </label>
               <input
                 id="avatar-input"
-                class="inputfield sm:h-[63px] h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                class="inputfield h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Avatar URL"
               />
               <span id="avatar-input-info" class="text-grey text-underInput"
@@ -127,7 +127,7 @@ export function createProfileLoggedIn(): string {
               <label for="avatar" class="form-label">Avatar ALT text </label>
               <input
                 id="avatar-alt-input"
-                class="inputfield sm:h-[63px] h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                class="inputfield h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Avatar ALT"
               />
                <span id="avatar-alt-input-info" class="text-grey text-underInput"
@@ -143,7 +143,7 @@ export function createProfileLoggedIn(): string {
               <label for="bio" class="form-label">Bio </label>
               <input
                 id="bio-input"
-                class="inputfield sm:h-[63px] h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                class="inputfield h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Bio"
                 maxlength="100"
               />
@@ -161,7 +161,7 @@ export function createProfileLoggedIn(): string {
             >
               <button
                 type="button"
-                class="cancel-btn cursor-pointer  w-[90%] max-w-[190px] sm:h-[63px] h-[50px] bg-grey rounded-[50px] hover:bg-white hover:text-black border-grey outline-1 hover:border-black text-white font-bold"
+                class="cancel-btn cursor-pointer  w-[90%] max-w-[190px] h-[50px] bg-grey rounded-[50px] hover:bg-white hover:text-black border-grey outline-1 hover:border-black text-white font-bold"
                 id="cancel-btn"
               >
                 Cancel
@@ -169,7 +169,7 @@ export function createProfileLoggedIn(): string {
               <button
                 type="button"
                 id="edit-profile-btn"
-                class="edit-profile-btn bg-blue sm:h-[63px] h-[50px] max-w-[370px] w-[90%] mt-2 sm:mt-0 cursor-pointer rounded-[50px] p-2 text-white text-btn outline-1 hover:bg-white hover:text-black font-bold"
+                class="edit-profile-btn bg-blue h-[50px] max-w-[370px] w-[90%] mt-2 sm:mt-0 cursor-pointer rounded-[50px] p-2 text-white text-btn outline-1 hover:bg-white hover:text-black font-bold"
               >
                 Save changes
               </button>

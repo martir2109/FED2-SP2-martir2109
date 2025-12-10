@@ -77,7 +77,7 @@ export function createLoggedInContent(): string {
       </div>
       <a
         href="/listing/create/index.html"
-        class="sm:h-[63px] h-[50px] w-[80%] xs:w-[302px] -mt-4 justify-center items-center flex bg-green text-white border-bg-green border hover:border-bg-green hover:bg-white hover:text-black font-bold text-center text-h3 rounded-full"
+        class="h-[50px] w-[80%] xs:w-[302px] -mt-4 justify-center items-center flex bg-green text-white border-bg-green border hover:border-bg-green hover:bg-white hover:text-black font-bold text-center text-h3 rounded-full"
       >
         <h1>+ Create listing</h1>
       </a>
