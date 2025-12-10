@@ -51,7 +51,7 @@ export function createLoggedInContent(): string {
              <div id="message-container" class="w-full h-fit"></div>
 
             <button id="place-bid-btn" 
-            class="mt-4 h-[50px] w-full flex justify-center items-center bg-blue text-white font-bold text-center text-btn rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer">
+            class="h-[50px] w-full flex justify-center items-center bg-blue text-white font-bold text-center text-btn rounded-[50px] hover:bg-white hover:text-black hover:border-black border border-blue cursor-pointer">
             Place bid
             </button>
             </div>
