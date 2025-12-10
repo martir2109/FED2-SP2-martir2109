@@ -1,24 +1,20 @@
-/** Utility functions for error handling, authentication and retrive user credits */
 import {
   getAuthenticationCredentials,
   formatDateTime,
   retrieveUserCredits,
 } from "../utils.ts";
 
-/** API configuration (base URL, endpoints, and header builders) */
 import {
   API_BASE_URL,
   API_ENDPOINTS,
   API_Headers_content,
 } from "../apiConfig.ts";
 
-/** Functions that generate landing page content for logged-in and logged-out users. */
 import {
   createLoggedOutContent,
   createLoggedInContent,
 } from "./landingContent.ts";
 
-/** Renders recent listings on the landing page. */
 import { displayRecentListings } from "./listing.ts";
 
 /**
@@ -45,12 +41,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     : createLoggedOutContent();
 
   retrieveUserCredits();
-  await loadRecentListings();
 
   const searchInput = document.getElementById(
     "search-title",
   ) as HTMLInputElement;
   const tagsInput = document.getElementById("filter-tags") as HTMLInputElement;
+  const activeToggle = document.getElementById(
+    "active-toggle",
+  ) as HTMLInputElement;
+
+  await loadRecentListings();
 
   function applyFilters() {
     let filtered = [...allListings];
@@ -74,7 +74,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         ),
       );
     }
-
     currentFilteredListings = filtered;
     currentPage = 1;
     renderPage();
@@ -82,6 +81,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   searchInput?.addEventListener("input", applyFilters);
   tagsInput?.addEventListener("input", applyFilters);
+  activeToggle?.addEventListener("change", async () => {
+    await loadRecentListings();
+    applyFilters();
+  });
 
   /**
    * Loads recent listings from API and renders them.
@@ -95,13 +98,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!listingsContainer) return;
 
     try {
-      const response = await fetch(
-        `${API_BASE_URL}${API_ENDPOINTS.AUCTION.LISTINGS}?_seller=true&_bids=true&_active=true`,
-        {
-          method: "GET",
-          headers: API_Headers_content(),
-        },
-      );
+      let url = `${API_BASE_URL}${API_ENDPOINTS.AUCTION.LISTINGS}?_seller=true&_bids=true`;
+      if (activeToggle?.checked) {
+        url += "&_active=true";
+      }
+
+      const response = await fetch(url, {
+        method: "GET",
+        headers: API_Headers_content(),
+      });
 
       if (response.ok) {
         const listingData = await response.json();
@@ -115,7 +120,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         );
 
         currentFilteredListings = [...allListings];
-
         currentPage = 1;
         renderPage();
       } else {
@@ -213,6 +217,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   (window as any).changePage = function (page: number) {
     currentPage = page;
     renderPage();
+  };
+
+  (window as any).sortListings = function (order: string) {
+    const label = document.getElementById("sort-label");
+
+    if (order === "newest") {
+      allListings.sort(
+        (a, b) => new Date(b.created).getTime() - new Date(a.created).getTime(),
+      );
+      if (label) label.textContent = "Newest to oldest";
+    } else {
+      allListings.sort(
+        (a, b) => new Date(a.created).getTime() - new Date(b.created).getTime(),
+      );
+      if (label) label.textContent = "Oldest to newest";
+    }
+
+    currentFilteredListings = [...allListings];
+    currentPage = 1;
+    renderPage();
+
+    const details = document.querySelector("details");
+    if (details) details.open = false;
   };
 });
 
