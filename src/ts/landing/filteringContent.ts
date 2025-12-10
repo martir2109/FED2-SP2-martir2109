@@ -55,7 +55,7 @@ export function createFilteringContent(): string {
             <p class="break-all">Show active listings only</p>
           </div>
         </div>
-        <div class="z-9999 relative w-[90%] max-w-[200px]">
+        <div class="z-10 relative w-[90%] max-w-[200px]">
           <details>
             <summary
               class="flex items-center justify-between cursor-pointer bg-gray-300 h-[50px] px-2 rounded-lg select-none relative z-10"
