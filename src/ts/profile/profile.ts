@@ -28,8 +28,8 @@ import {
 } from "./profileContent.ts";
 
 import { editProfileToggle } from "./editProfileToggle.ts";
-
 import { showErrorMessage, showSuccessMessage } from "../message.ts";
+import { characterCounter } from "../countCharacters.ts";
 
 document.addEventListener("DOMContentLoaded", async function () {
   const { accessToken, apiKey } = getAuthenticationCredentials();
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         ) as HTMLInputElement;
         const bioInput = document.getElementById(
           "bio-input",
-        ) as HTMLInputElement;
+        ) as HTMLTextAreaElement;
 
         if (bannerInput && userProfile.banner)
           bannerInput.value = userProfile.banner.url || "";
@@ -423,6 +423,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   await loadProfile();
+  characterCounter();
   retrieveUserCredits();
   editProfileToggle();
   const editProfileBtn = document.getElementById("edit-profile-btn");
