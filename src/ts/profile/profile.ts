@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       clearError("avatar-alt-input");
     }
 
-    if (bio.length > 100) {
+    if (bio.length > 160) {
       showError("bio-input", "Bio can max be 100 characters or less.");
       hasError = true;
     } else {

@@ -12,7 +12,7 @@ export function createProfileLoggedIn(): string {
       id="name-container">
       <p id="name" alt="Name" class="break-all font-bold text-h3 sm:text-h1">Name</p>
       </div>
-        <div class="w-[90%] md:w-full h-fit flex justify-end">
+        <div class="w-[90%] md:w-full h-fit flex justify-end -mt-2">
           <div
             class="bg-black py-2 px-4 flex gap-2 justify-center items-center rounded-[50px] text-white h-fit -mt-6"
           >
@@ -54,7 +54,7 @@ export function createProfileLoggedIn(): string {
 
         <div
           id="bio-container"
-          class="bio-container w-[90%] max-w-[386px] h-[63px] bg-gray-300 text-black text-p rounded-sm flex justify-center items-center p-4"
+          class="bio-container w-[90%] max-w-[400px] min-h-[63px] bg-gray-300 text-black text-p rounded-sm flex justify-center items-center p-4"
         >
           <p id="bio" class="bio"></p>
         </div>
@@ -141,14 +141,19 @@ export function createProfileLoggedIn(): string {
 
             <div class="inputfield-container">
               <label for="bio" class="form-label">Bio </label>
-              <input
+              <textarea
                 id="bio-input"
-                class="inputfield h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                class="inputfield h-[100px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Bio"
-                maxlength="100"
-              />
+                maxlength="160"
+              >
+                </textarea>
+                <div class="flex w-full h-fit justify-end text-grey">
+                <p id="character-count">0</p>
+                <p>/160</p>
+                </div>
               <span id="bio-input-info" class="text-grey text-underInput"
-                >(Bio can max be 100 characters.)</span
+                >(Maximum be 160 characters.)</span
               >
               <span
                 id="bio-input-error"
@@ -237,14 +242,14 @@ export function createProfileLoggedIn(): string {
  */
 export function createProfileLoggedOut(): string {
   return `<section
-        class="w-full max-w-[1144px] h-fit bg-background flex flex-col items-center pt-4 pb-8 gap-8"
+        class="w-full max-w-[1144px] h-fit bg-background flex flex-col items-center pt-4 pb-8 gap-4"
       >
        <div 
       class="name-container w-full text-center h-fit px-2" 
       id="name-container">
       <p id="name" alt="Name" class="break-all font-bold text-h3 sm:text-h1">Name</p>
       </div>
-        <div class="profile-header relative w-full h-fit flex justify-center">
+        <div class="profile-header relative w-full h-fit flex justify-center mt-4">
           <div
             class="banner-container w-[90%] md:w-full h-auto bg-gray-300 animate-pulse"
             id="banner-container"
@@ -277,7 +282,7 @@ export function createProfileLoggedOut(): string {
 
         <div
           id="bio-container"
-          class="bio-container w-[90%]  max-w-[386px] h-[63px] bg-gray-300 text-black text-p rounded-sm flex justify-center items-center p-4"
+          class="bio-container w-[90%] -mt-2 max-w-[400px] min-h-[63px] bg-gray-300 text-black text-p rounded-sm flex justify-center items-center p-4"
         >
           <p id="bio" class="bio"></p>
         </div>
@@ -289,7 +294,7 @@ export function createProfileLoggedOut(): string {
         
         </div>
       </section>
-      <div class="w-[90%] md:w-full min-h-screen max-w-[1144px]">
+      <div class="w-[90%] md:w-full min-h-screen max-w-[1144px] -mt-2">
         <div class="w-full h-fit flex flex-col sm:flex-row justify-start gap-2">
           <button
             class="tab-button active cursor-pointer text-btn"
