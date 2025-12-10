@@ -40,7 +40,7 @@ export function createLoggedInContent(): string {
              <div id="listing-bid-history" class="bg-white rounded-md p-4 flex max-w-[600px] w-[90%] vl:max-w-[1144px] h-fit"></div>
             
           <section class="w-[90%] h-fit flex flex-col items-center">
-             <div id="bid-on-listing" class="rounded-md gap-4 flex flex-col bg-white p-4 w-full max-w-[434px] h-fit">
+             <div id="bid-on-listing" class="rounded-md gap-4 flex flex-col bg-white p-4 w-full max-w-[350px] h-fit">
             <h3 class="font-bold text-h3">Place a bid</h3>
 
             <label>Bid amount</label>
