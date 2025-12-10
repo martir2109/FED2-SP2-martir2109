@@ -14,7 +14,7 @@ export function createProfileLoggedIn(): string {
       </div>
         <div class="w-[90%] md:w-full h-fit flex justify-end">
           <div
-            class="bg-black py-2 px-4 flex gap-2 justify-center items-center rounded-[50px] text-white h-fit"
+            class="bg-black py-2 px-4 flex gap-2 justify-center items-center rounded-[50px] text-white h-fit -mt-6"
           >
             <p id="credits">0</p>
             <p>Credits</p>
