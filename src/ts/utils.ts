@@ -175,12 +175,17 @@ export function createListingCard(listing: Listing): string {
     >
       ${
         listing.media && listing.media.length > 0
-          ? `<div class="w-full relative aspect-square rounded-t-[10px] bg-background flex items-center justify-center animate-pulse">
+          ? `<div class="w-full relative aspect-square rounded-t-[10px] bg-background flex items-center justify-center">
+            <div class="w-full h-full absolute aspect-square rounded-t-[10px] flex items-center justify-center bg-background">
+            <div class="w-full h-full rounded-t-[10px] animate-pulse bg-radial-[at_100%_100%] from-gray-400 via-gray-300 to-gray-400"> </div>
+            </div>
+
               <img
                 src="${listing.media[0].url}"
                 alt="Listing media"
                 class="w-full h-full aspect-square object-cover rounded-t-[10px]"
-                onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200')"
+                onload="this.previousElementSibling.remove();"
+
               />
                <div class="absolute bottom-2 right-2 flex flex-col xs:flex-row gap-2 justify-end">
      ${listing.tags
@@ -195,11 +200,14 @@ export function createListingCard(listing: Listing): string {
        .join("")}
     </div>
             </div>`
-          : `<div class="w-full relative aspect-square bg-gray-300 rounded-t-[10px] flex items-center justify-center animate-pulse">
+          : `<div class="w-full relative aspect-square bg-gray-300 rounded-t-[10px] flex items-center justify-center">
+           <div class="w-full h-full absolute aspect-square rounded-t-[10px] flex items-center justify-center bg-background">
+            <div class="w-full h-full rounded-t-[10px] animate-pulse bg-radial-[at_100%_100%] from-gray-400 via-gray-300 to-gray-400"> </div>
+            </div>
               <img
                 src="/assets/images/default-image.jpg"
                 class="w-full h-full aspect-square object-cover border border-grey rounded-t-[10px]"
-                onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200')"/>
+                onload="this.previousElementSibling.remove();"
               <div class="absolute bottom-2 right-2 flex flex-col xs:flex-row gap-2 justify-end">
      ${listing.tags
        ?.slice(0, 2)
