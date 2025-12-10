@@ -59,7 +59,7 @@ export function displayListing(data: any[]): void {
               : `${listing.seller.name}`
             : "Unknown seller"
         }</p>
-        <div class="flex flex-col xs:flex-row gap-2 justify-start">
+        <div class="w-full h-fit gap-2 flex flex-wrap justify-start">
      ${listing.tags
        .map(
          (tag) => `
