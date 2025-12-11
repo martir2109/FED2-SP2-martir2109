@@ -1,4 +1,3 @@
-/** Utility functions for error handling and authentication */
 import {
   showError,
   clearError,
@@ -7,14 +6,15 @@ import {
   getUserName,
 } from "../utils.ts";
 
-/** API configuration (base URL, endpoints, and header builders) */
 import {
   API_BASE_URL,
   API_ENDPOINTS,
   API_Headers_accesstoken_apikey,
   API_Headers_accesstoken_content_apikey,
 } from "../apiConfig.ts";
+
 import { showErrorMessage, showSuccessMessage } from "../message.ts";
+import { addImageContent, addExistingImage } from "./components.ts";
 
 /**
  * Sets up the Edit listing page once the DOM is fully loaded.
@@ -78,10 +78,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       listing.description;
     (document.getElementById("tags") as HTMLInputElement).value =
       listing.tags?.join(", ") || "";
+
+    const mainMedia = listing.media?.[0];
+    const extraMedia = listing.media?.slice(1) || [];
+
     (document.getElementById("media") as HTMLInputElement).value =
-      listing.media[0].url || "";
+      mainMedia?.url || "";
     (document.getElementById("alt") as HTMLInputElement).value =
-      listing.media[0].alt || "";
+      mainMedia?.alt || "";
+
+    extraMedia.forEach((mediaItem, index) => {
+      addExistingImage(mediaItem, index + 2);
+    });
+    addImageContent(1, 3);
   } catch (error) {
     showErrorMessage(`Failed to load the listing for editing: ${error}`, 2000);
     setTimeout(() => {
@@ -101,28 +110,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   editForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const updateListing = {
-      title: (document.getElementById("title") as HTMLInputElement).value,
-      description: (
-        document.getElementById("description") as HTMLTextAreaElement
-      ).value,
-      tags: (document.getElementById("tags") as HTMLInputElement).value
-        .split(",")
-        .map((tag) => tag.trim())
-        .filter((tag) => tag.length > 0),
-      media: [
-        {
-          url: (document.getElementById("media") as HTMLInputElement).value,
-          alt: (document.getElementById("alt") as HTMLInputElement).value,
-        },
-      ],
-    };
+    const title = (document.getElementById("title") as HTMLInputElement).value;
+    const description = (
+      document.getElementById("description") as HTMLTextAreaElement
+    ).value;
+    const tags = (document.getElementById("tags") as HTMLInputElement).value;
+    const urls: string[] = [
+      (document.getElementById("media") as HTMLInputElement).value.trim(),
+    ];
+    const alts: string[] = [
+      (document.getElementById("alt") as HTMLInputElement).value.trim(),
+    ];
 
-    const title = updateListing.title;
-    const description = updateListing.description;
-    const tags = updateListing.tags;
-    const media = updateListing.media;
-    const alt = updateListing.media[0].alt || "";
+    urls.push(
+      ...Array.from(document.querySelectorAll(".extra-media")).map((input) =>
+        (input as HTMLInputElement).value.trim(),
+      ),
+    );
+    alts.push(
+      ...Array.from(document.querySelectorAll(".extra-alt")).map((input) =>
+        (input as HTMLInputElement).value.trim(),
+      ),
+    );
 
     /** Validate form fields and show errors */
     let hasError = false;
@@ -151,24 +160,46 @@ document.addEventListener("DOMContentLoaded", async () => {
       clearError("tags");
     }
 
-    if (!media[0].url.trim() || !media[0].url.trim().startsWith("http")) {
-      showError(
-        "media",
-        "Please enter a valid image url that starts with http or https.",
-      );
+    const validMediaUrls = urls.filter(
+      (url) => url.startsWith("http://") || url.startsWith("https://"),
+    );
+
+    if (validMediaUrls.length === 0) {
+      showError("media", "Please enter at least one valid image URL.");
+      hasError = true;
+    } else if (validMediaUrls.length > 3) {
+      showError("media", "You can only enter a maximum of 3 image URLs.");
+      hasError = true;
+    } else if (urls.some((url) => url && !url.startsWith("http"))) {
+      showError("media", "All image URLs must start with http or https.");
+      hasError = true;
+    } else if (alts.some((alt, i) => urls[i] && alt.trim() === "")) {
+      showError("alt", "Every image must have ALT text.");
       hasError = true;
     } else {
       clearError("media");
-    }
-
-    if (!alt.trim()) {
-      showError("alt", "Alt text cannot be empty.");
-      hasError = true;
-    } else {
       clearError("alt");
     }
 
     if (hasError) return;
+
+    const updateListing = {
+      title: (document.getElementById("title") as HTMLInputElement).value,
+      description: (
+        document.getElementById("description") as HTMLTextAreaElement
+      ).value,
+      tags: (document.getElementById("tags") as HTMLInputElement).value
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter((tag) => tag.length > 0),
+      media: urls
+        .map((url, index) => ({
+          url,
+          alt: alts[index] || "",
+        }))
+        .filter((item) => item.url.length > 0)
+        .slice(0, 3),
+    };
 
     try {
       const response = await fetch(
