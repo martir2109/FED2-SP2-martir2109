@@ -17,7 +17,7 @@ export function createFilteringContent(): string {
             id="search-title"
             placeholder="Search by title"
             aria-label="Search"
-            class="h-[50px] bg-white w-full p-2 border border-grey rounded-md"
+            class="h-[50px] w-full p-2 border border-grey rounded-md bg-gray-100 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />
         </div>
 
@@ -27,7 +27,7 @@ export function createFilteringContent(): string {
             id="filter-tags"
             placeholder="Enter tags (comma separated)"
             aria-label="Search"
-            class="h-[50px] bg-white w-full p-2 border border-grey rounded-md"
+            class="h-[50px] w-full p-2 border border-grey rounded-md bg-gray-100 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />
         </div>
       </div>
@@ -58,7 +58,7 @@ export function createFilteringContent(): string {
         <div class="z-10 relative w-[90%] max-w-[200px]">
           <details>
             <summary
-              class="flex items-center justify-between cursor-pointer bg-gray-300 h-[50px] px-2 rounded-lg select-none relative z-10"
+              class="flex items-center justify-between cursor-pointer bg-gray-200 border border-gray-300 h-[50px] px-2 rounded-lg select-none relative z-10"
             >
               <span id="sort-label">Newest to oldest</span>
 

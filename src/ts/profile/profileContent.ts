@@ -83,7 +83,7 @@ export function createProfileLoggedIn(): string {
               <label for="banner" class="form-label">Banner URL </label>
               <input
                 id="banner-input"
-                class="inputfield h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                class="inputfield h-[50px] w-full rounded-md border border-gray-300 p-2 bg-gray-100 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Banner URL"
               />
               <span id="banner-input-info" class="text-grey text-underInput"
@@ -98,7 +98,7 @@ export function createProfileLoggedIn(): string {
               <label for="banner" class="form-label">Banner ALT text</label>
               <input
                 id="banner-alt-input"
-                class="inputfield h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                class="inputfield h-[50px] w-full rounded-md border border-gray-300 p-2 bg-gray-100 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Banner ALT"
               />
                <span id="banner-alt-input-info" class="text-grey text-underInput"
@@ -112,7 +112,7 @@ export function createProfileLoggedIn(): string {
               <label for="avatar" class="form-label">Avatar URL </label>
               <input
                 id="avatar-input"
-                class="inputfield h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                class="inputfield h-[50px] w-full rounded-md border border-gray-300 p-2 bg-gray-100 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Avatar URL"
               />
               <span id="avatar-input-info" class="text-grey text-underInput"
@@ -127,7 +127,7 @@ export function createProfileLoggedIn(): string {
               <label for="avatar" class="form-label">Avatar ALT text </label>
               <input
                 id="avatar-alt-input"
-                class="inputfield h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                class="inputfield h-[50px] w-full rounded-md border border-gray-300 p-2 bg-gray-100 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Avatar ALT"
               />
                <span id="avatar-alt-input-info" class="text-grey text-underInput"
@@ -143,7 +143,7 @@ export function createProfileLoggedIn(): string {
               <label for="bio" class="form-label">Bio </label>
               <textarea
                 id="bio-input"
-                class="inputfield h-[100px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                class="inputfield h-[100px] w-full rounded-md border border-gray-300 p-2 bg-gray-100 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 placeholder="Bio"
                 maxlength="160"
               >
