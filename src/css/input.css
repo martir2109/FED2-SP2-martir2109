@@ -29,6 +29,10 @@
   --font-sans: Arial, Helvetica, sans-serif;
 }
 
+body {
+  scroll-behavior: smooth;
+}
+
 .hidden {
   display: none;
 }
