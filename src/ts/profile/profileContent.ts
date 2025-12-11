@@ -148,13 +148,16 @@ export function createProfileLoggedIn(): string {
                 maxlength="160"
               >
                 </textarea>
-                <div class="flex w-full h-fit justify-end text-grey">
+                <div class="w-full flex xs:flex-row flex-col justify-between">
+               
+              <span id="bio-input-info" class="text-underInput text-grey w-full"
+                >(Maximum be 160 characters.)</span
+              >
+                 <div class="flex w-fit h-fit justify-end text-grey">
                 <p id="character-count">0</p>
                 <p>/160</p>
                 </div>
-              <span id="bio-input-info" class="text-grey text-underInput"
-                >(Maximum be 160 characters.)</span
-              >
+                </div>
               <span
                 id="bio-input-error"
                 class="text-danger text-p italic"
@@ -162,7 +165,7 @@ export function createProfileLoggedIn(): string {
             </div>
 
             <div
-              class="flex sm:flex-row flex-col-reverse w-full h-fit gap-3 sm:gap-2 items-center sm:justify-between"
+              class="flex sm:flex-row flex-col-reverse mt-4 w-full h-fit gap-3 sm:gap-2 items-center sm:justify-between"
             >
               <button
                 type="button"
