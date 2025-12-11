@@ -30,26 +30,39 @@ export function displayListing(data: any[]): void {
     }
   }
 
+  const mediaItems = listing.media || [];
+  const mainImageUrl = mediaItems[0]?.url || "/assets/images/default-image.jpg";
+  const mainImageAlt = mediaItems[0]?.alt || "Listing image";
+
   viewListing.innerHTML = `
-    <div class="w-full h-fit flex justify-center">
-      ${
-        listing.media && listing.media.length > 0
-          ? `<div class="w-full aspect-square bg-gray-300 rounded-[10px] flex items-center justify-center animate-pulse">
+  <div class="w-full flex flex-col justify-between p-2  rounded-[10px]">
+    <div class="w-full max-w-[550px] h-auto aspect-square bg-gray-300 rounded-[10px] flex items-center justify-center animate-pulse">
+      <img 
+        id="main-image"
+        src="${mainImageUrl}" 
+        alt="${mainImageAlt}" 
+        class="w-full h-full object-cover rounded-[10px] border-2 border-gray-300"
+        onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-300')">
+    </div>
+
+    <div class="w-full max-w-[550px] flex gap-2 flex-wrap justify-start mt-2">
+      ${mediaItems
+        .map(
+          (mediaItem: any, index: number) => `
+        <div class="w-24 h-24 bg-gray-200 rounded-lg overflow-hidden cursor-pointer border border-gray-400">
           <img 
-            src="${listing.media[0].url}" 
-            alt="Listing media" 
-            class="w-full max-w-[550px] h-auto aspect-square object-cover rounded-[10px]" 
-            onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-300')">
-             </div>`
-          : `<div class="w-full aspect-square bg-gray-400 rounded-[10px] flex items-center justify-center animate-pulse">
-          <img 
-            src="/assets/images/default-image.jpg" 
-            class="w-full max-w-[550px] h-full aspect-square object-cover border border-grey rounded-[10px]" 
-            onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-300')">
-    </div>`
-      }
+            src="${mediaItem.url}" 
+            alt="${mediaItem.alt}" 
+            class="w-full h-full object-cover"
+            data-index="${index}">
+        </div>
+      `,
+        )
+        .join("")}
       </div>
-      <div class="w-full max-w-[550px] p-2 flex flex-col gap-10 md:gap-2  justify-between mt-6">
+        </div>
+      
+  <div class="w-full max-w-[550px] p-2 flex flex-col gap-10 md:gap-2 justify-between ">
       <div class="w-full h-fit flex flex-col gap-4">  
       <h3 class="text-h2 font-bold">${listing.title || "No title"}</h3>
         <p class="text-p break-all"><strong>Seller: </strong>  ${
@@ -82,6 +95,20 @@ export function displayListing(data: any[]): void {
         </div>
       </div>
     `;
+
+  const mainImageElement = document.getElementById(
+    "main-image",
+  ) as HTMLImageElement;
+
+  const thumbnailImageElements =
+    viewListing.querySelectorAll<HTMLImageElement>(".flex-wrap img");
+
+  thumbnailImageElements.forEach((thumbnailElement) => {
+    thumbnailElement.addEventListener("click", () => {
+      mainImageElement.src = thumbnailElement.src;
+      mainImageElement.alt = thumbnailElement.alt;
+    });
+  });
 
   const editButton = document.getElementById(
     "edit-listing",
