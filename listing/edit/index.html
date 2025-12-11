@@ -59,7 +59,9 @@
         </div>
 
         <div class="field">
-          <label for="tags" class="form-label">Tags</label>
+          <label for="tags" class="form-label"
+            >Tags (Seperate with comma)</label
+          >
           <input
             type="text"
             placeholder="e.g books, electronics..."
@@ -68,42 +70,50 @@
             class="h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             aria-required="true"
           />
-          <span id="tags-info" class="text-grey text-underInput"
-            >(Seperate the tags with comma)</span
-          >
           <span id="tags-error" class="text-danger text-p italic"></span>
         </div>
 
         <div class="field">
-          <label for="media" class="form-label">Image url</label>
+          <label for="media" class="form-label"
+            >Image URL (one per line, max 3 image urls)</label
+          >
           <input
             type="url"
-            placeholder="Image url"
+            placeholder="The image url must be publicly accessible"
             name="imageUrl"
             id="media"
             class="h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             aria-required="true"
           />
           <span id="media-info" class="text-grey text-underInput"
-            >(Preferred image proportions: square format)</span
-          >
+            >(Preferred image proportions: square format)
+          </span>
           <span id="media-error" class="text-danger text-p italic"></span>
         </div>
 
         <div class="field">
-          <label for="alt" class="form-label">Image ALT text</label>
+          <label for="alt" class="form-label"
+            >Image ALT text (One per line, max three lines)</label
+          >
           <input
             type="text"
-            placeholder="Image ALT text"
+            placeholder="Describe your listing image, e.g. 'Yellow water bottle'"
             name="imageAlt"
             id="alt"
             class="h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             aria-required="true"
           />
-          <span id="alt-info" class="text-grey text-underInput"
-            >(Describe your listing image, e.g. "Yellow water bottle")</span
-          >
           <span id="alt-error" class="text-danger text-p italic"></span>
+        </div>
+        <div id="extra-images" class="flex flex-col gap-4"></div>
+        <div class="w-full h-[50px]">
+          <button
+            type="button"
+            id="add-image-btn"
+            class="py-2 px-4 -mt-4 rounded-full cursor-pointer h-full flex justify-center items-center border border-green bg-green text-white hover:bg-white hover:text-black hover:border-black"
+          >
+            + Add image
+          </button>
         </div>
 
         <div
