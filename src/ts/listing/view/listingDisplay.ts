@@ -21,9 +21,14 @@ export function displayListing(data: any[]): void {
 
   if (!viewListing || !data.length) return;
   const listing = data[0];
+  const listingEndTime = new Date(listing.endsAt);
+  const currentTime = new Date();
 
   if (bidSection) {
-    if (!listing.seller || listing.seller.name === currentUserName) {
+    const isSeller = listing.seller?.name === currentUserName;
+    const hasEnded = currentTime >= listingEndTime;
+
+    if (isSeller || hasEnded) {
       bidSection.style.display = "none";
     } else {
       bidSection.style.display = "flex";
@@ -86,10 +91,14 @@ export function displayListing(data: any[]): void {
         </div>
         <div class="flex flex-col gap-2">
           <p class="wrap-break-word w-full h-fit text-p font-bold">Description: </p>
-          <p class="bg-background p-2 rounded-md h-fit w-full">${listing.description || "No description."}</p>
+          <p class="bg-gray-100 border border-gray-300 p-2 rounded-md h-fit w-full">${listing.description || "No description."}</p>
         </div>
         <div class="flex flex-col gap-2">
-          <p><strong>Ends at:</strong> ${formatDateTime(listing.endsAt)}</p>
+        ${
+          currentTime >= listingEndTime
+            ? `<p class="bg-red-200 border border-red-400 text-red-950 py-2 rounded-full text-center font-bold w-full">Listing has ended!</p>`
+            : `<p><strong>Ends at:</strong> ${formatDateTime(listing.endsAt)}</p>`
+        }
           <p class="text-gray-500"><strong>Created:</strong> ${formatDateTime(listing.created)}</p>
           <p class="text-gray-500"><strong>Updated:</strong> ${formatDateTime(listing.updated)}</p>
         </div>
