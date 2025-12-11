@@ -209,7 +209,7 @@ export function createListingCard(listing: Listing): string {
         <p class="text-gray-500 text-p">
           <strong>Created:</strong> ${formatDateTime(listing.created)}
         </p>
-        <p class="wrap-break-word w-full h-fit sm:h-[60px] text-p bg-gray-200 p-2 rounded-md">
+        <p class="wrap-break-word w-full h-fit sm:h-[60px] text-p bg-gray-100 border border-gray-300 p-2 rounded-md">
           ${listing.description ? listing.description.substring(0, 50) + "..." : ""}
         </p>
         <p><strong>Bids:</strong> ${listing._count?.bids ?? 0}</p>
@@ -223,8 +223,8 @@ export function createListingCard(listing: Listing): string {
         <div class="flex flex-col xs:flex-row justify-center items-center gap-2">
           ${
             currentTime >= listingEndTime
-              ? `<p class="bg-red-200 text-red-950 py-2 rounded-full text-center font-bold w-full">Listing has ended!</p>`
-              : `<p class="bg-gray-200 py-2 rounded-full text-center w-full"><strong>Ends at:</strong> ${formatDateTime(listing.endsAt)}</p>`
+              ? `<p class="bg-red-200 border border-red-400 text-red-950 py-2 rounded-full text-center font-bold w-full">Listing has ended!</p>`
+              : `<p class="bg-gray-100 border border-gray-300 py-2 rounded-full text-center w-full"><strong>Ends at:</strong> ${formatDateTime(listing.endsAt)}</p>`
           }
         </div>
         <div class="bg-primary text-white flex justify-center h-[53px] items-center rounded-full text-h3 xs:text-h2 hover:bg-white hover:text-primary border border-bg-primary text-center cursor-pointer">
