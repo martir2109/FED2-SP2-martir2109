@@ -156,7 +156,7 @@ export interface Listing {
   description?: string;
   endsAt: string;
   created: string;
-  media?: { url: string }[];
+  media: { url: string; alt?: string }[];
   seller?: { name?: string };
   bids?: { amount: number | string }[];
   _count?: { bids: number };
@@ -168,60 +168,37 @@ export function createListingCard(listing: Listing): string {
   const listingEndTime = new Date(listing.endsAt);
   const currentTime = new Date();
 
+  const imageUrl =
+    listing.media?.[0]?.url || "/assets/images/default-image.jpg";
+  const altText = listing.media?.[0]?.alt || listing.title || "Listing image";
+
   return `
-    
-      <a href="/listing/view/index.html?id=${listing.id}"
-      class="bg-white w-max-[200px] w-full min-h-[500px] h-fit rounded-xl border border-gray-300 flex flex-col gap-4 hover:shadow-xl/30 hover:-translate-y-2 transition transform duration-300 ease"
-    >
-      ${
-        listing.media && listing.media.length > 0
-          ? `<div class="w-full relative aspect-square rounded-t-[10px] bg-background flex items-center justify-center">
-            <div class="w-full h-full absolute aspect-square rounded-t-[10px] flex items-center justify-center bg-background">
-            <div class="w-full h-full rounded-t-[10px] animate-pulse bg-radial-[at_100%_100%] from-gray-400 via-gray-300 to-gray-400"> </div>
-            </div>
+    <a href="/listing/view/index.html?id=${listing.id}"
+       class="bg-white w-max-[200px] w-full min-h-[500px] h-fit rounded-xl border border-gray-300 flex flex-col gap-4 hover:shadow-xl/30 hover:-translate-y-2 transition transform duration-300 ease">
 
-              <img
-                src="${listing.media[0].url}"
-                alt="Listing media"
-                class="w-full h-full aspect-square object-cover rounded-t-[10px]"
-                onload="this.previousElementSibling.remove();"
+      <div class="w-full relative aspect-square rounded-t-[10px] bg-background flex items-center justify-center">
+        <div class="w-full h-full absolute aspect-square rounded-t-[10px] flex items-center justify-center bg-background">
+          <div class="w-full h-full rounded-t-[10px] animate-pulse bg-radial-[at_100%_100%] from-gray-400 via-gray-300 to-gray-400"></div>
+        </div>
+        <img
+          src="${imageUrl}"
+          alt="${altText}"
+          class="w-full h-full aspect-square object-cover rounded-t-[10px]"
+          onload="this.previousElementSibling.remove();"
+        />
+        <div class="absolute bottom-2 right-2 flex flex-col xs:flex-row gap-2 justify-end">
+          ${listing.tags
+            ?.slice(0, 2)
+            .map(
+              (tag) => `
+            <p class="wrap-break-word text-p bg-gray-200 px-2 rounded-full w-fit h-fit border border-gray-500">
+              ${tag}
+            </p>`,
+            )
+            .join("")}
+        </div>
+      </div>
 
-              />
-               <div class="absolute bottom-2 right-2 flex flex-col xs:flex-row gap-2 justify-end">
-     ${listing.tags
-       ?.slice(0, 2)
-       .map(
-         (tag) => `
-        <p class="wrap-break-word text-p bg-gray-200 px-2 rounded-full w-fit h-fit border border-gray-500">
-      ${tag}
-       </p>
-      `,
-       )
-       .join("")}
-    </div>
-            </div>`
-          : `<div class="w-full relative aspect-square bg-gray-300 rounded-t-[10px] flex items-center justify-center">
-           <div class="w-full h-full absolute aspect-square rounded-t-[10px] flex items-center justify-center bg-background">
-            <div class="w-full h-full rounded-t-[10px] animate-pulse bg-radial-[at_100%_100%] from-gray-400 via-gray-300 to-gray-400"> </div>
-            </div>
-              <img
-                src="/assets/images/default-image.jpg"
-                class="w-full h-full aspect-square object-cover border border-grey rounded-t-[10px]"
-                onload="this.previousElementSibling.remove();"
-              <div class="absolute bottom-2 right-2 flex flex-col xs:flex-row gap-2 justify-end">
-     ${listing.tags
-       ?.slice(0, 2)
-       .map(
-         (tag) => `
-        <p class="wrap-break-word text-p bg-gray-200 px-2 rounded-full w-fit h-fit border border-gray-500">
-      ${tag}
-       </p>
-      `,
-       )
-       .join("")}
-    </div>
-          </div>`
-      }
       <div class="p-2 xs:p-4 flex flex-col gap-4">
         <h3 class="text-h3 font-bold break-all">
           ${listing.title ? listing.title.substring(0, 15) + "..." : "No title"}
@@ -229,9 +206,9 @@ export function createListingCard(listing: Listing): string {
         <p class="text-p break-all">
           <strong>Seller: </strong> ${listing.seller?.name || "Unknown seller"}
         </p>
-         <p class="text-gray-500 text-p">
-        <strong>Created:</strong> ${formatDateTime(listing.created)}
-      </p>
+        <p class="text-gray-500 text-p">
+          <strong>Created:</strong> ${formatDateTime(listing.created)}
+        </p>
         <p class="wrap-break-word w-full h-fit sm:h-[60px] text-p bg-gray-200 p-2 rounded-md">
           ${listing.description ? listing.description.substring(0, 50) + "..." : ""}
         </p>
@@ -239,23 +216,18 @@ export function createListingCard(listing: Listing): string {
         <p>
           <strong>Highest bid:</strong> ${
             listing.bids && listing.bids.length > 0
-              ? Math.max(...listing.bids.map((bid: any) => Number(bid.amount)))
+              ? Math.max(...listing.bids.map((bid) => Number(bid.amount)))
               : 0
-          }
-          credits
+          } credits
         </p>
-      <div class="flex flex-col xs:flex-row justify-center items-center gap-2">
-  ${
-    currentTime >= listingEndTime
-      ? `<p class="bg-red-200 text-red-950 py-2 rounded-full text-center font-bold w-full">Listing has ended!</p>`
-      : `<p class="bg-gray-200 py-2 rounded-full text-center w-full"><strong>Ends at:</strong> ${formatDateTime(listing.endsAt)}</p>`
-  }
-</div>
-
-
-        <div
-          class="bg-primary text-white flex justify-center h-[53px] items-center rounded-full text-h3 xs:text-h2 hover:bg-white hover:text-primary border border-bg-primary text-center cursor-pointer"
-        >
+        <div class="flex flex-col xs:flex-row justify-center items-center gap-2">
+          ${
+            currentTime >= listingEndTime
+              ? `<p class="bg-red-200 text-red-950 py-2 rounded-full text-center font-bold w-full">Listing has ended!</p>`
+              : `<p class="bg-gray-200 py-2 rounded-full text-center w-full"><strong>Ends at:</strong> ${formatDateTime(listing.endsAt)}</p>`
+          }
+        </div>
+        <div class="bg-primary text-white flex justify-center h-[53px] items-center rounded-full text-h3 xs:text-h2 hover:bg-white hover:text-primary border border-bg-primary text-center cursor-pointer">
           View listing
         </div>
       </div>
