@@ -39,13 +39,13 @@ export function createLoggedInContent(): string {
             <div id="view-listing" class="max-w-[600px] w-[90%] vl:max-w-[1144px] h-fit flex flex-col vl:flex-row p-4 justify-between gap-2 vl:gap-4 bg-white rounded-md"></div>
              <div id="listing-bid-history" class="bg-white rounded-md p-4 flex max-w-[600px] w-[90%] vl:max-w-[1144px] h-fit"></div>
             
-          <section class="w-[90%] h-fit flex flex-col items-center">
+          <section class="bid-on-listing-container w-[90%] h-fit flex flex-col items-center">
              <div id="bid-on-listing" class="rounded-md gap-4 flex flex-col bg-white p-4 w-full max-w-[350px] h-fit">
             <h3 class="font-bold text-h3">Place a bid</h3>
 
             <label>Bid amount</label>
             <div class="flex w-full h-fit justify-between items-center gap-2">
-            <input id="place-bid-input" placeholder="0" class="h-[50px] w-full rounded-md border border-gray-300 bg-white p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input id="place-bid-input" placeholder="0" class="h-[50px] w-full rounded-md border border-gray-300 p-2 bg-gray-100 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
             <p class="font-bold text-p">Credits</p>
             </div>
              <div id="message-container" class="w-full h-fit"></div>
