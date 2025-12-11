@@ -191,7 +191,7 @@ export function createListingCard(listing: Listing): string {
             ?.slice(0, 2)
             .map(
               (tag) => `
-            <p class="wrap-break-word text-p bg-gray-200 px-2 rounded-full w-fit h-fit border border-gray-500">
+            <p class="wrap-break-word text-p bg-gray-100 px-3 rounded-full w-fit h-fit border border-gray-400 inset-shadow-sm">
               ${tag}
             </p>`,
             )

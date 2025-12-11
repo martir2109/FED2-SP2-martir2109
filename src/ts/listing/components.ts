@@ -95,7 +95,7 @@ export function addExistingImage(
     
           <input
             type="url"
-            class="extra-media h-[50px] w-full rounded-md border border-gray-30 p-2 bg-gray-100 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            class="extra-media h-[50px] w-full rounded-md border border-gray-300 p-2 bg-gray-100 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
             value="${mediaItem.url}"
             placeholder="Additional image URL"
           />
