@@ -55,6 +55,8 @@ Before I started creating the actual web application, I designed a high-fidelity
 └── vite.config.ts
 ```
 
+# Getting started
+
 ## Install dependencies
 
 ```bash
