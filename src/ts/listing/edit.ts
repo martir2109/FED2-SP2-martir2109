@@ -13,7 +13,11 @@ import {
   API_Headers_accesstoken_content_apikey,
 } from "../apiConfig.ts";
 
-import { showErrorMessage, showSuccessMessage } from "../message.ts";
+import {
+  showErrorMessage,
+  showSuccessMessage,
+  showConfirmMessage,
+} from "../message.ts";
 import { addImageContent, addExistingImage } from "./components.ts";
 
 /**
@@ -232,10 +236,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   deleteBtn.addEventListener("click", async function () {
-    const confirmed = confirm("Are you sure you want to delete this listing?");
+    const confirmed = await showConfirmMessage(
+      "Are you sure you want to delete this listing?",
+    );
 
     if (!confirmed) {
       showSuccessMessage(`Listing not deleted!`, 2000);
+      return;
     }
 
     try {
