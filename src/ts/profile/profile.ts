@@ -1,10 +1,4 @@
-import {
-  loadUserProfileData,
-  loadUserListingsData,
-  getUserProfileElements,
-} from "./profileUtils.ts";
-
-import { displayBidOnListings } from "./displayBidHistory.ts";
+import { loadUserProfileData, getUserProfileElements } from "./profileUtils.ts";
 
 import {
   getAuthenticationCredentials,
@@ -13,7 +7,6 @@ import {
   clearError,
   attachInputListeners,
   retrieveUserCredits,
-  displayListings,
 } from "../utils.ts";
 
 import {
@@ -30,14 +23,35 @@ import {
 import { editProfileToggle } from "./editProfileToggle.ts";
 import { showErrorMessage, showSuccessMessage } from "../message.ts";
 import { characterCounter } from "../countCharacters.ts";
+import { loadWins } from "./loadWins.ts";
+import { loadBidOnListings } from "./loadBidsOnListings.ts";
+import { loadListings } from "./LoadListings.ts";
 
-document.addEventListener("DOMContentLoaded", async function () {
+export function profileConstants() {
   const { accessToken, apiKey } = getAuthenticationCredentials();
   const { userName } = getUserName();
-
   const urlParams = new URLSearchParams(window.location.search);
   const loggedInUserName = getUserName()?.userName;
   const profileUserName = urlParams.get("id") || loggedInUserName;
+  const isCurrentUserProfile = profileUserName === loggedInUserName;
+
+  return {
+    accessToken,
+    apiKey,
+    userName,
+    profileUserName,
+    isCurrentUserProfile,
+  };
+}
+
+document.addEventListener("DOMContentLoaded", async function () {
+  const {
+    accessToken,
+    apiKey,
+    userName,
+    profileUserName,
+    isCurrentUserProfile,
+  } = profileConstants();
 
   if (!profileUserName) {
     showErrorMessage(`No profile specified to load.`, 3000);
@@ -48,8 +62,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     return;
   }
 
-  const isCurrentUserProfile = profileUserName === loggedInUserName;
-
   const profileHTML = isCurrentUserProfile
     ? createProfileLoggedIn()
     : createProfileLoggedOut();
@@ -58,17 +70,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (!profileContainer) return;
   profileContainer.innerHTML = profileHTML;
 
-  const {
-    listingsContainer,
-    emailContainer,
-    nameContainer,
-    avatar,
-    bioContainer,
-    banner,
-  } = getUserProfileElements();
-
-  let allListings = [];
-  let displayedListings = [];
+  const { emailContainer, nameContainer, avatar, bioContainer, banner } =
+    getUserProfileElements();
 
   /**
    * Loads and displays the user profile data.
@@ -297,129 +300,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     return data.data;
-  }
-
-  /**
-   * Loads and displays all listigns for a user in the listing container.
-   *
-   * @async
-   * @returns {Promise<void>}
-   */
-  async function loadListings(): Promise<void> {
-    if (!listingsContainer) {
-      showErrorMessage(`Listing container not found on this page.`, 2000);
-      setTimeout(() => {
-        window.location.href = "/index.html";
-      }, 2000);
-      return;
-    }
-
-    try {
-      allListings = await loadUserListingsData(
-        accessToken,
-        apiKey,
-        profileUserName,
-      );
-
-      displayedListings = [...allListings];
-      displayListings(listingsContainer, displayedListings);
-    } catch (error) {
-      listingsContainer.innerHTML =
-        "<p class='text-gray-700'>Error loading listings. Please try again later.</p>";
-    }
-  }
-
-  /**
-   * Loads and displays the listings the current user has placed bids on.
-   *
-   * If the user is viewing another user's profile, a message is shown.
-   *
-   * @async
-   * @returns {Promise<void>}
-   */
-  async function loadBidOnListings(): Promise<void> {
-    const bidOnContainer = document.querySelector(
-      ".bid-on-container",
-    ) as HTMLDivElement | null;
-    if (!bidOnContainer) return;
-
-    if (!isCurrentUserProfile) {
-      bidOnContainer.innerHTML =
-        "<p class='text-gray-700 w-full h-fit flex justify-center items-center p-10'>Cannot view bids of another user.</p>";
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        `${API_BASE_URL}${API_ENDPOINTS.AUCTION.PROFILES}/${profileUserName}/bids?_listings=true&_seller=true&_bids=true`,
-
-        {
-          method: "GET",
-          headers: API_Headers_accesstoken_content_apikey(accessToken, apiKey),
-        },
-      );
-
-      if (!response.ok) throw new Error("Failed to fetch listings");
-
-      const result = await response.json();
-      const userBidListings = result.data
-        .map((bid: any) => {
-          if (!bid.listing) return null;
-          return {
-            ...bid.listing,
-            userBidAmount: bid.amount,
-          };
-        })
-        .filter(
-          (listing: any, index: number, self: any[]) =>
-            listing &&
-            self.findIndex((item) => item.id === listing.id) === index,
-        );
-
-      displayBidOnListings(bidOnContainer, userBidListings);
-    } catch (error) {
-      bidOnContainer.innerHTML =
-        "<p class='text-gray-700 w-full h-fit flex justify-center items-center p-10'>Could not load bid-on listings.</p>";
-    }
-  }
-
-  /**
-   * Loads and displays the listings the current user has won.
-   *
-   * If the user is viewing another user's profile, a message is shown.
-   *
-   * @async
-   * @returns {Promise<void>}
-   */
-  async function loadWins(): Promise<void> {
-    const winsContainer = document.querySelector(
-      ".wins-container",
-    ) as HTMLDivElement | null;
-    if (!winsContainer) return;
-
-    if (!isCurrentUserProfile) {
-      winsContainer.innerHTML =
-        "<p class='text-gray-700 w-full h-fit flex justify-center items-center p-10'>Cannot view wins of another user.</p>";
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        `${API_BASE_URL}${API_ENDPOINTS.AUCTION.PROFILES}/${profileUserName}/wins?_listings=true&_seller=true&_bids=true`,
-        {
-          method: "GET",
-          headers: API_Headers_accesstoken_content_apikey(accessToken, apiKey),
-        },
-      );
-
-      if (!response.ok) throw new Error("Failed to fetch listings");
-
-      const userWins = await response.json();
-      displayListings(winsContainer, userWins.data);
-    } catch (error) {
-      winsContainer.innerHTML =
-        "<p class='text-gray-700 w-full h-fit flex justify-center items-center p-10'>Could not load won listings.</p>";
-    }
   }
 
   await loadProfile();
