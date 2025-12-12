@@ -23,9 +23,9 @@ import {
 import { editProfileToggle } from "./editProfileToggle.ts";
 import { showErrorMessage, showSuccessMessage } from "../message.ts";
 import { characterCounter } from "../countCharacters.ts";
-import { loadWins } from "./loadWins.ts";
-import { loadBidOnListings } from "./loadBidsOnListings.ts";
-import { loadListings } from "./LoadListings.ts";
+import { loadWins } from "./load/loadWins.ts";
+import { loadBidOnListings } from "./load/loadBidsOnListings.ts";
+import { loadListings } from "./load/loadListings.ts";
 
 export function profileConstants() {
   const { accessToken, apiKey } = getAuthenticationCredentials();

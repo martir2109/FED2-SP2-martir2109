@@ -1,8 +1,8 @@
-import { loadUserListingsData } from "./profileUtils.ts";
-import { getUserProfileElements } from "./profileUtils.ts";
-import { showErrorMessage } from "../message.ts";
-import { profileConstants } from "./profile";
-import { displayListings } from "../utils.ts";
+import { loadUserListingsData } from "../profileUtils.ts";
+import { getUserProfileElements } from "../profileUtils.ts";
+import { showErrorMessage } from "../../message.ts";
+import { profileConstants } from "../profile.ts";
+import { displayListings } from "../../utils.ts";
 
 /**
  * Loads and displays all listigns for a user in the listing container.

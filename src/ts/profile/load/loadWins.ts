@@ -1,10 +1,10 @@
-import { profileConstants } from "./profile";
-import { displayListings } from "../utils.ts";
+import { profileConstants } from "../profile.ts";
+import { displayListings } from "../../utils.ts";
 import {
   API_BASE_URL,
   API_ENDPOINTS,
   API_Headers_accesstoken_content_apikey,
-} from "../apiConfig.ts";
+} from "../../apiConfig.ts";
 
 /**
  * Loads and displays the listings the current user has won.
