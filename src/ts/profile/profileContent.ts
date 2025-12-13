@@ -40,7 +40,7 @@ export function createProfileLoggedIn(): string {
             
             <img
               id="avatar"
-              class="avatar aspect-square rounded-full border-8 border-background"
+              class="avatar aspect-square object-cover rounded-full border-8 border-background"
               alt="Avatar"
               onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-300')"
               />
@@ -271,7 +271,7 @@ export function createProfileLoggedOut(): string {
             
             <img
               id="avatar"
-              class="avatar aspect-square rounded-full border-8 border-background"
+              class="avatar aspect-square object-cover rounded-full border-8 border-background"
               alt="Avatar"
               onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-300')"
               />
