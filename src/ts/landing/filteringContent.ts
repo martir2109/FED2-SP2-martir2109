@@ -22,7 +22,7 @@ export function createFilteringContent(): string {
         </div>
 
         <div class="flex flex-col gap-2 w-full h-fit">
-          <label class="text-label">Filter listings by tags or categories</label>
+          <label class="text-label">Filter by tags or categories</label>
           <input
             id="filter-tags"
             placeholder="Enter tags or categories (comma separated)"
