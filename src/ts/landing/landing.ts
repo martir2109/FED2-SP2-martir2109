@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!listingsContainer) return;
 
     try {
-      let url = `${API_BASE_URL}${API_ENDPOINTS.AUCTION.LISTINGS}?sort=created&sortOrder=desc&_bids=true`;
+      let url = `${API_BASE_URL}${API_ENDPOINTS.AUCTION.LISTINGS}?sort=created&sortOrder=desc&_bids=true&_seller=true`;
       if (activeToggle?.checked) {
         url += "&_active=true";
       }
