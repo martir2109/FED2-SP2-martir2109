@@ -22,10 +22,10 @@ export function createFilteringContent(): string {
         </div>
 
         <div class="flex flex-col gap-2 w-full h-fit">
-          <label class="text-label">Filter by tags</label>
+          <label class="text-label">Filter listings by tags or categories</label>
           <input
             id="filter-tags"
-            placeholder="Enter tags (comma separated)"
+            placeholder="Enter tags or categories (comma separated)"
             aria-label="Search"
             class="h-[50px] w-full p-2 border border-grey rounded-md bg-gray-100 focus:bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
           />
