@@ -2,14 +2,18 @@ import { formatDateTime, Listing } from "../utils.ts";
 
 export function displayBidOnListings(
   bidOnContainer: HTMLElement | null,
-  listings: Listing[],
+  listing: Listing[],
 ) {
   if (!bidOnContainer) return;
 
-  bidOnContainer.innerHTML = listings.length
-    ? listings
-        .map(
-          (listing) => `
+  const currentTime = new Date();
+
+  bidOnContainer.innerHTML = listing.length
+    ? listing
+        .map((listing) => {
+          const listingEndTime = new Date(listing.endsAt);
+
+          return `
         <a
         href="/listing/view/index.html?id=${listing.id}"
         class="bg-white w-max-[200px] w-full min-h-[500px] h-fit rounded-xl border border-gray-300 flex flex-col gap-4 hover:shadow-xl/30 hover:-translate-y-2 transition transform duration-300 ease"
@@ -48,9 +52,16 @@ export function displayBidOnListings(
        <strong>Your highest bid:</strong> ${listing.userBidAmount ?? 0} credits
         </p>
   
-        <div class="flex flex-col xs:flex-row justify-center items-center gap-2 bg-gray-200 py-2 rounded-full">
-          <p class="font-bold">Ends at: </p>
-          <p>${formatDateTime(listing.endsAt)}</p>
+         <div class="flex flex-col xs:flex-row justify-center items-center gap-2">
+           ${
+             currentTime >= listingEndTime
+               ? `<p class="bg-red-200 border border-red-400 text-red-950 py-2 rounded-full text-center font-bold w-full">
+                  Listing has ended!
+                </p>`
+               : `<p class="bg-gray-100 border border-gray-300 py-2 rounded-full text-center w-full">
+                  <strong>Ends at:</strong> ${formatDateTime(listing.endsAt)}
+                </p>`
+           }
         </div>
         
         <div
@@ -61,8 +72,8 @@ export function displayBidOnListings(
   </div>
   
       </a>
-      `,
-        )
+      `;
+        })
         .join("")
     : `<div class="w-full h-fit flex justify-center items-center p-10"> <p class='text-gray-700 text-p'>No listings found. </p> </div>`;
 }
