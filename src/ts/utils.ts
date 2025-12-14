@@ -34,12 +34,17 @@ export function showError(inputId: string, message: string) {
 export function clearError(inputId: string) {
   const input = document.getElementById(inputId)!;
   const errorSpan = document.getElementById(`${inputId}-error`)!;
+  const infoText = document.getElementById(`${inputId}-info`)!;
 
   if (input && errorSpan) {
     input.classList.remove("input-error");
     input.classList.remove("border-danger");
     input.classList.add("border-gray-300");
     errorSpan.textContent = "";
+
+    if (infoText) {
+      infoText.style.display = "block";
+    }
   }
 }
 
