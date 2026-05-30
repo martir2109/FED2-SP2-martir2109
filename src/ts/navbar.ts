@@ -78,6 +78,8 @@ function createNavBarLoggedOut(): string {
  */
 function logout() {
   localStorage.removeItem("accessToken");
+  localStorage.removeItem("apiKey");
+  localStorage.removeItem("user");
   localStorage.removeItem("userName");
   window.location.href = "/index.html";
 }
