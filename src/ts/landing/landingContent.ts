@@ -10,30 +10,43 @@ export function createLoggedOutContent(): string {
         <section
       class="mt-4 w-full min-h-screen flex flex-col items-center justify-center"
     >
-      <div class="min-h-screen w-[90%] flex flex-col justify-center">
-        <h1 class="text-landing font-bold text-center">
-          Welcome to House Auction!
-        </h1>
-        <div class="w-full h-fit py-10 px-2 sm:p-10">
-          <p class="text-h3 text-center mb-10">
-            To bid and create auction listings, please log in or register
-          </p>
-        </div>
-        <div
-          class="flex flex-col sm:flex-row w-full h-fit gap-4 justify-center items-center"
+      <div
+      class="min-h-screen w-full flex flex-col justify-center items-center bg-background px-8 py-16 font-sans"
+    >
+      <p
+        class="text-md tracking-widest uppercase text-secondary font-semibold mb-3"
+      >
+        Auction House
+      </p>
+
+      <h1 class="text-landing font-bold text-center text-primary leading-tight">
+        Discover listings, <br />
+        place your bid
+      </h1>
+
+      <div class="w-12 h-[3px] bg-secondary rounded-full my-5"></div>
+
+      <p
+        class="text-p text-center text-gray-800 max-w-sm leading-relaxed mb-10"
+      >
+        Bid on listings and create your own auctions. Log in or create a free
+        account to get started.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="/auth/register/index.html"
+          class="text-center w-[180px] h-[52px] flex justify-center items-center bg-secondary text-primary border-2 border-secondary rounded-full text-h3 font-semibold hover:bg-background hover:border-[#c49040] transition-colors"
+          >Register</a
         >
-          <a
-            href="/auth/login/index.html"
-            class="text-center w-full max-w-[300px] h-[63px] flex justify-center items-center bg-primary text-white rounded-full text-h2 hover:bg-white hover:text-primary border border-bg-primary"
-            >Login</a
-          >
-          <a
-            href="/auth/register/index.html"
-            class="text-center w-full max-w-[300px] h-[63px] flex justify-center items-center bg-primary text-white rounded-full text-h2 hover:bg-white hover:text-primary border border-bg-primary"
-            >Register</a
-          >
-        </div>
+
+        <a
+          href="/auth/login/index.html"
+          class="text-center w-[180px] h-[52px] flex justify-center items-center bg-transparent text-primary border-2 border-primary rounded-full text-h3 font-semibold hover:bg-primary hover:text-white transition-colors"
+          >Log in</a
+        >
       </div>
+    </div>
 
       <div
         class="w-[90%] sm:w-[80%] flex flex-col justify-center items-center gap-6"
