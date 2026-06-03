@@ -1,5 +1,7 @@
 # FED2-SP2-martir2109
 
+![Netlify Status](https://api.netlify.com/api/v1/badges/36cbddb3-ac5d-4414-aba5-aeb20b83fb12/deploy-status)
+
 Hello there! 👋🏼
 
 My name is Martine Reppesgård Karlsen.
@@ -36,7 +38,7 @@ Before starting the development of the application, I designed a high-fidelity p
 
 ## 📸 Website Preview
 
-![Preview of Auction House website](/public/assets/images/auction-house-preview.png)
+![Preview of Auction House website](/public/assets/images/preview.png)
 
 ## 🛠️ Technologies used
 
@@ -69,9 +71,13 @@ Before starting the development of the application, I designed a high-fidelity p
 
 # Getting started
 
-## Install dependencies
+## Installation
+
+Clone the repository and install dependencies:
 
 ```bash
+git clone https://github.com/martir2109/FED2-SP2-martir2109.git
+cd FED2-SP2-martir2109
 npm install
 ```
 
